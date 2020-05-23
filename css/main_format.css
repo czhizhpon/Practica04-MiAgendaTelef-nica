@@ -1,0 +1,180 @@
+/*
+    Practica 2 - CSS
+    Estudiante: Eduardo Zhizhpon
+    Archivo: main_format.css
+*/
+@font-face{
+    font-family: f_jost;
+    src: url(font/Jost/Jost-VariableFont_ital\,wght.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'f_jost';
+    font-size: 18px;
+}
+
+#main_header{
+    width: 100%;
+    background-color: #333;
+    box-shadow: 0px 0px 6px #000;
+}
+
+/*div: #logo_container*/
+#logo_container{
+    display: flex;
+    justify-content: center;
+    box-shadow: 0px 0px 4px #62A693;
+}
+
+#img_logo img{
+    width: 80px;
+}
+
+.nav_icon{
+    text-decoration: none;
+}
+
+.nav_icon img{
+    width: 35px;
+    display: block;
+    margin: 22px auto 1px;
+}
+
+.nav_icon span{
+    color: #E3E9ED;
+    margin: 5px;
+    font-size: 12px;
+}
+
+#f_search{
+    width: 40%;
+    margin: auto 5%;
+}
+
+#f_search input{
+    box-sizing : border-box;
+    padding: 10px 8px;
+    width: 100%;
+
+    font-family:inherit;
+}
+/*FIN div: #logo_container*/
+
+/*nav: #header_nav*/
+#header_nav {
+    clear: both;
+    overflow: hidden;
+    margin: 6px 5px;
+}
+
+#header_nav .nav_a{
+    float: left;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-radius: 7px;
+}
+
+#header_nav .nav_a:hover{
+    transition: all 0.3s linear;
+    background-color: #ffffff20;
+    color: #fff;
+    text-decoration: none;
+}
+
+/*FIN nav: #header_nav*/
+
+/* FOOTER*/
+#pie {
+    width: 100%;
+    display: flex;
+}
+
+/* #pie {
+    font-family: footer_Font;
+    font-size: 90%;
+}
+
+#pie legend{
+    font-family: footer_FontB;
+    font-size: 125%;
+} */
+
+#pie span a{
+    color: #3D0907;
+}
+#pie a:hover {
+    color: #FFC000;
+    text-decoration: underline;
+}
+#pie a:focus {
+    color: #ffe166;
+    text-decoration: underline;
+}
+.cont_pie {
+    width: 20%;
+    display: grid;
+    margin: auto;
+}
+.cont_pie #logo_pie {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0.5em 2em 0.5em 2em;
+}
+.cont_pie nav a {
+    display: grid;
+    padding: 10px;
+    font-size: 110%;
+    text-decoration: none;
+    color: #3D0907;
+}
+.cont_pie img{
+    margin: auto;
+    width: auto;
+    padding: 0.5em 0.5em;
+}
+
+.cont_pie #logo_pie img{
+    width: 50px;
+    height: 50px;
+}
+/* FIN FOOTER*/
+
+/*Espacio para comenzar con el contenido principal
+    con dos o más columnas*/
+.main_separator{
+    clear: both;
+    padding-top: 5rem;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 5em;
+    line-height: 0.8cm;
+}
+
+/*Espacio para comenzar con el contenido principal
+    con una sola columna*/
+.main_1_col_separator{
+    clear: both;
+    padding-top: 5rem;
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    padding-bottom: 5em;
+    line-height: 0.8cm;
+}
+
+/*h1 -> para el titulo de la página*/
+body h1{
+    margin: 10px 5rem 10px;
+    color: #3D7366;
+}
