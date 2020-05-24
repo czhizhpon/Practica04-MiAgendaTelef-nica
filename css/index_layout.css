@@ -31,9 +31,9 @@
     text-align: center;
     margin: auto 20px auto 0px;
     text-align: center;
-    border: solid 1px #ffe;
     padding: inherit;
-    box-shadow: 0 0 5px #447366;
+    box-shadow: 0 0 5px #333;
+    border-radius: 5px;
 }
 
 #welcome_text h2{
@@ -46,7 +46,6 @@
 }
 
 .index_button{
-    font-size: inherit;
     color: #000;
     padding: 10px;
     border: solid 2px #3333;
@@ -54,12 +53,14 @@
     outline: none; 
     display: inline-block;
     font-family:inherit;
+    font-size: inherit;
 }
 
 .index_button:active{
     border: #346157 2px solid;
     background-color: #ddd;
-    transition: ease-out all 0.3s;
+    transition: all 0.3s;
+    outline: none; 
 }
 
 /* FIN section:.section_welcome*/

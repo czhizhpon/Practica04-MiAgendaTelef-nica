@@ -28,7 +28,7 @@ body{
 #logo_container{
     display: flex;
     justify-content: center;
-    box-shadow: 0px 0px 4px #62A693;
+    box-shadow: 0px 0px 4px #bbb;
 }
 
 #img_logo img{
@@ -56,12 +56,18 @@ body{
     margin: auto 5%;
 }
 
-#f_search input{
+#index_search{
     box-sizing : border-box;
-    padding: 10px 8px;
+    padding: 10px;
     width: 100%;
-
     font-family:inherit;
+    font-size: inherit;
+    outline: none;
+    background-color: #eee;
+}
+
+#index_search:focus{
+    background-color: #ffffff;
 }
 /*FIN div: #logo_container*/
 
@@ -149,7 +155,7 @@ body{
 
 /*Espacio para comenzar con el contenido principal
     con dos o más columnas*/
-.main_separator{
+/* .main_separator{
     clear: both;
     padding-top: 5rem;
     position: relative;
@@ -158,11 +164,11 @@ body{
     justify-content: space-between;
     padding-bottom: 5em;
     line-height: 0.8cm;
-}
+} */
 
 /*Espacio para comenzar con el contenido principal
     con una sola columna*/
-.main_1_col_separator{
+/* .main_1_col_separator{
     clear: both;
     padding-top: 5rem;
     position: relative;
@@ -171,10 +177,10 @@ body{
     justify-content: center;
     padding-bottom: 5em;
     line-height: 0.8cm;
-}
+} */
 
 /*h1 -> para el titulo de la página*/
-body h1{
+/* body h1{
     margin: 10px 5rem 10px;
     color: #3D7366;
-}
+} */
