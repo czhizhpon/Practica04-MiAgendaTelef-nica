@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+        header("Location: ../../../public/view/login.html");
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -18,8 +24,8 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         
-		<link href="../../css/main_format.css" rel="stylesheet">
-        <link href="../../css/index_layout.css" rel="stylesheet">
+		<link href="../../../css/main_format.css" rel="stylesheet">
+        <link href="../../../css/index_layout.css" rel="stylesheet">
 
         <title>Agenda Telefónica</title>
 
@@ -38,7 +44,7 @@
                     <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
                 </form>
 
-                <a href="login.html" class="nav_icon">
+                <a href="#" class="nav_icon">
                     <img src="../../images/icons/user.png" alt="account logo"/>
                     <span>Cuenta</span>
                 </a>
@@ -46,7 +52,7 @@
                     <img src="../../images/icons/mail.png" alt="feedback logo"/>
                     <span>Feedback</span>
                 </a>
-                <a href="#" class="nav_icon">
+                <a href="../../../config/close_session.php" class="nav_icon">
                     <img src="../../images/icons/team.png" alt="about logo"/>
                     <span>About</span>
                 </a>

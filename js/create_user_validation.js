@@ -2,7 +2,6 @@
 //Permite el ingreso de solo numeros
 function onlyNumbersInput(evt){
     var currentAscii = evt.charCode;
-    //console.log(currentAscii)
     if (currentAscii < 48 || currentAscii > 57){
         return false;
     }

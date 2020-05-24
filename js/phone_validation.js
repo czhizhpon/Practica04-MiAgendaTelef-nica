@@ -1,3 +1,24 @@
+//Permite el ingreso de solo numeros
+function onlyNumbersInput(evt){
+    var currentAscii = evt.charCode;
+    if (currentAscii < 48 || currentAscii > 57){
+        return false;
+    }
+    return true;
+}
+
+function nNumberValidate(evt, n){
+    var onlyNumbers = onlyNumbersInput(evt);
+    var e = evt.target;
+    if(onlyNumbers){
+        if(e.value.length == n){
+            return false;
+        }
+        return true;
+    }
+    return false;
+}
+
 function phoneValidate(e, n){
     if(e.value.length < n - 1){
         e.classList.add("s_input_error");
@@ -17,7 +38,6 @@ function phoneError(e, n){
     }
     return true;
 }
-
 
 function phoneCompanyEmptyValidation(e){
     var companyString = e.value;
@@ -44,60 +64,6 @@ function phoneCompanyError(e){
     return true;
 }
 
-
-class Phone{
-
-    constructor(number, company){
-        this.number = number;
-        this.company = company;
-    }
-}
-
-var userPhones = new Array();
-
-class PhoneGUI{
-
-    createPhone(number, company){
-        userPhones.push(new Phone(number, company));
-    }
-
-    deletePhone(index){
-        userPhones.splice(index, 1);
-    }
-
-    printPhones(){
-        var table = document.getElementById("user_numbers");
-        var phone = document.getElementById("i_phones");
-        var company = document.getElementById("i_companies");
-        var list = `<tr>
-            <th> Número</th>
-            <th>Operadora</th>
-            <th>Eliminar</th>
-        </tr>`;
-
-        var phones = "";
-        var companies = "";
-
-        for(var i = 0; i < userPhones.length; i++){
-            list = list + `<tr>
-                <td> ${userPhones[i].number}  </td>
-                <td> ${userPhones[i].company} </td>
-                <td> <a href="#" id="ph${i}" name="delete_phone" class="btn btn_danger">Eliminar</a></td>
-                </tr>`;
-            phones = phones + `"${userPhones[i].number}",`;
-            companies = companies + `"${userPhones[i].company}",`;
-        }
-        phones = phones.substring(0, phones.length - 1);
-        companies = companies.substring(0, companies.length - 1);
-
-        table.innerHTML = list;
-        phone.value = phones;
-        company.value = companies;
-    }
-}
-
-var phoneGUI = new PhoneGUI();
-
 function userPhonesError(){
 
     if(userPhones.length == 0){
@@ -115,16 +81,13 @@ function userPhonesError(){
     return true;
 }
 
-function addPhone(){
+function createPhone(){
     var number = document.getElementById("i_phone_number");
     var company = document.getElementById("i_phone_company");
     
     number.classList.add("s_input_error");
     company.classList.add("s_input_error");
     if(phoneError(number, 10) && phoneCompanyError(company)){
-        phoneGUI.createPhone(number.value, company.value);
-        phoneGUI.printPhones();
-    
         number.value = "";
         company.value = "";
         validate("s_phone_notice");
@@ -135,16 +98,21 @@ function addPhone(){
     }
 }
 
-function delPhone(evt){
+function readPhone(){
+
+}
+
+function updatePhone(){
+
+}
+
+function deletePhone(evt){
     var e = evt.target;
     if(e.name == "delete_phone"){
         var index = "";
         for(var i = 2; i < e.name.length; i++){
             index = index + e.id.charAt(i);
         }
-        phoneGUI.deletePhone(parseInt(index));
-        phoneGUI.printPhones();
-        
     }
     evt.preventDefault();
 }

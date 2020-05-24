@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<!-- <link href="css/formulario_layout.css" rel="stylesheet"/> -->
+	<!-- <script src="js/validar_formulario.js"></script> -->
+	<title>Login</title>
+</head>
+<body>
+	<section>
+		<header>
+			<h2>Inicio de Sesión</h2>
+		</header>
+		<form id="f_personal_data" action="../controller/login.php" method="POST">
+            
+            <label for="i_email">Correo:</label>
+			<input type="text" name="i_email" id="i_email" class="text_input"/>
+			<br>
+			
+			<label for="i_password">Contraseña:</label>
+			<input type="password" name="i_password" id="i_password" class="text_input" />
+			
+			<br>
+			
+			<div class="d_button_container">
+				<input type="submit" id="i_send_data" class="submit_input" value="Iniciar Sesión"/>
+			</div>
+		</form>
+	</section>
+</body>
+</html>
