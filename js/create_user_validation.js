@@ -110,7 +110,7 @@ function dniError(e){
     return true;
 }
 
-function nStringValidate(e, n){
+function nStringValidate(e, n, spanId){
     var val = e.value;
     var valString = val.split(" ");
     var nString = valString.length;
@@ -124,13 +124,13 @@ function nStringValidate(e, n){
             }
         }
         e.classList.remove("s_input_error");
-        validate("s_name_notice");
+        validate(spanId);
         return true;
     }
 }
 
 function nameError(e, n){
-    var nStringVal = nStringValidate(e, n);
+    var nStringVal = nStringValidate(e, n, "s_name_notice");
     if(!nStringVal){
         printValidationError("s_name_notice", "Se deben ingresar los dos nombres.");
         document.getElementById("s_name_notice").classList.add("s_show");
@@ -140,7 +140,7 @@ function nameError(e, n){
 }
 
 function lastnameError(e, n){
-    var nStringVal = nStringValidate(e, n);
+    var nStringVal = nStringValidate(e, n, "s_lastname_notice");
     if(!nStringVal){
         printValidationError("s_lastname_notice", "Se deben ingresar los dos apellidos.");
         document.getElementById("s_lastname_notice").classList.add("s_show");
@@ -175,52 +175,6 @@ function addressError(e){
         document.getElementById("s_address_notice").classList.add("s_show");
         return false;
     }
-}
-
-function phoneValidate(e, n){
-    if(e.value.length < n - 1){
-        e.classList.add("s_input_error");
-        return false;
-    }else{
-        validate("s_phone_notice");
-        e.classList.remove("s_input_error");
-        return true;
-    }
-}
-
-function phoneError(e, n){
-    if(!phoneValidate(e, n)){
-        printValidationError("s_phone_notice", "Número de teléfono obligatorio.");
-        document.getElementById("s_phone_notice").classList.add("s_show");
-        return false;
-    }
-    return true;
-}
-
-
-function phoneCompanyEmptyValidation(e){
-    var companyString = e.value;
-    e.classList.add("s_input_error");
-    if(companyString.length == 0){
-        return false
-    }
-    for(var i = 0; i < companyString.length; i++){
-        if(companyString.charCodeAt(i) != 32){
-            e.classList.remove("s_input_error");
-            validate("s_phone_notice");
-            return true;
-        }
-    }
-    return false;
-}
-
-function phoneCompanyError(e){
-    if(!phoneCompanyEmptyValidation(e)){
-        printValidationError("s_phone_notice", "Companía obligatoria.");
-        document.getElementById("s_phone_notice").classList.add("s_show");
-        return false;
-    }
-    return true;
 }
 
 function dateFormatValidation(e){
@@ -319,7 +273,8 @@ function passwordError(e){
     return true;
 }
 
-function submitForm(){
+
+function submitForm(evt){
     var formElements = document.getElementById("f_personal_data").elements;
     var nForm = formElements.length;
     var flag = true;
@@ -343,10 +298,6 @@ function submitForm(){
                 aux = addressError(e);
                 flag = flag && aux;
                 break;
-            case "i_phone_number":
-                aux = phoneError(e, 10);
-                flag = flag && aux;
-                break;
             case "i_born":
                 aux = dateError(e);
                 flag = flag && aux;
@@ -360,96 +311,9 @@ function submitForm(){
                 flag = flag && aux;
                 break;
             default:
-                flag = false;
                 console.log("No form elements");
         }
     }
+    
     return flag;
-}
-
-class Phone{
-
-    constructor(number, company){
-        this.number = number;
-        this.company = company;
-    }
-}
-
-var userPhones = new Array();
-
-class PhoneGUI{
-    //var phones = new Array();
-
-    createPhone(number, company){
-        userPhones.push(new Phone(number, company));
-    }
-
-    deletePhone(index){
-        userPhones.splice(index, 1);
-    }
-
-    printPhones(){
-        var table = document.getElementById("user_numbers");
-        var phone = document.getElementById("i_phones");
-        var company = document.getElementById("i_companies");
-        var list = `<tr>
-            <th> Número</th>
-            <th>Operadora</th>
-            <th>Eliminar</th>
-        </tr>`;
-
-        var phones = "";
-        var companies = "";
-
-        for(var i = 0; i < userPhones.length; i++){
-            // var e = document.createElement("tr");
-            list = list + `<tr>
-                <td> ${userPhones[i].number}  </td>
-                <td> ${userPhones[i].company} </td>
-                <td> <a href="#" id="ph${i}" name="delete_phone" class="btn btn_danger">Eliminar</td>
-                </tr>`;
-            phones = phones + `${userPhones[i].number},`;
-            companies = companies + `${userPhones[i].company},`;
-        }
-
-        table.innerHTML = list;
-        phone.value = phones;
-        company.value = companies;
-    }
-}
-
-var phoneGUI = new PhoneGUI();
-
-function addPhone(){
-    var number = document.getElementById("i_phone_number");
-    var company = document.getElementById("i_phone_company");
-    
-    number.classList.add("s_input_error");
-    company.classList.add("s_input_error");
-    if(phoneError(number, 10) && phoneCompanyError(company)){
-        phoneGUI.createPhone(number.value, company.value);
-        phoneGUI.printPhones();
-    
-        number.value = "";
-        company.value = "";
-        validate("s_phone_notice");
-        number.classList.remove("s_input_error");
-    company.classList.remove("s_input_error");
-    }else{
-        printValidationError("s_phone_notice", "Número de teléfono y su compania son obligatorios.");
-    }
-}
-
-function delPhone(evt){
-    var e = evt.target;
-    if(e.name == "delete_phone"){
-        var index = "";
-        for(var i = 2; i < e.name.length; i++){
-            index = index + e.id.charAt(i);
-        }
-        phoneGUI.deletePhone(parseInt(index));
-        phoneGUI.printPhones();
-        
-    }
-    evt.preventDefault();
 }

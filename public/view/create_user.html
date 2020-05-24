@@ -48,14 +48,14 @@
         </nav>
         
     </header>
-    <!-- Fin Barra Nav  action="../controladores/crear_usuario.php" -->
+    <!-- Fin Barra Nav   -->
 
 	<section class="form_section">
 		<header>
 			<h2>Crear Usuario</h2>
 		</header>
-		<form id="f_personal_data" onsubmit="return submitForm()" 
-		
+		<form id="f_personal_data" onsubmit="return submitForm(event)" 
+		action="../controller/create_user.php"
 		method="POST">
             
             <label for="i_dni">Cédula:</label>
@@ -71,7 +71,7 @@
 			<label for="i_name">Nombres:</label>
 			<input type="text" name="i_name" id="i_name" class="text_input" 
 			onkeypress="return onlyTextInput(event)" 
-			onkeyup="nStringValidate(this, 2)" 
+			onkeyup="nStringValidate(this, 2, 's_name_notice')" 
 			onblur="nameError(this, 2)"/>
 			<br>
 			<span id="s_name_notice" class="s_error_validation"></span>
@@ -81,7 +81,7 @@
 			<label for="i_lastname">Apellidos:</label>
 			<input type="text" name="i_lastname" id="i_lastname" class="text_input" 
 			onkeypress="return onlyTextInput(event)" 
-			onkeyup="nStringValidate(this, 2)" 
+			onkeyup="nStringValidate(this, 2, 's_lastname_notice')" 
 			onblur="lastnameError(this, 2)"/>
             <br>
 			<span div id="s_lastname_notice" class="s_error_validation"></span>
@@ -121,37 +121,6 @@
 			
 			<br>
 			
-			<label for="i_phone_number">Teléfono y Operadora:</label>
-			<input type="text" name="i_phone_number" id="i_phone_number" class="text_input i_phone" 
-			placeholder="Número"
-			onkeypress="return nNumberValidate(event, 10)" 
-			onkeyup="return phoneValidate(this, 10)" 
-			onblur="phoneError(this, 10)"/>
-
-			<input type="text" name="i_phone_company" id="i_phone_company" class="text_input i_phone"
-			placeholder="Companía"
-			onkeyup="phoneCompanyEmptyValidation(this)"
-			onblur="phoneCompanyError(this)"/>
-
-			<input type="hidden" name="i_phones" id="i_phones" value="">
-			<input type="hidden" name="i_companies" id="i_companies" value="">
-
-			<input type="button" id="btn_add_tel" value="+"
-			onclick="addPhone()">
-            <br>
-			<span id="s_phone_notice" class="s_error_validation"></span>
-			<br>
-
-			<div id="phone_list" class="table_container" onclick="delPhone(event)">
-				<table id="user_numbers" class="table_numbers">
-					<tr>
-						<th> Número</th>
-						<th>Operadora</th>
-						<th>Eliminar</th>
-					</tr>
-				</table>
-			</div>
-
 			<div class="d_button_container">
 				<input type="submit" id="i_send_data" class="submit_input" value="Enviar"/>
 			</div>

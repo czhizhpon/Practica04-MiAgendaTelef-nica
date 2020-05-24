@@ -103,16 +103,6 @@ body{
     display: flex;
 }
 
-/* #pie {
-    font-family: footer_Font;
-    font-size: 90%;
-}
-
-#pie legend{
-    font-family: footer_FontB;
-    font-size: 125%;
-} */
-
 #pie span a{
     color: #3D0907;
 }
