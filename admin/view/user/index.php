@@ -32,11 +32,23 @@
     </head>
     <body>
 
+        <?php
+            $codigo = $_GET["codigo"];
+            // $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
+            include '../../../config/conexionBD.php';
+            // $result = $conn->query($sql);
+
+            // if ($result->num_rows > 0) {
+
+                // while($row = $result->fetch_assoc()) {
+
+        ?>
+
         <header id="main_header">
             
             <div id="logo_container">
 
-                <a href="index.html" id="img_logo">
+                <a href="index.php?codigo=<?php echo $codigo; ?>" id="img_logo">
                     <img src="../../images/icons/logo.png" alt="Logo Game Specs"/>
                 </a>
 
@@ -60,8 +72,8 @@
             </div>
 
             <nav id="header_nav">
-                <a class="nav_a" href="index.html">Inicio</a>
-                <a class="nav_a" href="#">Pendiente 1</a>
+                <a class="nav_a" href="index.php?codigo=<?php echo $codigo; ?>">Inicio</a>
+                <a class="nav_a" href="phones.php?codigo=<?php echo $codigo; ?>">Mis Teléfonos</a>
                 <a class="nav_a" href="#">Pendiente 2</a>
                 <a class="nav_a" href="#">Pendiente 3</a>
                 <a class="nav_a" href="#">Pendiente 4</a>

@@ -17,7 +17,7 @@
         if($row["usu_rol"] === "A"){
             header("Location: ../../admin/view/admin/index.php");
         }else{
-            header("Location: ../../admin/view/user/index.php");
+            header("Location: ../../admin/view/user/index.php?codigo=" . $row['usu_codigo']);
         }
 
         

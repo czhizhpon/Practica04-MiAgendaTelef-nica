@@ -116,3 +116,7 @@ function deletePhone(evt){
     }
     evt.preventDefault();
 }
+
+function submitForm(){
+    return false;
+}
