@@ -91,7 +91,7 @@
                         echo " <td>" . $row['usu_nombre'] ."</td>";
                         echo " <td>" . $row['usu_apellido'] . "</td>";
                         echo " <td>" . $row['usu_direccion'] . "</td>";
-                        echo " <td>" . $row['usu_correo'] . "</td>";
+                        echo " <td><a href='mailto:". $row['usu_correo'] . "'>" . $row['usu_correo'] . "</a></td>";
                         echo " <td>" . $row['usu_fecha_nacimiento'] . "</td>";
                         echo "</tr>";
                     }
@@ -110,7 +110,7 @@
                 if ($telefonos->num_rows > 0) {
                     while ($row = $telefonos->fetch_assoc()) {
                         echo "<tr>";
-                        echo " <td>" . $row["tel_numero"] . "</td>";
+                        echo " <td><a href='tel:". $row['tel_numero'] . "'>" . $row["tel_numero"] . "</td>";
                         echo "</tr>";
                     }
                 } else {
