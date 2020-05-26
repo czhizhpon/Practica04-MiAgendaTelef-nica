@@ -15,8 +15,11 @@
         $row = $result -> fetch_assoc();
 
         if($row["usu_rol"] === "A"){
+            $_SESSION['isAdmin'] = TRUE;
             header("Location: ../../admin/view/admin/index.php");
+            
         }else{
+            $_SESSION['isAdmin'] = FALSE;
             header("Location: ../../admin/view/user/index.php?codigo=" . $row['usu_codigo']);
         }
 

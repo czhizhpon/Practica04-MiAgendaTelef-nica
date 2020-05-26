@@ -11,58 +11,109 @@
     border-radius: 5px;
 }
 
-#f_personal_data {
+.form_data {
     padding: 10px;
     width: 50%;
     min-width: 700px;
     background-color: #eee;
     box-shadow: 0px 0px 4px #555 ;
     border-radius: 10px;
+    margin: 10px;
     display: inline-block;
+    text-align: left;
 }
 
-#f_personal_data label{
-    /* display: inline-block; */
-    float: left;
+.form_data .l_i_text{
+    clear: both;
+    display: inline-block;
     text-align: right;
     padding: 10px 5px;
-    margin: 10px auto;
+    margin:auto;
     width: 25%;
     margin: 5px;
 }
 
-#f_personal_data input{
-    float: left;
+.form_data input{
     font-family: inherit;
     font-size: inherit;
     outline: none;
     border-radius: 7px;
 }
 
-#f_personal_data .text_input{
+.form_data .text_input{
     width: 65%;
     border: #346157 1px solid;
     background-color: #eee;
     color: #111;
     padding: 10px 5px;
-    margin: 10px auto;
+    margin: auto;
    
 }
 
-#f_personal_data .text_input:focus{
+.form_data .text_input:focus{
     border: #62A693 1px solid;
     background-color: #fff;
     transition: ease-out all 0.3s;
 }
 
-#f_personal_data .d_button_container{
+.form_data .l_r_container{
+    width: 25%;
+    display: inline-block;
+}
+
+.i_r_container{
+    width: 65%;
+    float: left;
+}
+
+.i_r_container .i_radio{
+    display: none;
+}
+
+.form_data .l_r_text{
+    float: left;
+}
+
+.i_r_container .l_radio{
+    display: inline-block;
+    background-color: #ddd;
+    padding: 10px 5px;
+    margin: 5px;
+    font-family: Arial;
+    font-size: 16px;
+    cursor: pointer;
+    width: 80%;
+    box-shadow: 0px 0px 2px #333;
+    border-radius: 5px;
+}
+
+.form_data .i_r_container .l_radio:hover{
+    background-color: #eee;
+}
+
+.form_data .i_radio:checked + .l_radio{
+    background-color: #346157;
+    color: #eee;
+}
+
+.form_data .sel_form{
+    font-size: inherit;
+    font-family: inherit;
+    border-radius: inherit;
+}
+
+.form_data  .sel_form:focus{
+    outline: none;
+}
+
+.form_data .d_button_container{
     width: 100%;
     clear: both;
     display: flex;
     justify-content: flex-end;
 }
 
-.d_button_container .submit_input{
+.form_data .d_button_container .submit_input{
     font-weight: bolder;
     color: #fff;
     padding: 10px;
@@ -71,17 +122,17 @@
     margin: 10px;
 }
 
-#f_personal_data .submit_input:active{
+.form_data .submit_input:active{
     transition: 0.3s all linear;
     background-color: #333;
 }
 
-#f_personal_data .submit_input:hover{
+.form_data .submit_input:hover{
     box-shadow: 0px 0px 5px #346157;
 }
 
 /*Error Messages*/
-#f_personal_data .s_error_validation{
+.form_data .s_error_validation{
     clear: both;
     display: inline-block;
     padding: 0;
@@ -93,34 +144,40 @@
     color: #A93226;
 }
 
-#f_personal_data .s_error_validation ul{
+.form_data .s_error_validation ul{
     clear: both;
     display: inline-block;
     padding: 5px;
 }
 
-#f_personal_data .s_error_validation ul li {
+.form_data .s_error_validation ul li {
     list-style: none;
     list-style-type: square;
     text-align: left;
 }
 
-#f_personal_data .s_show{
+.form_data .s_show{
     display: inline-block;
 }
 
 /* JavaScript*/
 
 /* Boder error*/
-#f_personal_data .s_input_error{
+.s_input_error{
+    border: 1px red solid !important;
+}
+
+.s_input_error:focus{
     border: 1px red solid;
 }
 
-#f_personal_data .s_input_error:focus{
-    border: 1px red solid;
+.e_input_trans_backg{
+    background-color: rgba(165, 42, 42, 0.158);
+    border-radius: 5px;
 }
 
-#btn_add_tel{
+/*Opcional*/
+.btn_add_tel{
     width: auto;
     font-weight: bolder;
     color: #fff;
@@ -133,7 +190,7 @@
     box-shadow: 0px 0px 3px #333;
 }
 
-#btn_add_tel:active {
+.btn_add_tel:active {
     background-color: rgb(24, 130, 230);
     transition: 0.3s all;
 }

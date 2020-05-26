@@ -10,9 +10,10 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="../../../css/create_user_layout.css" rel="stylesheet"/>
+    <link href="../../../css/form_layout.css" rel="stylesheet"/>
     <link href="../../../css/main_format.css" rel="stylesheet"/>
-	<title>Crear Usuario</title>
+	<script src="../../../js/phone_validation.js"></script>
+	<title>Mis Teléfonos</title>
 </head>
 <body>
 	<?php
@@ -61,65 +62,82 @@
 
 	<section class="form_section">
 		<header>
-			<h2>Crear Usuario</h2>
+			<h2>Mis Teléfonos</h2>
 		</header>
-			<?php
-					
-					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
-
-					include '../../../config/conexionBD.php';
-					$result = $conn->query($sql);
-					if ($result->num_rows > 0) {
-
-						while($row = $result->fetch_assoc()) {
-			?>
-			<form id="f_personal_data">
-				<input type="hidden" name="i_user_id" id="i_user_id" disabled value="<?php $usu_id; ?>"/>
-				<label for="i_name">Usuario:</label>
-				<input type="text" name="i_name" id="i_name" class="text_input" disabled value="<?php echo $row["usu_nombre"] . " " . $row["usu_apellido"]; ?>"/>
-				<br>
+		<?php
 				
-				<label for="i_email">Correo:</label>
-				<input type="text" name="i_email" id="i_email" class="text_input" disabled value="<?php echo $row["usu_correo"]; ?>"/>
+				$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
 
-			</form>
-					<?php 
+				include '../../../config/conexionBD.php';
+				$result = $conn->query($sql);
+				if ($result->num_rows > 0) {
+
+					while($row = $result->fetch_assoc()) {
+		?>
+		<form id="f_personal_data" class="form_data">
+			<label for="i_name" class="l_i_text">Usuario:</label>
+			<input type="text" name="i_name" id="i_name" class="text_input" disabled value="<?php echo $row["usu_nombre"] . " " . $row["usu_apellido"]; ?>"/>
+			<br>
+			
+			<label for="i_email" class="l_i_text">Correo:</label>
+			<input type="text" name="i_email" id="i_email" class="text_input" disabled value="<?php echo $row["usu_correo"]; ?>"/>
+		</form>
+
+		<form id="f_phone" name="f_phone" class="form_data" onsubmit="return submitForm(event)" method="POST">
+			<!-- action="../../controller/user/create_phones.php" -->
+			
+
+			<input type="hidden" name="i_user_codigo" id="i_user_id" value="<?php echo $usu_id; ?>"/>
+			
+			<label for="i_phone_number" class="l_i_text" >Número:</label>
+			<input type="text" name="i_phone_number" id="i_phone_number" class="text_input" 
+				placeholder="Número"
+				onkeypress="return nNumberValidate(event, 10)" 
+				onkeyup="return phoneValidate(this, 10)" 
+				onblur="phoneError(this, 10)"/>
+			
+			<br/>
+			
+			<label class="l_i_text l_r_text">Tipo:</label>
+			<div id="type_phone_container" class="i_r_container">
+				<input type="radio" id="r_co" name="tel_type" value="CO" class="i_radio"
+					onclick="typePhoneError()">
+				<label for="r_co" class="l_radio" name="tel_type_label">Convencional</label><br>
+				<input type="radio" id="r_ce" name="tel_type" value="CE" class="i_radio"
+					onclick="typePhoneError()">
+				<label for="r_ce" class="l_radio" name="tel_type_label">Celular</label><br>
+			</div>
+
+			<label for="s_company" class="l_i_text">Operadora:</label>
+			<select name="s_company" id="s_company" class="text_input sel_form" onclick="companyPhoneError()">
+				<option value="NaN">Seleccione...</option>
+				<option value="MOVISTAR">Movistar</option>
+				<option value="TUENTI">Tuenti</option>
+				<option value="CLARO">Claro</option>
+				<option value="ETAPA">Etapa</option>
+				<option value="CNT">CNT</option>
+				<option value="OTROS">Otros</option>
+			</select>
+			<br>
+			<span id="s_phone_notice" class="s_error_validation"></span>
+			<br>
+			<div class="d_button_container">
+				<input type="submit" id="i_send_phone" class="submit_input" value="Agregar"/>
+			</div>
+		</form>
+		<?php 
 						}	
 				}else{
 					echo "<p> No se encuentra al usuario.</p>";
 					echo "<p>" . mysqli_error($conn) . "</p>";
 				} ?>				
+		
 		<div id="phone_list" class="table_container">
+			<script>
+				listPhones(<?php echo $usu_id?>);
+			</script>
 			<table id="user_numbers" class="table_numbers">
-				<tr>
-					<th>Número</th>
-					<th>Tipo</th>
-					<th>Operadora</th>
-
-				</tr>
-				<?php
-					$sqlPhones = "SELECT * FROM telefonos where usu_codigo=$usu_id and tel_eliminado = 'N'";
-
-					$resultPh = $conn->query($sqlPhones);
-					if ($resultPh -> num_rows > 0) {
-
-						while($rowPh = $resultPh -> fetch_assoc()) {
-							echo "<tr>";
-							echo "<td>" . $rowPh['tel_numero'] . "</td>";
-							echo "<td>" . $rowPh['tel_tipo'] . "</td>";
-							echo "<td>" . $rowPh['tel_operadora'] . "</td>";
-							echo "<td> <a href='delete_phone.php?codigo=" . $rowPh['tel_codigo'] . "'>Eliminar</a></td>";
-							echo "<td> <a href='update_phone.php?codigo=" . $rowPh['tel_codigo'] . "'>Modificar</a></td>";
-							echo "</tr>";
-						}
-					} else {
-						echo "<tr>";
-						echo " <td colspan='2'> No existen teléfonos para este usuario.</td>";
-						echo "</tr>";
-					}
-					
-				$conn->close();
-				?>
+				
 			</table>
 		</div>
 	</section>
