@@ -52,9 +52,7 @@ function phoneError(e, n){
 }
 
 
-function listPhones(user_id){
-    //var user_id = document.getElementById("i_user_id").value;
-
+function listPhones(user_id, action){
     if(user_id == ""){
         document.getElementById("phone_list").innerHTML == "Algo salió mal.";
     }else{
@@ -68,7 +66,28 @@ function listPhones(user_id){
                 document.getElementById("user_numbers").innerHTML = this.responseText; 
             } 
         };
-        xmlhttp.open("GET","../../../admin/controller/user/list_phones.php?user_id=" + user_id, true); 
+        xmlhttp.open("GET","../../../admin/controller/user/list_phones.php?user_id=" + user_id + "&action=" + action, true); 
+        xmlhttp.send();
+    }
+    return false;
+}
+
+function filterPhone(keyword, action){
+    var user_id = document.getElementById("i_user_id").value;
+    if(!keyword){
+        listPhones(user_id, action);
+    }else{
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() { 
+            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+                document.getElementById("user_numbers").innerHTML = this.responseText; 
+            } 
+        };
+        xmlhttp.open("GET","../../../admin/controller/user/filter_phone.php?keyword=" + keyword + "&user_id=" + user_id + "&action=" + action, true); 
         xmlhttp.send();
     }
     return false;
@@ -102,19 +121,42 @@ function createPhone(){
     return false;
 }
 
-function updatePhone(){
+function readPhone(form_id, tel_id){
+    // alert("form: " + formId  + " | tel: " + tel_id);
+    var user_id = document.getElementById("i_user_id").value;
+    
+    if(!tel_id){
+        listPhones(user_id);
+    }else{
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() { 
+            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+                document.getElementById(form_id).innerHTML = this.responseText; 
+            } 
+        };
+        xmlhttp.open("GET","../../../admin/controller/user/read_phone.php?tel_codigo=" + tel_id + "&usu_codigo=" + user_id, true); 
+        xmlhttp.send();
+    }
+    return false;
+}
+
+function updatePhone(tel_id){
 
 }
 
 function deletePhone(evt){
-    var e = evt.target;
-    if(e.name == "delete_phone"){
-        var index = "";
-        for(var i = 2; i < e.name.length; i++){
-            index = index + e.id.charAt(i);
-        }
-    }
-    evt.preventDefault();
+    // var e = evt.target;
+    // if(e.name == "delete_phone"){
+    //     var index = "";
+    //     for(var i = 2; i < e.name.length; i++){
+    //         index = index + e.id.charAt(i);
+    //     }
+    // }
+    // evt.preventDefault();
 }
 
 function typePhoneError(){
