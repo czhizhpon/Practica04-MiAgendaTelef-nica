@@ -1,6 +1,7 @@
 <?php
     session_start();
-    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === FALSE){
+        session_destroy();
         header("Location: ../../../public/view/login.html");
     }
 ?>
@@ -17,7 +18,6 @@
         Filename: index.html
         -->
 
-        
         <meta charset="utf-8" />
         <meta name="keywords" content="game, pc, specs, gameplays"/>
         <link rel="shortcut icon" href="../../images/icons/logo.png">
