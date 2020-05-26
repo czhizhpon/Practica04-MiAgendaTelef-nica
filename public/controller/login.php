@@ -16,7 +16,7 @@
 
         if($row["usu_rol"] === "A"){
             $_SESSION['isAdmin'] = TRUE;
-            header("Location: ../../admin/view/admin/index.php");
+            header("Location: ../../admin/view/admin/index.php?codigo=" . $row['usu_codigo']);
             
         }else{
             $_SESSION['isAdmin'] = FALSE;

@@ -274,6 +274,7 @@ function passwordError(e){
 
 
 function submitForm(evt){
+    evt.preventDefault();
     var formElements = document.getElementById("f_personal_data").elements;
     var nForm = formElements.length;
     var flag = true;
@@ -310,9 +311,151 @@ function submitForm(evt){
                 flag = flag && aux;
                 break;
             default:
+                console.log("Llega HASTA EL DEFAULT");
                 console.log("No form elements");
         }
     }
+
+    if (!typeUserError()) {
+        flag = false;
+        //console.log("Llega el falseo");
+    }
+
+    if (flag) {
+        createUser();
+    }
+    
     
     return flag;
+}
+
+function typeUserError(){
+    var radios = document.querySelectorAll('input[name="usu_type"]');
+    var e_span = document.getElementById("s_type_notice");
+    var selectedValue;
+    
+    for (var radio of radios) {
+        if (radio.checked) {
+            selectedValue = radio.value;
+            break;
+        }   
+    }
+    
+    if (!selectedValue) {
+        e_span.classList.add("s_show");
+        printValidationError("s_type_notice", "Seleccione el tipo de Usuario.");
+        document.getElementById("type_user_container").classList.add("e_input_trans_backg");
+        return false;
+    }
+
+    document.getElementById("type_user_container").classList.remove("e_input_trans_backg");
+    validate("s_type_notice");
+    return true;
+}
+
+function createUser(){
+    var admin_id = document.getElementById("admin_code").value;
+    var form = document.forms.namedItem("f_personal_data");
+    var formData = new FormData(form);
+
+    if (admin_id == "") {
+        // Pendiente de poner en algun lugar el error
+        console.log("Ocurrio algo inesperado");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        document.getElementById("s_temp_notice").classList.add("s_show");
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Llega");
+                //alert("Esta");
+                document.getElementById("s_temp_notice").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("POST", "../../../admin/controller/admin/create_user.php", true);
+        xmlhttp.send(formData);
+    }
+
+    return false;
+}
+
+function listUser(){
+    var admin_id = document.getElementById("admin_code").value;
+    
+    if (admin_id == "") {
+        // Pendiente de poner en algun lugar el error
+        console.log("Ocurrio algo inesperado");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        xmlhttp.onreadystatechange = function () {
+            //alert("A este si");
+            //No llega aca
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Llega");
+                //alert("Esta");
+                document.getElementById("user_data").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "../../../admin/controller/admin/list_users.php?admin_id=" + admin_id, true);
+        xmlhttp.send();
+    }
+
+    return false;
+}
+
+function updateUser(){
+    
+}
+
+function deleteUser(){
+
+}
+
+function filterUsers(){
+    var admin_id = document.getElementById("admin_code").value;
+    var key = document.getElementById("i_filter").value;
+
+    //console.log(key);
+    
+    
+
+    if (admin_id == "") {
+        // Pendiente de poner en algun lugar el error
+        console.log("Ocurrio algo inesperado");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        
+        //document.getElementById("s_filter_notice").classList.add("s_show");
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log("Llega");
+                //document.getElementById("s_filter_notice").classList.add("s_show");
+                document.getElementById("user_data").innerHTML = this.responseText;
+            }
+        };
+        //document.getElementById("user_data").innerHTML = "";
+        xmlhttp.open("GET", "../../../admin/controller/admin/filter_users.php?admin_id=" + admin_id 
+                        + "&key=" + key, true);
+        xmlhttp.send();
+    }
+
+    return false;
+}
+
+function deleteData() {
+    document.getElementById("user_data").innerHTML = "";
 }

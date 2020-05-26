@@ -31,13 +31,19 @@
 
     </head>
     <body>
+        <?php 
+
+            $usu_id = $_GET["codigo"];
+            include '../../../config/conexionBD.php';
+        
+        ?>
 
         <header id="main_header">
             
             <div id="logo_container">
 
-                <a href="index.html" id="img_logo">
-                    <img src="../../images/icons/logo.png" alt="Logo Game Specs"/>
+                <a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+                    <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
                 </a>
 
                 <form id="f_search">  
@@ -45,23 +51,23 @@
                 </form>
 
                 <a href="#" class="nav_icon">
-                    <img src="../../images/icons/user.png" alt="account logo"/>
+                    <img src="../../../images/icons/user.png" alt="account logo"/>
                     <span>Cuenta</span>
                 </a>
                 <a href="#" class="nav_icon">
-                    <img src="../../images/icons/mail.png" alt="feedback logo"/>
+                    <img src="../../../images/icons/mail.png" alt="feedback logo"/>
                     <span>Feedback</span>
                 </a>
                 <a href="../../../config/close_session.php" class="nav_icon">
-                    <img src="../../images/icons/team.png" alt="about logo"/>
+                    <img src="../../../images/icons/team.png" alt="about logo"/>
                     <span>About</span>
                 </a>
 
             </div>
 
             <nav id="header_nav">
-                <a class="nav_a" href="index.html">Inicio</a>
-                <a class="nav_a" href="#">Pendiente 1</a>
+                <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
+                <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="#">Pendiente 2</a>
                 <a class="nav_a" href="#">Pendiente 3</a>
                 <a class="nav_a" href="#">Pendiente 4</a>

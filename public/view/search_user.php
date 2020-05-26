@@ -103,6 +103,7 @@
                 <th>Teléfonos</th>
             </tr>
             <?php 
+                
                 # Seccion de PHP donde se inserta los telefonos del usuario.
                 $sqlTelefonos = "SELECT * FROM telefonos WHERE tel_eliminado = 'N' AND usu_codigo LIKE '$codigoUsuario'";
                 $telefonos = $conn->query($sqlTelefonos);
@@ -110,7 +111,7 @@
                 if ($telefonos->num_rows > 0) {
                     while ($row = $telefonos->fetch_assoc()) {
                         echo "<tr>";
-                        echo " <td><a href='tel:". $row['tel_numero'] . "'>" . $row["tel_numero"] . "</td>";
+                        echo " <td><a href='tel:". $row['tel_numero'] . "'>" . $row["tel_numero"] . "</a></td>";
                         echo "</tr>";
                     }
                 } else {

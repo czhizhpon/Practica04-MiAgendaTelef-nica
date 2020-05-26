@@ -13,7 +13,7 @@
         <link href="../../../css/form_layout.css" rel="stylesheet"/>
         <link href="../../../css/main_format.css" rel="stylesheet"/>
         <script src="../../../js/create_user_validation.js"></script>
-        <title>Crear Usuario - Admin</title>
+        <title>Visualizar Usuarios - Admin</title>
     </head>
     <body>
     <?php
@@ -62,100 +62,29 @@
 
         <section class="form_section">
             <header>
-                <h2>Crear Usuario</h2>
+                <h2>Visualizar/Filtrar Usuarios</h2>
             </header>
             
-            <form id="f_personal_data" name="f_personal_data" class="form_data" onsubmit="return submitForm(event)"
-            method="POST">
+            <form id="f_personal_data" name="f_personal_data" class="form_data" method="POST">
             <!-- action="../../controller/admin/create_user.php"> -->
                 <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                 
-                <label for="i_dni" class="l_i_text">Cédula:</label>
-                <input type="text" name="i_dni" id="i_dni" class="text_input" 
-                    onkeypress="return nNumberValidate(event, 10)" 
-                    onkeyup="dniFormatValidation(this)" 
-                    onblur="dniError(this)"/>
+                <label for="i_filter" class="l_i_text">Filtrar:</label>
+                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers()"/>
                 <br>
-                <span id="s_dni_notice" class="s_error_validation"></span>
-                
-                <br>
-                
-                <label for="i_name" class="l_i_text">Nombres:</label>
-                <input type="text" name="i_name" id="i_name" class="text_input" 
-                onkeypress="return onlyTextInput(event)" 
-                onkeyup="nStringValidate(this, 2, 's_name_notice')" 
-                onblur="nameError(this, 2)"/>
-                <br>
-                <span id="s_name_notice" class="s_error_validation"></span>
-                
-                <br>
-                
-                <label for="i_lastname" class="l_i_text">Apellidos:</label>
-                <input type="text" name="i_lastname" id="i_lastname" class="text_input" 
-                onkeypress="return onlyTextInput(event)" 
-                onkeyup="nStringValidate(this, 2, 's_lastname_notice')" 
-                onblur="lastnameError(this, 2)"/>
-                <br>
-                <span div id="s_lastname_notice" class="s_error_validation"></span>
-                
-                <br>
-                
-                <label for="i_address" class="l_i_text">Dirección:</label>
-                <input type="text" name="i_address" id="i_address" class="text_input" 
-                onkeyup="addressEmptyValidation(this)" onblur="addressError(this)"/>
-                <br>
-                <span id="s_address_notice" class="s_error_validation"></span>
-                
-                <br>
-                
-                <label for="i_born" class="l_i_text">F. Nacimiento:</label>
-                <input type="date" name="i_born" id="i_born" class="text_input"
-                onkeyup="dateFormatValidation(this)" onblur="dateError(this)"/>
-                <br>
-                <span id="s_born_notice" class="s_error_validation"></span>
-                
-                <br>
-                
-                <label for="i_email" class="l_i_text">Email:</label>
-                <input type="text" name="i_email" id="i_email" class="text_input" 
-                onkeyup="emailFormatValidation(this)" onblur="emailError(this)"/>
-                <br>
-                <span id="s_email_notice" class="s_error_validation"></span>
-                    
-                <br>
-                
-                <label class="l_i_text l_r_text">Tipo de Usuario:</label>
-                <div id="type_user_container" class="i_r_container">
-                    <input type="radio" id="r_u" name="usu_type" value="U" class="i_radio"
-                        onclick="typeUserError()">
-                    <label for="r_u" class="l_radio" name="usu_type_label">Usuario</label>
-                    <br>
-
-                    <input type="radio" id="r_a" name="usu_type" value="A" class="i_radio"
-                        onclick="typeUserError()">
-                    <label for="r_a" class="l_radio" name="usu_type_label">Administrador</label>
-                    <br>
-                </div>
-                <span id="s_type_notice" class="s_error_validation"></span>
-
-                <br>
-                
-                <label for="i_password" class="l_i_text">Contraseña:</label>
-                <input type="password" name="i_password" id="i_password" class="text_input" 
-                onkeyup="return passwordFormatValidation(this)" 
-                onblur="passwordError(this)"/>
-                <br>
-                <span id="s_password_notice" class="s_error_validation"></span>
-                
-                <br>
-                <span id="s_temp_notice" class="s_error_validation"></span>
-                <br>
-
-                <div class="d_button_container">
-                    <input type="submit" id="i_send_data" class="submit_input" value="Enviar"/>
-                </div>
-
+                <span id="s_filter_notice" class="s_error_validation"></span>
             </form>
+
+
+            <div id="users_list" class="table_container">
+                <script>
+                    listUser(<?php echo $usu_id?>);
+                </script>
+                <table id="user_data" class="table_numbers">
+                    
+                </table>
+		    </div>
+
         </section>
 
         <!-- <footer id="pie">
