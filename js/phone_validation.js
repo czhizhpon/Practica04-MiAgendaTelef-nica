@@ -105,11 +105,13 @@ function createPhone(){
         }else{
                 xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
-        document.getElementById("s_phone_notice").classList.add("s_show");
+        
         xmlhttp.onreadystatechange = function() { 
             if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
-                document.getElementById("s_phone_notice").innerHTML = this.responseText; 
-                listPhones(user_id);
+                var e = document.getElementById("notice");
+                e.innerHTML = this.responseText;
+                e.classList.remove("e_hidden");
+                listPhones(user_id, 0);
                 resetFields();
                 console.log("Se ejecuta");
             } 
@@ -122,7 +124,6 @@ function createPhone(){
 }
 
 function readPhone(form_id, tel_id){
-    // alert("form: " + formId  + " | tel: " + tel_id);
     var user_id = document.getElementById("i_user_id").value;
     
     if(!tel_id){
@@ -135,7 +136,10 @@ function readPhone(form_id, tel_id){
         }
         xmlhttp.onreadystatechange = function() { 
             if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
-                document.getElementById(form_id).innerHTML = this.responseText; 
+                var e = document.getElementById(form_id);
+                e.innerHTML = this.responseText;
+                e.classList.remove("e_hidden");
+                e.classList.add("e_show");
             } 
         };
         xmlhttp.open("GET","../../../admin/controller/user/read_phone.php?tel_codigo=" + tel_id + "&usu_codigo=" + user_id, true); 
@@ -144,19 +148,59 @@ function readPhone(form_id, tel_id){
     return false;
 }
 
-function updatePhone(tel_id){
-
+function updatePhone(){
+    var user_id = document.getElementById("i_user_id").value;
+    var form = document.forms.namedItem("f_phone");
+    var formData = new FormData(form);
+    if(user_id == ""){
+        console.log("Algo salió mal.");
+    }else{
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        document.getElementById("s_phone_notice").classList.add("s_show");
+        xmlhttp.onreadystatechange = function() { 
+            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+                var e = document.getElementById("notice");
+                e.innerHTML = this.responseText;
+                e.classList.remove("e_hidden");
+                listPhones(user_id, 1);
+                cancelAndClearUpdate("f_phone");
+                
+            } 
+        };
+        xmlhttp.open("POST","../../../admin/controller/user/update_phone.php", true); 
+        xmlhttp.send(formData);
+    }
+    
+    return false;
 }
 
-function deletePhone(evt){
-    // var e = evt.target;
-    // if(e.name == "delete_phone"){
-    //     var index = "";
-    //     for(var i = 2; i < e.name.length; i++){
-    //         index = index + e.id.charAt(i);
-    //     }
-    // }
-    // evt.preventDefault();
+function deletePhone(tel_id){
+    var user_id = document.getElementById("i_user_id").value;
+    
+    if(!tel_id){
+        listPhones(user_id);
+    }else{
+        if(window.XMLHttpRequest){
+            xmlhttp = new XMLHttpRequest();
+        }else{
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() { 
+            if (this.readyState == 4 && this.status == 200) { //alert("llegue");
+                var e = document.getElementById("notice");
+                e.innerHTML = this.responseText;
+                e.classList.remove("e_hidden");
+                listPhones(user_id, 1);
+            } 
+        };
+        xmlhttp.open("GET","../../../admin/controller/user/delete_phone.php?tel_codigo=" + tel_id + "&usu_codigo=" + user_id, true); 
+        xmlhttp.send();
+    }
+    return false;
 }
 
 function typePhoneError(){
@@ -224,6 +268,35 @@ function submitForm(evt){
     return flag;
 }
 
+function updateForm(){
+    var formElements = document.getElementById("f_phone").elements;
+    var nForm = formElements.length;
+    var flag = true;
+    for(var i = 0; i < nForm; i++){
+        var e = formElements[i];
+        if(e.id == "i_phone_number" && !phoneError(e, 10)){
+            flag = false;
+            return flag;
+        }
+    }
+
+    if(!typePhoneError()){
+        flag = false;
+        return flag;
+    }
+
+    if (!companyPhoneError()){
+        flag = false;
+        return flag;
+    }
+
+    if(flag){
+        updatePhone();
+    }
+
+    return flag;
+}
+
 function resetFields(){
     var number = document.getElementById("i_phone_number");
     var radios = document.querySelectorAll('input[name="tel_type"]');
@@ -234,4 +307,11 @@ function resetFields(){
         radio.checked = false;
     }
     selComp.selectedIndex = "0"
+}
+
+function cancelAndClearUpdate(formId){
+    var e = document.getElementById(formId);
+    e.innerHTML = "";
+    e.classList.add("e_hidden");
+    e.classList.remove("e_show");
 }

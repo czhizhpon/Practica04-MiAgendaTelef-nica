@@ -44,9 +44,9 @@
 			<label class='l_i_text l_r_text'>Tipo:</label>
 			<div id='type_phone_container' class='i_r_container'>
 				" . $co_type . "
-				<label for='r_e_co' class='l_radio' name='tel_type_label'>Convencional</label><br>
+				<label for='r_co' class='l_radio' name='tel_type_label'>Convencional</label><br>
 				" . $ce_type . "
-				<label for='r_e_ce' class='l_radio' name='tel_type_label'>Celular</label><br>
+				<label for='r_ce' class='l_radio' name='tel_type_label'>Celular</label><br>
 			</div>
 
 			<label for='s_company' class='l_i_text'>Operadora:</label>
@@ -87,8 +87,8 @@
 			<span id='s_phone_notice' class='s_error_validation'></span>
 			<br>
             <div class='d_button_container'>
-                <input type='reset' id='i_reset_u_phone' class='reset_cancel' value='Cancelar'/>
-				<input type='submit' id='i_send_u_phone' class='submit_input' value='Actualizar'/>
+                <input type=\"reset\" class='reset_cancel' value='Cancelar' onclick='cancelAndClearUpdate(\"f_phone\")'/>
+				<input type=\"button\" id='i_send_u_phone' class='submit_input' onclick='updateForm()' value='Actualizar'/>
 			</div>";
             }
         } else {

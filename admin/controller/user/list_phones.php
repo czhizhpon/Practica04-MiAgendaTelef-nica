@@ -38,7 +38,7 @@
                         break;
                     case '1':
                         echo "<td> <a class='btn' onclick='readPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Actualizar</a></td>";
-                        echo "<td> <a class='btn btn_danger' onclick='deletePhone(". $rowPh["tel_codigo"] .")'>Eliminar</a></td>";
+                        echo "<td> <a class='btn btn_danger' onclick='deletePhone(". $rowPh['tel_codigo'] .")'>Eliminar</a></td>";
                     break;
                     default:
                         # code...

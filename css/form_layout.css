@@ -142,7 +142,7 @@
 
 .form_data .reset_cancel:active{
     transition: 0.3s all linear;
-    background-color: #333;
+    background-color: #333 !important;
 }
 
 .form_data .reset_cancel:hover{
@@ -151,11 +151,11 @@
 
 /*Error Messages*/
 .form_data .s_error_validation{
+    display: none;
     clear: both;
     display: inline-block;
     padding: 0;
     margin: 0;
-    display: none;
     text-align: right;
     width: 100%;
     margin-left: -5%;
@@ -174,8 +174,21 @@
     text-align: left;
 }
 
-.form_data .s_show{
+.e_hidden{
+    display: none;
+}
+
+.e_show{
     display: inline-block;
+}
+
+.s_show{
+    display: inline-block;
+}
+
+.e_notice{
+    display: block;
+    width: 100%;
 }
 
 /* JavaScript*/

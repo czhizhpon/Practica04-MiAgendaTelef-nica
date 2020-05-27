@@ -64,6 +64,7 @@
 		<header>
 			<h2>Mis Teléfonos</h2>
 		</header>
+		<div id="notice" class="e_notice e_hidden"></div>
 		<?php
 				
 				$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
@@ -119,7 +120,7 @@
 				<option value="OTROS">Otros</option>
 			</select>
 			<br>
-			<span id="s_phone_notice" class="s_error_validation"></span>
+			<span id="s_phone_notice" class="s_error_validation e_hidden"></span>
 			<br>
 			<div class="d_button_container">
 				<input type="submit" id="i_send_phone" class="submit_input" value="Agregar"/>

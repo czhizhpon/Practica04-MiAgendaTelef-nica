@@ -13,7 +13,7 @@
     <link href="../../../css/form_layout.css" rel="stylesheet"/>
     <link href="../../../css/main_format.css" rel="stylesheet"/>
 	<script src="../../../js/phone_validation.js"></script>
-	<title>Mis Teléfonos</title>
+	<title>Administración de mis Teléfonos</title>
 </head>
 <body>
     <?php
@@ -51,7 +51,7 @@
         <nav id="header_nav">
             <a class="nav_a" href="index.php?codigo=<?php echo $usu_codigo?>">Inicio</a>
             <a class="nav_a" href="phones.php?codigo=<?php echo $usu_codigo; ?>">Mis Teléfonos</a>
-            <a class="nav_a" href="#">Administrar Mis Teléfonos</a>
+            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Administrar Mis Teléfonos</a>
             <a class="nav_a" href="#">Pendiente 3</a>
             <a class="nav_a" href="#">Pendiente 4</a>
             <a class="nav_a" href="#">Pendiente 5</a>
@@ -64,8 +64,9 @@
 
 	<section class="form_section">
 		<header>
-			<h2>Mis Teléfonos</h2>
+			<h2>Administración de mis Teléfonos</h2>
 		</header>
+		<div id="notice" class="e_notice e_hidden"></div>
 		<?php
 				
 				$sql = "SELECT * FROM usuarios where usu_codigo=$usu_codigo";
@@ -94,7 +95,7 @@
 				}
 
 		</script>
-		<form id="f_phone" name="f_phone" class="form_data" onsubmit="return updatePhone()" method="POST">
+		<form id="f_phone" name="f_phone" class="form_data e_hidden" method="POST">
             
 			
 		</form>
