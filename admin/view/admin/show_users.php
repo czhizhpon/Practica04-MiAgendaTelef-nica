@@ -69,7 +69,7 @@
                 <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                 
                 <label for="i_filter" class="l_i_text">Filtrar:</label>
-                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(0)"/>
+                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(this.value, 0)"/>
                 <br>
                 <span id="s_filter_notice" class="s_error_validation"></span>
             </form>

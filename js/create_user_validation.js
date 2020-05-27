@@ -416,13 +416,63 @@ function updateUser(){
     
 }
 
-function deleteUser(){
+function deleteUser(user_id){
+    var admin_id = document.getElementById("admin_code").value;
+    var state = "E";
 
+    if (user_id == "") {
+        console.log("Ha ocurrido algo");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200) {
+                var key = document.getElementById("i_filter").value;
+                filterUsers(key, 1);
+            }
+        };
+
+        xmlhttp.open("GET", "../../../admin/controller/admin/change_state_user.php?admin_id=" + admin_id 
+        + "&user_id=" + user_id + "&state=" + state, true);
+        xmlhttp.send();
+    }
+
+    return false;
 }
 
-function filterUsers(action){
+function restoreUser(user_id){
     var admin_id = document.getElementById("admin_code").value;
-    var key = document.getElementById("i_filter").value;
+    var state = "N";
+
+    if (user_id == "") {
+        console.log("Ha ocurrido algo");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function(){
+            if (this.readyState == 4 && this.status == 200) {
+                var key = document.getElementById("i_filter").value;
+                filterUsers(key, 1);
+            }
+        };
+
+        xmlhttp.open("GET", "../../../admin/controller/admin/change_state_user.php?admin_id=" + admin_id 
+        + "&user_id=" + user_id + "&state=" + state, true);
+        xmlhttp.send();
+    }
+
+    return false;
+}
+
+function filterUsers(key, action){
+    var admin_id = document.getElementById("admin_code").value;
+    //var key = document.getElementById("i_filter").value;
 
     if (admin_id == "") {
         // Pendiente de poner en algun lugar el error

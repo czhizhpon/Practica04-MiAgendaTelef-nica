@@ -4,6 +4,10 @@
     $admin_id = $_GET['admin_id'];
     $action = $_GET['action'];
     $key = trim($_GET['key']);
+
+    if ($key == "" && $action !=0) {
+        $action = 2;
+    }
         
     $sqlAllUsers = "SELECT * FROM usuarios WHERE usu_codigo NOT LIKE '$admin_id' AND
                  (usu_cedula LIKE '%$key%' OR
@@ -25,9 +29,9 @@
                 usu_fecha_nacimiento LIKE '%$key%' OR
                 usu_rol LIKE '[$key]')";
 
-    if ($action == 0) {
-        $sql = $sqlActiveUsers;
-        $table_head = " <tr>
+    $sqlEmpty = "SELECT * FROM usuarios WHERE usu_codigo LIKE '$key'";
+
+    $table_head = " <tr>
                             <th>Cedula</th>
                             <th>Nombres</th>
                             <th>Apellidos</th>
@@ -36,7 +40,10 @@
                             <th>Correo</th>
                             <th>Tipo</th>
                         </tr> ";
-    } else {
+
+    if ($action == 0) {
+        $sql = $sqlActiveUsers;
+    } else if ($action == 1) {
         $sql = $sqlAllUsers;
         $table_head = " <tr>
                             <th>Cedula</th>
@@ -48,6 +55,8 @@
                             <th>Tipo</th>
                             <th>Estado</th>
                         </tr> ";
+    } else {
+        $sql = $sqlEmpty;
     }
     
 
@@ -83,11 +92,9 @@
                 switch ($rowUs['usu_eliminado']) {
                     case 'N':
                         $estado = "Activo";
-                        $action = 1;
                         break;
                     case 'E':
                         $estado = "Eliminado";
-                        $action = 2;
                         break;
                     default:
                         $estado = "Desconocido";
@@ -100,14 +107,14 @@
                         break;
                     case 1:
                         echo "<td>". $estado ."</td>";
-                        echo "<td> <a class='btn btn_danger' onclick='deleteUser(". $rowUs['usu_codigo'] .")'>Eliminar</a></td>";
-                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
-                        break;
-                    case 2:
-                        echo "<td>". $estado ."</td>";
-                        echo "<td> <a class='btn' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
-                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
-                        break;                   
+                        if ($rowUs['usu_eliminado'] == 'N') {
+                            echo "<td> <a class='btn btn_danger' onclick='deleteUser(". $rowUs['usu_codigo'] .")'>Eliminar</a></td>";
+                            echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
+                        } else {
+                            echo "<td> <a class='btn' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
+                            echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
+                        }
+                        break;                 
                     default:
                         # code...
                         break;
@@ -118,7 +125,7 @@
         
         } else {
             echo "<tr>";
-            echo "<td colspan='7'> No existen usuarios registrados.</td>";
+            echo "<td colspan='7'> No existen usuarios registrados con los criterios de busqueda.</td>";
         }
 
     } else {

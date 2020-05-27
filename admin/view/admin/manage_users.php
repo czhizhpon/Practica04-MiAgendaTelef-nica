@@ -70,12 +70,12 @@
                 <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                 
                 <label for="i_filter" class="l_i_text">Filtrar:</label>
-                <input type="text" name="i_filter" id="i_filter" class="text_input"/>
+                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(this.value, 1)" />
                 <br>
                 <span id="s_filter_notice" class="s_error_validation"></span>
 
                 <div class="d_button_container">
-                    <input type="button" id="i_filter_usuers" class="submit_input" onclick="filterUsers(1)" value="Buscar"/>
+                    <input type="button" id="i_filter_usuers" class="submit_input"  value="Buscar"/>
                 </div>
 
             </form>
@@ -105,6 +105,9 @@
                         <th>Correo</th>
                         <th>Tipo</th>
                         <th>Estado</th>
+                    </tr>
+                    <tr>
+                        <td colspan="8">Ingrese algun criterio de busqueda para obtener usuarios.</td>
                     </tr>
                     
                 </table>
