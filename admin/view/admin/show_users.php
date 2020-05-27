@@ -51,7 +51,7 @@
                 <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="#">Administrar usuarios</a>
+                <a class="nav_a" href="manage_users.php?usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
                 <a class="nav_a" href="#">Pendiente 5</a>
                 <a class="nav_a" href="#">Pendiente 6</a>
                 <a class="nav_a" href="#">Pendiente 7</a>
@@ -62,15 +62,14 @@
 
         <section class="form_section">
             <header>
-                <h2>Visualizar/Filtrar Usuarios</h2>
+                <h2>Visualizar/Filtrar Usuarios - Activos</h2>
             </header>
             
-            <form id="f_personal_data" name="f_personal_data" class="form_data" method="POST">
-            <!-- action="../../controller/admin/create_user.php"> -->
+            <form id="f_filter_data" name="f_filter_data" class="form_data" method="POST">
                 <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                 
                 <label for="i_filter" class="l_i_text">Filtrar:</label>
-                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers()"/>
+                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(0)"/>
                 <br>
                 <span id="s_filter_notice" class="s_error_validation"></span>
             </form>
@@ -78,7 +77,7 @@
 
             <div id="users_list" class="table_container">
                 <script>
-                    listUser(<?php echo $usu_id?>);
+                    listUser(0);
                 </script>
                 <table id="user_data" class="table_numbers">
                     

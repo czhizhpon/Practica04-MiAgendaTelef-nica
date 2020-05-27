@@ -383,7 +383,7 @@ function createUser(){
     return false;
 }
 
-function listUser(){
+function listUser(action){
     var admin_id = document.getElementById("admin_code").value;
     
     if (admin_id == "") {
@@ -405,7 +405,7 @@ function listUser(){
                 document.getElementById("user_data").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "../../../admin/controller/admin/list_users.php?admin_id=" + admin_id, true);
+        xmlhttp.open("GET", "../../../admin/controller/admin/list_users.php?admin_id=" + admin_id + "&action=" + action, true);
         xmlhttp.send();
     }
 
@@ -420,13 +420,9 @@ function deleteUser(){
 
 }
 
-function filterUsers(){
+function filterUsers(action){
     var admin_id = document.getElementById("admin_code").value;
     var key = document.getElementById("i_filter").value;
-
-    //console.log(key);
-    
-    
 
     if (admin_id == "") {
         // Pendiente de poner en algun lugar el error
@@ -438,18 +434,44 @@ function filterUsers(){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         
-        
-        //document.getElementById("s_filter_notice").classList.add("s_show");
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-                console.log("Llega");
-                //document.getElementById("s_filter_notice").classList.add("s_show");
                 document.getElementById("user_data").innerHTML = this.responseText;
             }
         };
-        //document.getElementById("user_data").innerHTML = "";
+
         xmlhttp.open("GET", "../../../admin/controller/admin/filter_users.php?admin_id=" + admin_id 
-                        + "&key=" + key, true);
+                        + "&key=" + key + "&action=" + action, true);
+        xmlhttp.send();
+    }
+
+    return false;
+}
+
+function readUser(formId, userId) {
+    var admin_id = document.getElementById("admin_code");
+
+    if (admin_id == "") {
+        // Pendiente de poner en algun lugar el error
+        console.log("Ocurrio algo inesperado");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var e = document.getElementById(formId);
+                e.innerHTML = this.responseText;
+                e.classList.remove("e_hidden");
+                e.classList.add("e_show");
+            }
+        };
+
+        xmlhttp.open("GET", "../../../admin/controller/admin/read_user.php?admin_id=" + admin_id 
+                        + "&user_id=" + userId, true);
         xmlhttp.send();
     }
 
