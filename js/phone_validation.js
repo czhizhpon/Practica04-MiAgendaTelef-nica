@@ -93,6 +93,45 @@ function filterPhone(keyword, action){
     return false;
 }
 
+function typePhoneError(){
+    var radios = document.querySelectorAll('input[name="tel_type"]');
+    var selectedValue;
+    var e_span = document.getElementById("s_phone_notice");
+
+    for (var radio of radios) {
+        if (radio.checked) {
+            selectedValue = radio.value;
+            break;
+        }
+    }
+    if(!selectedValue){
+        e_span.classList.add("s_show");
+        printValidationError("s_phone_notice", "Seleccione el tipo de número.");
+        document.getElementById("type_phone_container").classList.add("e_input_trans_backg");
+        return false;
+    }
+    document.getElementById("type_phone_container").classList.remove("e_input_trans_backg");
+    validate("s_phone_notice");
+    return true;
+}
+
+function companyPhoneError(){
+    var e = document.getElementById("s_company");
+    var selValue = e.value;
+
+    var e_span = document.getElementById("s_phone_notice");
+    if(selValue == "NaN"){
+        e_span.classList.add("s_show");
+        printValidationError("s_phone_notice", "Seleccione una operadora.");
+        e.classList.add("s_input_error");
+        return false;
+    }else{
+        validate("s_phone_notice");
+        e.classList.remove("s_input_error");
+    }
+    return true;
+}
+
 function createPhone(){
     var user_id = document.getElementById("i_user_id").value;
     var form = document.forms.namedItem("f_phone");
@@ -201,44 +240,6 @@ function deletePhone(tel_id){
         xmlhttp.send();
     }
     return false;
-}
-
-function typePhoneError(){
-    var radios = document.querySelectorAll('input[name="tel_type"]');
-    var selectedValue;
-    var e_span = document.getElementById("s_phone_notice");
-
-    for (var radio of radios) {
-        if (radio.checked) {
-            selectedValue = radio.value;
-            break;
-        }
-    }
-    if(!selectedValue){
-        e_span.classList.add("s_show");
-        printValidationError("s_phone_notice", "Seleccione el tipo de número.");
-        document.getElementById("type_phone_container").classList.add("e_input_trans_backg");
-        return false;
-    }
-    document.getElementById("type_phone_container").classList.remove("e_input_trans_backg");
-    validate("s_phone_notice");
-    return true;
-}
-
-function companyPhoneError(){
-    var e = document.getElementById("s_company");
-    var selValue = e.value;
-
-    var e_span = document.getElementById("s_phone_notice");
-    if(selValue == "NaN"){
-        e_span.classList.add("s_show");
-        printValidationError("s_phone_notice", "Seleccione una operadora.");
-        e.classList.add("s_input_error");
-        return false;
-    }
-    validate("s_phone_notice");
-    e.classList.remove("s_input_error");
-    return true;
 }
 
 function submitForm(evt){

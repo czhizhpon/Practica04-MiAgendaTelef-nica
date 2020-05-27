@@ -24,7 +24,7 @@
 }
 
 .form_data .l_i_text{
-    clear: both;
+    clear: both !important;
     display: inline-block;
     text-align: right;
     padding: 10px 5px;
@@ -79,7 +79,7 @@
     background-color: #ddd;
     padding: 10px 5px;
     margin: 5px;
-    font-family: Arial;
+    font-family: inherit;
     font-size: 16px;
     cursor: pointer;
     width: 80%;
@@ -94,6 +94,19 @@
 .form_data .i_radio:checked + .l_radio{
     background-color: #346157;
     color: #eee;
+}
+
+.i_c_container{
+    width: 65%;
+    float: left;
+    height: 56px;
+}
+
+.i_check{
+    display: inline-block;
+    width: 24px;
+    height: 56px;
+    margin-left: 10px;
 }
 
 .form_data .sel_form{
@@ -261,6 +274,7 @@
     border-radius: 5px;
     box-shadow: #333 0px 0px 3px;
     display: inline-block;
+    cursor: pointer;
 }
 
 .btn_danger {
