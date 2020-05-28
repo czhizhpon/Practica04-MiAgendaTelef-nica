@@ -1,0 +1,37 @@
+
+.main_title{
+    background-color: transparent;
+    text-align: center;
+    padding: 10px;
+    margin: 10px auto;
+}
+
+.main_container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.col{
+    display: block;
+    text-align: center;
+}
+
+.col-50{
+    width: 50%;
+}
+
+.col-40{
+    width: 40%;
+}
+
+.col-30{
+    width: 30%;
+}
+
+.col-60{
+    width: 60%;
+}
+
+.col-70{
+    width: 70%;
+}

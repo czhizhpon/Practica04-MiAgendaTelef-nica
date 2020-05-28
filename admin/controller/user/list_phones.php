@@ -11,6 +11,7 @@
             <th>Número</th>
             <th>Tipo</th>
             <th>Operadora</th>
+            <th></th>
         </tr>";
 
     if($resultPh){
@@ -18,7 +19,7 @@
 
             while($rowPh = $resultPh -> fetch_assoc()) {
                 echo "<tr>";
-                echo "<td><a href='tel:". $rowPh['tel_numero'] . "'>" . $rowPh['tel_numero'] . "</a></td>";
+                echo "<td><a class='a_link' href='tel:". $rowPh['tel_numero'] . "'>" . $rowPh['tel_numero'] . "</a></td>";
                 switch($rowPh['tel_tipo']){
                     case "CO":
                         echo "<td> CONVENCIONAL</td>";
@@ -34,10 +35,10 @@
                 
                 switch ($action) {
                     case '0':
-                        echo "<td> <a class='btn' href='manage_phones.php?tel_codigo=" . $rowPh["tel_codigo"] . "&usu_codigo=" . $rowPh["usu_codigo"] . "'>Administrar</a></td>";
+                        echo "<td> <a class='btn btn_passive' href='manage_phones.php?tel_codigo=" . $rowPh["tel_codigo"] . "&usu_codigo=" . $rowPh["usu_codigo"] . "'>Administrar</a></td>";
                         break;
                     case '1':
-                        echo "<td> <a class='btn' onclick='readPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Actualizar</a></td>";
+                        echo "<td> <a class='btn btn_passive' onclick='readPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Actualizar</a></td>";
                         echo "<td> <a class='btn btn_danger' onclick='deletePhone(". $rowPh['tel_codigo'] .")'>Eliminar</a></td>";
                     break;
                     default:
