@@ -12,6 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="../../../css/form_layout.css" rel="stylesheet"/>
         <link href="../../../css/main_format.css" rel="stylesheet"/>
+
+        <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
         <title>Crear Usuario - Admin</title>
     </head>
@@ -64,10 +66,11 @@
             <header>
                 <h2>Crear Usuario</h2>
             </header>
-            
-            <form id="f_personal_data" name="f_personal_data" class="form_data" onsubmit="return submitForm(event)"
+
+            <div id="notice" class="div_notice e_hidden"></div>
+
+            <form id="f_personal_data" name="f_personal_data" class="form_data" onsubmit="return submitFormAdmin(event, 1)"
             method="POST">
-            <!-- action="../../controller/admin/create_user.php"> -->
                 <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                 
                 <label for="i_dni" class="l_i_text">Cédula:</label>
@@ -146,10 +149,6 @@
                 onblur="passwordError(this)"/>
                 <br>
                 <span id="s_password_notice" class="s_error_validation"></span>
-                
-                <br>
-                <span id="s_temp_notice" class="s_error_validation"></span>
-                <br>
 
                 <div class="d_button_container">
                     <input type="submit" id="i_send_data" class="submit_input" value="Enviar"/>

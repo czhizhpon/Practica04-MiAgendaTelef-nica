@@ -12,6 +12,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="../../../css/form_layout.css" rel="stylesheet"/>
         <link href="../../../css/main_format.css" rel="stylesheet"/>
+        <link href="../../../css/2_col_layout.css" rel="stylesheet"/>
+        <link href="../../../css/table_layout.css" rel="stylesheet"/>
+
+        <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
         <title>Administrar Usuario - Admin</title>
     </head>
@@ -84,7 +88,13 @@
                     readUser("f_personal_data", userID, readAction);
                 }
             </script>
-            <form id="f_personal_data" name="f_personal_data" class="form_data" onsubmit="return submitForm(event)"
+            <div id="notice" class="div_notice e_hidden"></div>
+            <form id="f_personal_data" name="f_personal_data" class="e_hidden form_data" onsubmit="return submitFormAdmin(event, 2)"
+            method="POST">
+                
+            </form>
+
+            <form id="f_password" name="f_password" class="e_hidden form_data" onsubmit="return submitFormPass(event, 1)"
             method="POST">
                 
             </form>

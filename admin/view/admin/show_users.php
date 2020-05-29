@@ -12,6 +12,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="../../../css/form_layout.css" rel="stylesheet"/>
         <link href="../../../css/main_format.css" rel="stylesheet"/>
+
+        <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
         <title>Visualizar Usuarios - Admin</title>
     </head>
@@ -79,7 +81,7 @@
                 <script>
                     listUser(0);
                 </script>
-                <table id="user_data" class="table_numbers">
+                <table id="user_data" class="table_content">
                     
                 </table>
 		    </div>

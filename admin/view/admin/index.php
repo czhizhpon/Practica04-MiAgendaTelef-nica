@@ -70,8 +70,8 @@
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
                 <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
-                <a class="nav_a" href="#">Pendiente 4</a>
-                <a class="nav_a" href="#">Pendiente 5</a>
+                <a class="nav_a" href="create_phone.php">Registrar de Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php">Administración de Teléfonos</a>
                 <a class="nav_a" href="#">Pendiente 6</a>
                 <a class="nav_a" href="#">Pendiente 7</a>
             </nav>

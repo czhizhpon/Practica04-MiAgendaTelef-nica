@@ -93,6 +93,8 @@
 
                 } else {
                     
+                    echo "<input type=\"hidden\" name=\"user_code\" id=\"user_code\" value='". $user_id ."'></input>";
+                    
                     echo "<span id=\"title\">Restablecer contraseña para: ".
                     $rowUser['usu_apellido'] .", ". $rowUser['usu_nombre']."</span><br>"; 
                     echo "<label for=\"i_password\" class=\"l_i_text\">Nueva contraseña:</label>";
@@ -103,7 +105,7 @@
                     echo "<span id=\"s_temp_notice\" class=\"s_error_validation\"></span><br>";
     
                     echo "<div class=\"d_button_container\">
-                        <input type=\"button\" id=\"i_cancel\" class=\"submit_input\" value=\"Cancelar\" onclick='cancel(\"f_personal_data\")' />
+                        <input type=\"button\" id=\"i_cancel\" class=\"submit_input\" value=\"Cancelar\" onclick='cancel(\"f_password\")' />
                         <input type=\"submit\" id=\"i_update_user\" class=\"submit_input\" value=\"Actualizar\"/>
                     </div>";
 

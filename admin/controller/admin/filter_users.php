@@ -113,7 +113,7 @@
                             echo "<td> <a class='btn' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
                         }
                         echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
-                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
+                        echo "<td> <a class='btn' onclick='readUser(\"f_password\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
                         break;                 
                     default:
                         # code...
