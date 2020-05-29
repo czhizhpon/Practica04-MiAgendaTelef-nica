@@ -69,7 +69,7 @@
                 <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
+                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
                 <a class="nav_a" href="#">Pendiente 4</a>
                 <a class="nav_a" href="#">Pendiente 5</a>
                 <a class="nav_a" href="#">Pendiente 6</a>

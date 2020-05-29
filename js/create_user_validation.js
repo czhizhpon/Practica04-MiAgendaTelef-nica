@@ -279,6 +279,7 @@ function submitForm(evt){
     var nForm = formElements.length;
     var flag = true;
     var aux;
+
     for(var i = 0; i < nForm; i++){
         var e = formElements[i];
         switch(e.id){
@@ -416,6 +417,10 @@ function updateUser(){
     
 }
 
+function updatePassword(){
+
+}
+
 function deleteUser(user_id){
     var admin_id = document.getElementById("admin_code").value;
     var state = "E";
@@ -498,8 +503,10 @@ function filterUsers(key, action){
     return false;
 }
 
-function readUser(formId, userId) {
+function readUser(formId, userId, readAction) {
     var admin_id = document.getElementById("admin_code");
+
+    //alert(formId.elements.length+"");
 
     if (admin_id == "") {
         // Pendiente de poner en algun lugar el error
@@ -521,13 +528,14 @@ function readUser(formId, userId) {
         };
 
         xmlhttp.open("GET", "../../../admin/controller/admin/read_user.php?admin_id=" + admin_id 
-                        + "&user_id=" + userId, true);
+                        + "&user_id=" + userId +"&readAction=" + readAction, true);
         xmlhttp.send();
     }
 
     return false;
 }
 
-function deleteData() {
-    document.getElementById("user_data").innerHTML = "";
+function cancel(formID){
+    var form = document.getElementById(formID);
+    form.innerHTML = "";
 }

@@ -103,17 +103,17 @@
                 
                 switch ($action) {
                     case 0:
-                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."'></a>Gestionar Usuario</td>";
+                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'></a>Gestionar Usuario</td>";
                         break;
                     case 1:
                         echo "<td>". $estado ."</td>";
                         if ($rowUs['usu_eliminado'] == 'N') {
                             echo "<td> <a class='btn btn_danger' onclick='deleteUser(". $rowUs['usu_codigo'] .")'>Eliminar</a></td>";
-                            echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
                         } else {
                             echo "<td> <a class='btn' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
-                            echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .")'>Modificar</a></td>";
                         }
+                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
+                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
                         break;                 
                     default:
                         # code...

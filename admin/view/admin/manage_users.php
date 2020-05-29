@@ -19,6 +19,7 @@
     <?php
         $usu_id = $_GET["codigo"]; // Administrador logeado.
         $user_id = $_GET["usu_id"]; // Usuario al que se va a modificar
+        $readAction = $_GET["readAction"];
 	?>
         <header id="main_header">
                 
@@ -52,7 +53,7 @@
                 <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
+                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
                 <a class="nav_a" href="#">Pendiente 5</a>
                 <a class="nav_a" href="#">Pendiente 6</a>
                 <a class="nav_a" href="#">Pendiente 7</a>
@@ -74,16 +75,13 @@
                 <br>
                 <span id="s_filter_notice" class="s_error_validation"></span>
 
-                <div class="d_button_container">
-                    <input type="button" id="i_filter_usuers" class="submit_input"  value="Buscar"/>
-                </div>
-
             </form>
             
             <script>
                 var userID = <?php echo $user_id ?>;
-                if (userID != '-1') {
-                    readUser("f_personal_data", userID);
+                var readAction = <?php echo $readAction ?>;
+                if (userID != '-1' && readAction != '-1') {
+                    readUser("f_personal_data", userID, readAction);
                 }
             </script>
             <form id="f_personal_data" name="f_personal_data" class="form_data" onsubmit="return submitForm(event)"

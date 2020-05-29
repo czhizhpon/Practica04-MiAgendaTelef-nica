@@ -3,6 +3,7 @@
 
     $admin_id = $_GET['admin_id'];
     $action = $_GET['action'];
+    #$readAction = 1;
 
     $sqlUsers = "SELECT * FROM usuarios WHERE usu_codigo NOT LIKE '$admin_id' AND usu_eliminado LIKE 'N'";
     
@@ -45,7 +46,7 @@
 
                 switch ($action) {
                     case 0:
-                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."'></a>Gestionar Usuario</td>";
+                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'></a>Gestionar Usuario</td>";
                         break;
                     case 1:
                         # code...
