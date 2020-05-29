@@ -82,7 +82,6 @@ function submitFormPass(evt, mode){
         updatePassword();
     }
     
-
     return flag; 
 }
 

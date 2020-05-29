@@ -12,39 +12,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link href="../../../css/form_layout.css" rel="stylesheet"/>
         <link href="../../../css/main_format.css" rel="stylesheet"/>
+        <link href="../../../css/2_col_layout.css" rel="stylesheet"/>
+        <link href="../../../css/table_layout.css" rel="stylesheet"/>
 
         <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
         <title>Visualizar Usuarios - Admin</title>
     </head>
+
     <body>
-    <?php
-		$usu_id = $_GET["codigo"];
-	?>
+        <?php
+            $usu_id = $_GET["codigo"];
+        ?>
+
         <header id="main_header">
-                
+            
             <div id="logo_container">
 
-                <a href="index.html?codigo=<?php echo $usu_id; ?>" id="img_logo">
+                <a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
                     <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
                 </a>
 
-                <!--Pendiente de revisar esta barra de busqueda-->
-                <form id="f_search" action="../../../public/view/search_user.php" method="POST">  
-                        <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+                <form id="f_search">  
+                    <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
                 </form>
 
                 <a href="#" class="nav_icon">
                     <img src="../../../images/icons/user.png" alt="account logo"/>
                     <span>Cuenta</span>
                 </a>
+
                 <a href="#" class="nav_icon">
                     <img src="../../../images/icons/mail.png" alt="feedback logo"/>
                     <span>Feedback</span>
                 </a>
+
                 <a href="../../../config/close_session.php" class="nav_icon">
                     <img src="../../../images/icons/team.png" alt="about logo"/>
-                    <span>About</span>
+                    <span>Cerrar Sesión</span>
                 </a>
 
             </div>
@@ -53,48 +58,48 @@
                 <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
-                <a class="nav_a" href="#">Pendiente 5</a>
-                <a class="nav_a" href="#">Pendiente 6</a>
-                <a class="nav_a" href="#">Pendiente 7</a>
+                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar Usuarios</a>
+                <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
             </nav>
             
         </header>
         <!-- Fin Barra Nav   -->
 
-        <section class="form_section">
-            <header>
-                <h2>Visualizar/Filtrar Usuarios - Activos</h2>
-            </header>
-            
-            <form id="f_filter_data" name="f_filter_data" class="form_data" method="POST">
-                <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
+        <h1 class="main_title">Visualizar/Filtrar Usuarios - Activos</h1>
+
+        <main class="main_container center_container">
+            <section class="col col-30 form_section">
                 
-                <label for="i_filter" class="l_i_text">Filtrar:</label>
-                <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(this.value, 0)"/>
-                <br>
-                <span id="s_filter_notice" class="s_error_validation"></span>
-            </form>
-
-
-            <div id="users_list" class="table_container">
-                <script>
-                    listUser(0);
-                </script>
-                <table id="user_data" class="table_content">
+                <form id="f_filter_data" name="f_filter_data" class="col col-100 form_data form_transparent" method="POST">
+                    <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $usu_id; ?>"></input>
                     
-                </table>
-		    </div>
+                    <label for="i_filter" class="l_i_text">Filtrar:</label>
+                    <input type="text" name="i_filter" id="i_filter" class="text_input" onkeyup="filterUsers(this.value, 0)"/>
+                    <br>
+                    <span id="s_filter_notice" class="s_error_validation"></span>
+                </form>
+                
+            </section>
 
-        </section>
-
-        <!-- <footer id="pie">
+            <div id="users_list" class="col col-100 table_container">
+                    <script>
+                        // listUser(0);
+                        filterUsers("", 0);
+                    </script>
+                    <table id="user_data" class="table_content">
+                        
+                    </table>
+            </div>
+        </main>
+        
+        <footer id="pie">
             <div class="cont_pie">
                 <div id="logo_pie">
-                    <a href="https://www.facebook.com/" target="_blank"><img src="../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
-                    <a href="https://www.instagram.com/" target="_blank"><img src="../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
+                    <a href="https://www.facebook.com/" target="_blank"><img src="../../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="../../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
                 </div>
-                <img src="images/logoSO.png" alt="">
+                <img class="logo" src="../../../images/icons/logo.png" alt="LOGO">
 
                 <p>
                     Universidad Politécnica Salesiana <br />
@@ -111,27 +116,24 @@
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Acerca de Cuenca</legend>
+                    <legend>Gestión de Usuarios</legend>
                     <nav>
-                        <a href="docs/historia.html" > Historia </a>
-                        <a href="docs/geografia.html" > Geografía </a>
-                        <a href="docs/cultura.html" > Cultura </a>
-                        <a href="docs/turismo.html" > Turismo </a>
+                    <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
+                    <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
+                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
                     </nav>
                 </fieldset>
             </div>
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Universidades Principales</legend>
+                    <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
-                        <a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
-                        <a href="docs/educacion.html#uda" > Universidad del Azuay </a>
-                        <a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
+                        <a class="nav_a" href="create_phones.php">Registrar Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>
-        </footer> -->
+        </footer>
     </body>
 </html>

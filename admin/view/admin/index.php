@@ -20,9 +20,9 @@
 
         <meta charset="utf-8" />
         <meta name="keywords" content="game, pc, specs, gameplays"/>
-        <link rel="shortcut icon" href="../../images/icons/logo.png">
-
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        <link rel="shortcut icon" href="../../images/icons/logo.png">
         
 		<link href="../../../css/main_format.css" rel="stylesheet">
         <link href="../../../css/index_layout.css" rel="stylesheet">
@@ -30,12 +30,11 @@
         <title>Agenda Telefónica</title>
 
     </head>
-    <body>
-        <?php 
 
+    <body>
+        <?php
             $usu_id = $_GET["codigo"];
             include '../../../config/conexionBD.php';
-        
         ?>
 
         <header id="main_header">
@@ -54,13 +53,15 @@
                     <img src="../../../images/icons/user.png" alt="account logo"/>
                     <span>Cuenta</span>
                 </a>
+
                 <a href="#" class="nav_icon">
                     <img src="../../../images/icons/mail.png" alt="feedback logo"/>
                     <span>Feedback</span>
                 </a>
+
                 <a href="../../../config/close_session.php" class="nav_icon">
                     <img src="../../../images/icons/team.png" alt="about logo"/>
-                    <span>About</span>
+                    <span>Cerrar Sesión</span>
                 </a>
 
             </div>
@@ -69,11 +70,9 @@
                 <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
-                <a class="nav_a" href="create_phone.php">Registrar de Teléfonos</a>
-                <a class="nav_a" href="manage_phones.php">Administración de Teléfonos</a>
-                <a class="nav_a" href="#">Pendiente 6</a>
-                <a class="nav_a" href="#">Pendiente 7</a>
+                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar Usuarios</a>
+                <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
             </nav>
             
         </header>
@@ -99,7 +98,7 @@
                     
                 </div>
                 
-                <img src="../../images/icons/info.png" alt="index main image"/>
+                <img src="../../../images/icons/info.png" alt="index main image"/>
 
             </section>
 
@@ -113,43 +112,22 @@
                 <div id="contacts_content">
                     <article>
                         <a href="site/general/news.html">
-                            <img src="images/news/news_eye_tracking.jpg" alt="new 1 picture">
+                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
                             <h3>Solución de seguimiento ocular</h3>
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="images/news/news_vr_homemade.jpg" alt="new 1 picture">
+                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
                             <h3>Headset VR hecho en casa con un Raspberry Pi</h3>
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="images/news/vr_ces_2020.jpg" alt="new 1 picture">
+                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
                             <h3>Lo mejor de la realidad virtual en CES 2020</h3>
-                        </a>
-                    </article>
-
-                    <article>
-                        <a href="site/general/news.html">
-                            <img src="images/news/news_nin_switch_april_2020.jpg" alt="new 1 picture">
-                            <h3>11 nuevos y emocionantes juegos llegarán a Nintendo Switch en abril</h3>
-                        </a>
-                    </article>
-
-                    <article>
-                        <a href="site/general/news.html">
-                            <img src="images/news/news_nvidia.jpg" alt="new 1 picture">
-                            <h3>Nvidia Gaming Platform: Nvidia lanzará nuevos juegos todos los jueves</h3>
-                        </a>
-                    </article>
-
-                    <article>
-                        <a href="site/general/news.html">
-                            <img src="images/news/news_bill_depresion.jpg" alt="new 1 picture">
-                            <h3>Con los niños fuera de la escuela y jugando en línea, los padres enfrentan facturas de choque</h3>
                         </a>
                     </article>
 
@@ -168,7 +146,7 @@
                 <div id="reviews_content">
                     <blockquote>
                         <div class="stars">
-                            <img src="images/index/users/user_1.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -187,7 +165,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="images/index/users/user_1.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -204,7 +182,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="images/index/users/user_1.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -223,36 +201,37 @@
 
             </section>
         
-
 			<section id="team">
 				<header>
 					<h2>El Equipo</h2>
 				</header>
 				<div id="team_content">
 					<aside>
-						<img src="images/index/users/user_1.png" alt="User team picture"/>
+						<img src="../../../images/icons/logo.png" alt="User team picture"/>
 
 						<h3>Bryan Sarmiento</h3>
 
 					</aside>
 
 					<aside>
-						<img src="images/index/users/user_1.png" alt="User team picture"/>
+						<img src="../../../images/icons/logo.png" alt="User team picture"/>
 
 						<h3>Eduardo Zhizhpon</h3>
 
 					</aside>
 
 				</div>
-			</section>
-		</main>
+            </section>
+            
+        </main>
+        
         <footer id="pie">
             <div class="cont_pie">
                 <div id="logo_pie">
-                    <a href="https://www.facebook.com/" target="_blank"><img src="../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
-                    <a href="https://www.instagram.com/" target="_blank"><img src="../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
+                    <a href="https://www.facebook.com/" target="_blank"><img src="../../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
+                    <a href="https://www.instagram.com/" target="_blank"><img src="../../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
                 </div>
-                <img src="images/logoSO.png" alt="">
+                <img class="logo" src="../../../images/icons/logo.png" alt="LOGO">
 
                 <p>
                     Universidad Politécnica Salesiana <br />
@@ -269,27 +248,25 @@
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Acerca de Cuenca</legend>
+                    <legend>Gestión de Usuarios</legend>
                     <nav>
-                        <a href="docs/historia.html" > Historia </a>
-                        <a href="docs/geografia.html" > Geografía </a>
-                        <a href="docs/cultura.html" > Cultura </a>
-                        <a href="docs/turismo.html" > Turismo </a>
+                    <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
+                    <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
+                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
                     </nav>
                 </fieldset>
             </div>
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Universidades Principales</legend>
+                    <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
-                        <a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
-                        <a href="docs/educacion.html#uda" > Universidad del Azuay </a>
-                        <a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
+                        <a class="nav_a" href="create_phones.php">Registrar Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>
         </footer>
+    
     </body>
 </html>

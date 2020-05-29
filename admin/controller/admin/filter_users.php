@@ -32,14 +32,15 @@
     $sqlEmpty = "SELECT * FROM usuarios WHERE usu_codigo LIKE '$key'";
 
     $table_head = " <tr>
-                            <th>Cedula</th>
-                            <th>Nombres</th>
-                            <th>Apellidos</th>
-                            <th>Direccion</th>
-                            <th>Fecha Nacimiento</th>
-                            <th>Correo</th>
-                            <th>Tipo</th>
-                        </tr> ";
+                        <th>Cedula</th>
+                        <th>Nombres</th>
+                        <th>Apellidos</th>
+                        <th>Direccion</th>
+                        <th>Fecha de Nacimiento</th>
+                        <th>Correo</th>
+                        <th>Tipo</th>
+                        <th></th>
+                    </tr> ";
 
     if ($action == 0) {
         $sql = $sqlActiveUsers;
@@ -50,10 +51,13 @@
                             <th>Nombres</th>
                             <th>Apellidos</th>
                             <th>Direccion</th>
-                            <th>Fecha Nacimiento</th>
+                            <th>Fecha de Nacimiento</th>
                             <th>Correo</th>
                             <th>Tipo</th>
                             <th>Estado</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr> ";
     } else {
         $sql = $sqlEmpty;
@@ -75,7 +79,7 @@
                 echo "<td>". $rowUs['usu_apellido'] ."</td>";
                 echo "<td>". $rowUs['usu_direccion'] ."</td>";
                 echo "<td>". date("d/m/Y", strtotime($rowUs['usu_fecha_nacimiento'])) ."</td>";
-                echo "<td>". $rowUs['usu_correo'] ."</td>";
+                echo " <td><a href='mailto:". $rowUs['usu_correo'] . "'>" . $rowUs['usu_correo'] . "</a></td>";
 
                 switch ($rowUs['usu_rol']) {
                     case 'U':
@@ -103,17 +107,17 @@
                 
                 switch ($action) {
                     case 0:
-                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'></a>Gestionar Usuario</td>";
+                        echo "<td><a class=\"btn btn_passive\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'>Gestionar Usuario</a></td>";
                         break;
                     case 1:
                         echo "<td>". $estado ."</td>";
                         if ($rowUs['usu_eliminado'] == 'N') {
                             echo "<td> <a class='btn btn_danger' onclick='deleteUser(". $rowUs['usu_codigo'] .")'>Eliminar</a></td>";
                         } else {
-                            echo "<td> <a class='btn' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
+                            echo "<td> <a class='btn btn_passive' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
                         }
-                        echo "<td> <a class='btn' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
-                        echo "<td> <a class='btn' onclick='readUser(\"f_password\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
+                        echo "<td> <a class='btn btn_passive' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
+                        echo "<td> <a class='btn btn_passive' onclick='readUser(\"f_password\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
                         break;                 
                     default:
                         # code...
@@ -125,11 +129,11 @@
         
         } else {
             echo "<tr>";
-            echo "<td colspan='7'> No existen usuarios registrados con los criterios de busqueda.</td>";
+            echo "<td colspan='11'> No existen usuarios registrados con los criterios de busqueda.</td>";
         }
 
     } else {
-        echo " <tr><td colspan='7'>Error: " . mysqli_error($conn) . "</td></tr>";
+        echo " <tr><td colspan='8'>Error: " . mysqli_error($conn) . "</td></tr>";
         echo "</tr>";
     }
     

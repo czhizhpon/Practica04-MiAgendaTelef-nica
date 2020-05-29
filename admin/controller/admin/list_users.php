@@ -17,6 +17,7 @@
             <th>Fecha Nacimiento</th>
             <th>Correo</th>
             <th>Tipo</th>
+            <th></th>
           </tr> ";
 
     if ($resultUs) {
@@ -46,7 +47,7 @@
 
                 switch ($action) {
                     case 0:
-                        echo "<td><a class=\"btn\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'></a>Gestionar Usuario</td>";
+                        echo "<td><a class=\"btn btn_passive\" href='manage_users.php?codigo=". $admin_id ."&usu_id=". $rowUs['usu_codigo'] ."&readAction=1'>Gestionar Usuario</a></td>";
                         break;
                     case 1:
                         # code...
@@ -61,11 +62,11 @@
         
         } else {
             echo "<tr>";
-            echo "<td colspan='7'> No existen usuarios registrados.</td>";
+            echo "<td colspan='8'> No existen usuarios registrados.</td>";
         }
 
     } else {
-        echo " <tr><td colspan='7'>Error: " . mysqli_error($conn) . "</td></tr>";
+        echo " <tr><td colspan='8'>Error: " . mysqli_error($conn) . "</td></tr>";
         echo "</tr>";
     }
     
