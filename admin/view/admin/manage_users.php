@@ -61,8 +61,8 @@
                 <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
                 <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
                 <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar Usuarios</a>
-                <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
-                <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
+                <a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
             </nav>
             
         </header>
@@ -165,8 +165,8 @@
                 <fieldset>
                     <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a class="nav_a" href="create_phones.php">Registrar Teléfonos</a>
-                        <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
+                        <a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>

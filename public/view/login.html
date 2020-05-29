@@ -3,29 +3,35 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-	<!-- <link href="css/formulario_layout.css" rel="stylesheet"/> -->
+	<link href="../../css/2_col_layout.css" rel="stylesheet"/>
+	<link href="../../css/login.css" rel="stylesheet"/>
 	<!-- <script src="js/validar_formulario.js"></script> -->
 	<title>Login</title>
 </head>
 <body>
-	<section>
-		<header>
-			<h2>Inicio de Sesión</h2>
-		</header>
-		<form id="f_personal_data" action="../controller/login.php" method="POST">
-            
-            <label for="i_email">Correo:</label>
-			<input type="text" name="i_email" id="i_email" class="text_input"/>
+	<h2 class="main_title">Iniciar Sesión</h2>
+	<section class="login_container">
+		<div id="login_img">
+			<img src="../../images/login/agenda.jpg" alt="agenda"/>
+		</div>
+		<form id="f_login" class="form_data"
+			action="../controller/login.php" method="POST">
+			<img src="../../images/login/mail.svg" alt="email icon" class="label_icon">
+			<input type="text" name="i_email" id="i_email" class="text_input" placeholder="Email"/>
 			<br>
 			
-			<label for="i_password">Contraseña:</label>
-			<input type="password" name="i_password" id="i_password" class="text_input" />
+			<img src="../../images/login/lock.svg" alt="email icon" class="label_icon">
+			<input type="password" name="i_password" id="i_password" class="text_input" placeholder="Contraseña" />
 			
 			<br>
 			
 			<div class="d_button_container">
 				<input type="submit" id="i_send_data" class="submit_input" value="Iniciar Sesión"/>
 			</div>
+			<br>
+			<br>
+			<h4><a href="create_user.html">Registrarse</a></h4>
+			<h4><a href="search_user.php">Buscar</a></h4>
 		</form>
 	</section>
 </body>

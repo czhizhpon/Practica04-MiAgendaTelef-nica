@@ -49,16 +49,12 @@
 
         </div>
 
-        <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $usu_id?>">Inicio</a>
-            <a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
-            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Administrar Mis Teléfonos</a>
-            <a class="nav_a" href="#">Pendiente 3</a>
-            <a class="nav_a" href="#">Pendiente 4</a>
-            <a class="nav_a" href="#">Pendiente 5</a>
-            <a class="nav_a" href="#">Pendiente 6</a>
-            <a class="nav_a" href="#">Pendiente 7</a>
-        </nav>
+		<nav id="header_nav">
+			<a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
+			<a class="nav_a" href="#">Buscar</a>
+			<a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
+			<a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Gestionar mis Teléfonos</a>
+		</nav>
         
     </header>
 	<!-- Fin Barra Nav   -->

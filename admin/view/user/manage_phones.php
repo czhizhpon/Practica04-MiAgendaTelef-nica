@@ -21,14 +21,14 @@
 <body>
     <?php
         $tel_codigo = $_GET["tel_codigo"];
-		$usu_codigo = $_GET["usu_codigo"];
+		$usu_id = $_GET["usu_codigo"];
 
 	?>
     <header id="main_header">
             
         <div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $usu_codigo?>" id="img_logo">
+            <a href="index.php?codigo=<?php echo $usu_id?>" id="img_logo">
                 <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
             </a>
 
@@ -51,15 +51,11 @@
 
         </div>
 
-        <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $usu_codigo?>">Inicio</a>
-            <a class="nav_a" href="phones.php?codigo=<?php echo $usu_codigo; ?>">Mis Teléfonos</a>
-            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Administrar Mis Teléfonos</a>
-            <a class="nav_a" href="#">Pendiente 3</a>
-            <a class="nav_a" href="#">Pendiente 4</a>
-            <a class="nav_a" href="#">Pendiente 5</a>
-            <a class="nav_a" href="#">Pendiente 6</a>
-            <a class="nav_a" href="#">Pendiente 7</a>
+		<nav id="header_nav">
+			<a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
+			<a class="nav_a" href="#">Buscar</a>
+			<a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
+			<a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Gestionar mis Teléfonos</a>
         </nav>
         
     </header>
@@ -70,7 +66,7 @@
 			<div id="notice" class="div_notice e_hidden"></div>
 			<?php
 					
-					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_codigo";
+					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
 
 					include '../../../config/conexionBD.php';
 					$result = $conn->query($sql);
@@ -79,7 +75,7 @@
 						while($row = $result->fetch_assoc()) {
 			?>
 			<form id="f_personal_data" class="form_data">
-				<input type="hidden" name="i_user_id" id="i_user_id" value="<?php echo $usu_codigo; ?>"/>
+				<input type="hidden" name="i_user_id" id="i_user_id" value="<?php echo $usu_id; ?>"/>
 
 				<label for="i_name" class="l_i_text">Usuario:</label>
 				<input type="text" name="i_name" id="i_name" class="text_input" disabled value="<?php echo $row["usu_nombre"] . " " . $row["usu_apellido"]; ?>"/>
@@ -114,7 +110,7 @@
 						echo "<p>" . mysqli_error($conn) . "</p>";
 					} ?>
 			<script>
-				listPhones(<?php echo $usu_codigo?>, '1');
+				listPhones(<?php echo $usu_id?>, '1');
 			</script>
 			<table id="user_numbers" class="table_content">
 				

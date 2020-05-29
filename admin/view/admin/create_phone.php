@@ -21,43 +21,45 @@
 </head>
 <body>
 	<?php
-		// $usu_id = $_GET["codigo"];
+		$usu_id = $_GET["codigo"];
+		include '../../../config/conexionBD.php';
 	?>
     <header id="main_header">
             
-        <div id="logo_container">
+		<div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $usu_id?>" id="img_logo">
-                <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
-            </a>
+			<a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+				<img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
+			</a>
 
-            <form id="f_search">  
-                <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
-            </form>
+			<form id="f_search">  
+				<input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+			</form>
 
-            <a href="#" class="nav_icon">
-                <img src="../../../images/icons/user.png" alt="account logo"/>
-                <span>Cuenta</span>
-            </a>
-            <a href="#" class="nav_icon">
-                <img src="../../../images/icons/mail.png" alt="feedback logo"/>
-                <span>Feedback</span>
-            </a>
-            <a href="../../../config/close_session.php" class="nav_icon">
-                <img src="../../../images/icons/team.png" alt="about logo"/>
-                <span>About</span>
-            </a>
+			<a href="#" class="nav_icon">
+				<img src="../../../images/icons/user.png" alt="account logo"/>
+				<span>Cuenta</span>
+			</a>
 
-        </div>
+			<a href="#" class="nav_icon">
+				<img src="../../../images/icons/mail.png" alt="feedback logo"/>
+				<span>Feedback</span>
+			</a>
+
+			<a href="../../../config/close_session.php" class="nav_icon">
+				<img src="../../../images/icons/team.png" alt="about logo"/>
+				<span>Cerrar Sesión</span>
+			</a>
+
+		</div>
 
         <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $usu_id?>">Inicio</a>
-            <a class="nav_a" href="manage_phones.php">Administración de Teléfonos</a>
-            <a class="nav_a" href="#">Pendiente 3</a>
-            <a class="nav_a" href="#">Pendiente 4</a>
-            <a class="nav_a" href="#">Pendiente 5</a>
-            <a class="nav_a" href="#">Pendiente 6</a>
-            <a class="nav_a" href="#">Pendiente 7</a>
+			<a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
+			<a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
+			<a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
+			<a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar Usuarios</a>
+			<a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
+			<a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
         </nav>
         
 	</header>
@@ -141,24 +143,21 @@
 
 		<div class="cont_pie">
 			<fieldset>
-				<legend>Acerca de Cuenca</legend>
+				<legend>Gestión de Usuarios</legend>
 				<nav>
-					<a href="docs/historia.html" > Historia </a>
-					<a href="docs/geografia.html" > Geografía </a>
-					<a href="docs/cultura.html" > Cultura </a>
-					<a href="docs/turismo.html" > Turismo </a>
+				<a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
+				<a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
+				<a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
 				</nav>
 			</fieldset>
 		</div>
 
 		<div class="cont_pie">
 			<fieldset>
-				<legend>Universidades Principales</legend>
+				<legend>Gestión de Teléfonos</legend>
 				<nav>
-					<a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
-					<a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
-					<a href="docs/educacion.html#uda" > Universidad del Azuay </a>
-					<a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
+					<a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
+					<a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
 				</nav>
 			</fieldset>
 		</div>
