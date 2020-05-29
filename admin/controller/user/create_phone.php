@@ -17,7 +17,7 @@
         if($conn->errno == 1062){
             echo "<p class='e_notice e_notice_error'>La número $numero ya está registrado en el sistema</p>";
         }else{
-            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
+            echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
         }
     }
     //cerrar la base de datos

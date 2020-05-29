@@ -151,49 +151,49 @@
 		</div>
 	</main>
 	<footer id="pie">
-            <div class="cont_pie">
-                <div id="logo_pie">
-                    <a href="https://www.facebook.com/" target="_blank"><img src="../../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
-                    <a href="https://www.instagram.com/" target="_blank"><img src="../../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
-                </div>
-                <img class="logo" src="../../../images/icons/logo.png" alt="LOGO">
+		<div class="cont_pie">
+			<div id="logo_pie">
+				<a href="https://www.facebook.com/" target="_blank"><img src="../../../images/icons/faceLogo.png" alt="Facebook Logo"></a>
+				<a href="https://www.instagram.com/" target="_blank"><img src="../../../images/icons/instaLogo.png" alt="Instagram Logo"></a>
+			</div>
+			<img class="logo" src="../../../images/icons/logo.png" alt="LOGO">
 
-                <p>
-                    Universidad Politécnica Salesiana <br />
-                    <br/>
-                    Sarmiento Basurto Douglas Bryan <br/>
-                    <span><strong>Correo :</strong><a href="mailto:dsarmientob1@est.ups.edu.ec"> dsarmientob1@est.ups.edu.ec</a></span> <br />
-                    <br/>
-                    Zhizhpon Tacuri Cesar Eduardo <br/>
-                    <span><strong>Correo :</strong><a href="mailto:czhizhpon@est.ups.edu.ec"> czhizhpon@est.ups.edu.ec</a></span> <br />
-                    <br/>
-                    &copy; Todos los derechos reservados
-                </p>
-            </div>
+			<p>
+				Universidad Politécnica Salesiana <br />
+				<br/>
+				Sarmiento Basurto Douglas Bryan <br/>
+				<span><strong>Correo :</strong><a href="mailto:dsarmientob1@est.ups.edu.ec"> dsarmientob1@est.ups.edu.ec</a></span> <br />
+				<br/>
+				Zhizhpon Tacuri Cesar Eduardo <br/>
+				<span><strong>Correo :</strong><a href="mailto:czhizhpon@est.ups.edu.ec"> czhizhpon@est.ups.edu.ec</a></span> <br />
+				<br/>
+				&copy; Todos los derechos reservados
+			</p>
+		</div>
 
-            <div class="cont_pie">
-                <fieldset>
-                    <legend>Acerca de Cuenca</legend>
-                    <nav>
-                        <a href="docs/historia.html" > Historia </a>
-                        <a href="docs/geografia.html" > Geografía </a>
-                        <a href="docs/cultura.html" > Cultura </a>
-                        <a href="docs/turismo.html" > Turismo </a>
-                    </nav>
-                </fieldset>
-            </div>
+		<div class="cont_pie">
+			<fieldset>
+				<legend>Acerca de Cuenca</legend>
+				<nav>
+					<a href="docs/historia.html" > Historia </a>
+					<a href="docs/geografia.html" > Geografía </a>
+					<a href="docs/cultura.html" > Cultura </a>
+					<a href="docs/turismo.html" > Turismo </a>
+				</nav>
+			</fieldset>
+		</div>
 
-            <div class="cont_pie">
-                <fieldset>
-                    <legend>Universidades Principales</legend>
-                    <nav>
-                        <a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
-                        <a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
-                        <a href="docs/educacion.html#uda" > Universidad del Azuay </a>
-                        <a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
-                    </nav>
-                </fieldset>
-            </div>
-        </footer>
+		<div class="cont_pie">
+			<fieldset>
+				<legend>Universidades Principales</legend>
+				<nav>
+					<a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
+					<a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
+					<a href="docs/educacion.html#uda" > Universidad del Azuay </a>
+					<a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
+				</nav>
+			</fieldset>
+		</div>
+	</footer>
 </body>
 </html>

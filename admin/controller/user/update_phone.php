@@ -16,12 +16,12 @@
     "WHERE telefonos.tel_codigo = $tel_codigo";
     
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Se han actualizado los datos del teléfono correctamemte.</p>";
+        echo "<p class='e_notice e_notice_sucess'>Se han actualizado los datos del teléfono correctamemte.</p>";
     } else {
         if($conn->errno == 1062){
-            echo "<p class='error'>El número \"$tel_numero\" ya están registrados en el sistema</p>";
+            echo "<p class='e_notice e_notice_error'>El número \"$tel_numero\" ya están registrados en el sistema</p>";
         }else{
-            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
+            echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
         }
     }
     //cerrar la base de datos

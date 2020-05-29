@@ -152,13 +152,25 @@ function updateAdminPhone(){
     return false;
 }
 
-function deleteAdminPhone(){
+function resetPhoneAdmin(){
+    var number = document.getElementById("i_phone_number");
+    var radios = document.querySelectorAll('input[name="tel_type"]');
+    var selComp = document.getElementById("s_company");
+    var dni = document.getElementById("i_user_dni");
+
+    dni.value = "";
+    number.value = "";
+    for (var radio of radios) {
+        radio.checked = false;
+    }
+    selComp.selectedIndex = "0"
 
 }
 
 function submitAdminForm(){
     if(validatePhone()){
         createAdminPhone();
+        resetPhoneAdmin();
     }
 
     return false;
@@ -178,6 +190,31 @@ function validatePhone(){
     var flag = true;
     var aux;
 
+    for(var i = 0; i < nForm; i++){
+        var e = formElements[i];
+
+        switch (e.id){
+            case "i_phone_number":
+                aux = phoneError(e, 10);
+                flag = aux && flag;
+                if(!flag){
+                    return flag;
+                }
+            break;
+
+            case "i_user_dni":
+                aux = dniPhoneError(e);
+                flag = aux && flag;
+                if(!flag){
+                    return flag;
+                }
+            break;
+
+            default:
+                
+        }
+    }
+
     if(!typePhoneError()){
         flag = false;
         return flag;
@@ -188,23 +225,5 @@ function validatePhone(){
         return flag;
     }
 
-    for(var i = 0; i < nForm; i++){
-        var e = formElements[i];
-
-        switch (e.id){
-            case "i_phone_number":
-                aux = phoneError(e, 10);
-                flag = aux && flag;
-            break;
-
-            case "i_user_dni":
-                aux = dniPhoneError(e);
-                flag = aux && flag;
-            break;
-
-            default:
-                
-        }
-    }
     return flag;
 }

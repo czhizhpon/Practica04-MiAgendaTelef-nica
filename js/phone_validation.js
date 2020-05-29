@@ -109,9 +109,10 @@ function typePhoneError(){
         printValidationError("s_phone_notice", "Seleccione el tipo de número.");
         document.getElementById("type_phone_container").classList.add("e_input_trans_backg");
         return false;
+    }else{
+        document.getElementById("type_phone_container").classList.remove("e_input_trans_backg");
+        validate("s_phone_notice");
     }
-    document.getElementById("type_phone_container").classList.remove("e_input_trans_backg");
-    validate("s_phone_notice");
     return true;
 }
 

@@ -13,11 +13,15 @@
     $resultPh = $conn->query($sqlPhones);
 
     echo "<tr>
-            <th >Número</th>
-            <th >Tipo</th>
-            <th >Operadora</th>
-            <th ></th>
-        </tr>";
+            <th>Número</th>
+            <th>Tipo</th>
+            <th>Operadora</th>
+            <th></th>";
+    if($action == '1'){
+        echo "<th></th>";
+    }
+    echo "</tr>";
+
 
     if($resultPh){
         if ($resultPh -> num_rows > 0) {
@@ -56,10 +60,15 @@
             }
         } else {
             echo "<tr>";
-            echo " <td colspan='3'> No se encontró.</td>";
+            if($action == '1'){
+                echo "<td colspan='5'>";
+            }else{
+                echo "<td colspan='4'>";
+            }
+            echo "No se encontró.</td></tr>";
         }
     }else{
-        echo " <tr><td colspan='3'>Error: " . mysqli_error($conn) . "</td></tr>";
+        echo " <tr><td colspan='4'>Error: " . mysqli_error($conn) . "</td></tr>";
         echo "</tr>";
     }
     

@@ -11,13 +11,9 @@
     "WHERE telefonos.tel_codigo = $tel_codigo";
     
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Se eliminó el teléfono.</p>";
+        echo "<p class='e_notice e_notice_sucess'>Se eliminó el teléfono.</p>";
     } else {
-        if($conn->errno == 1062){
-            echo "<p class='error'></p>";
-        }else{
-            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
-        }
+        echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
     }
     //cerrar la base de datos
     $conn->close();

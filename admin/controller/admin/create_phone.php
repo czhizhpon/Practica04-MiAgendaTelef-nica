@@ -27,17 +27,17 @@
         (NULL, '$tel_numero', '$tel_tipo', '$tel_operadora', '$tel_eliminado', current_timestamp(), NULL, '$usu_codigo');";
             
             if ($conn->query($sql) === TRUE) {
-                echo "<p>Se creó el teléfono correctamemte.</p>";
+                echo "<p class='e_notice e_notice_sucess'>Se creó el teléfono correctamemte.</p>";
             } else {
                 if($conn->errno == 1062){
-                    echo "<p class='error'>El número \"$tel_numero\" ya está registrados en el sistema</p>";
+                    echo "<p class='e_notice e_notice_error'>El número \"$tel_numero\" ya está registrados en el sistema</p>";
                 }
             }
         }else{
-            echo "<p class='error'> La cédula " . $user_cedula . " no está registrada en el sistema</p>";
+            echo "<p class='e_notice e_notice_error'> La cédula " . $user_cedula . " no está registrada en el sistema</p>";
         }
     }else{
-            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
+            echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
     }
     //cerrar la base de datos
     $conn->close();

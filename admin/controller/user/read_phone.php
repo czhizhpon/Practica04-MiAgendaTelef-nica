@@ -92,10 +92,10 @@
 			</div>";
             }
         } else {
-            echo "<p>Algo salió mal.</p>";
+            echo "<p class='e_notice e_notice_error'>Algo salió mal :'v.</p>";
         }
     }else{
-        echo " <p>Error: " . mysqli_error($conn) . "</p>";
+        echo " <p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
     }
     
     $conn->close();
