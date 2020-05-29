@@ -98,9 +98,17 @@ body{
 /*FIN nav: #header_nav*/
 
 /* FOOTER*/
+
 #pie {
+    clear: both;
+    margin-top: 60px;
+    background-color: #eee;
     width: 100%;
     display: flex;
+}
+
+#pie .logo{
+    width: 100px;
 }
 
 #pie span a{
@@ -142,35 +150,66 @@ body{
     height: 50px;
 }
 /* FIN FOOTER*/
+/*Opcional -- BOTONES*/
+.btn_add_tel{
+    width: auto;
+    font-weight: bolder;
+    color: #fff;
+    padding: 5px 12px;
+    border: solid 1px #777;
+    background-color: #64ADF0;
+    color: #fff;
+    margin: 15px 10px;
+    border-radius: 50% !important;
+    box-shadow: 0px 0px 3px #333;
+}
 
-/*Espacio para comenzar con el contenido principal
-    con dos o más columnas*/
-/* .main_separator{
-    clear: both;
-    padding-top: 5rem;
-    position: relative;
+.btn_add_tel:active {
+    background-color: rgb(24, 130, 230);
+    transition: 0.3s all;
+}
+.i_phone {
+    width: 25% !important;
+    margin-left: 15px !important;
+}
 
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 5em;
-    line-height: 0.8cm;
-} */
+.btn{
+    text-decoration:  none;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px;
+    box-shadow: #555 0px 0px 2px;
+    display: inline-block;
+    cursor: pointer;
+}
 
-/*Espacio para comenzar con el contenido principal
-    con una sola columna*/
-/* .main_1_col_separator{
-    clear: both;
-    padding-top: 5rem;
-    position: relative;
+.btn_danger {
+    background-color: brown;
+    color: #fff;
+}
 
-    display: flex;
-    justify-content: center;
-    padding-bottom: 5em;
-    line-height: 0.8cm;
-} */
+.btn_danger:hover{
+    background-color: rgba(165, 42, 42, 0.815);
+}
 
-/*h1 -> para el titulo de la página*/
-/* body h1{
-    margin: 10px 5rem 10px;
-    color: #3D7366;
-} */
+.btn_sucess{
+
+}
+
+.btn_passive{
+    background-color: rgba(40, 105, 190, 0.877);
+    color: white;
+}
+
+.btn_passive:hover{
+    background-color: rgba(40, 105, 190, 0.74);
+}
+
+.a_link{
+    text-decoration: none;
+    color: navy;
+}
+
+.a_link:hover{
+    color: rgba(40, 105, 190, 0.74);
+}

@@ -11,26 +11,43 @@
     border-radius: 5px;
 }
 
+.form_data *{
+    box-sizing: border-box;
+}
+
 .form_data {
     padding: 10px;
-    width: 50%;
-    min-width: 700px;
-    background-color: #eee;
-    box-shadow: 0px 0px 4px #555 ;
+    width: 90%;
+    background-color: rgb(243, 243, 243);
+    box-shadow: 0px 0px 3px #555 ;
     border-radius: 10px;
-    margin: 10px;
+    margin: 10px auto;
     display: inline-block;
     text-align: left;
+    overflow: auto;
+}
+
+.form_transparent{
+    background-color: transparent;
+    box-shadow: none;
+    margin: 5px;
+    padding: 5px;
+}
+
+.form_transparent input{
+    background-color: transparent !important;
+    border-width: 2px !important;
 }
 
 .form_data .l_i_text{
-    clear: both;
+    clear: both !important;
     display: inline-block;
     text-align: right;
     padding: 10px 5px;
     margin:auto;
     width: 25%;
     margin: 5px;
+    
 }
 
 .form_data input{
@@ -41,13 +58,17 @@
 }
 
 .form_data .text_input{
-    width: 65%;
+    width: 70%;
     border: #346157 1px solid;
     background-color: #eee;
     color: #111;
     padding: 10px 5px;
     margin: auto;
-   
+    min-width: 200px;
+}
+
+.form_data .search_input{
+    width: 100%;
 }
 
 .form_data .text_input:focus{
@@ -79,7 +100,7 @@
     background-color: #ddd;
     padding: 10px 5px;
     margin: 5px;
-    font-family: Arial;
+    font-family: inherit;
     font-size: 16px;
     cursor: pointer;
     width: 80%;
@@ -94,6 +115,19 @@
 .form_data .i_radio:checked + .l_radio{
     background-color: #346157;
     color: #eee;
+}
+
+.i_c_container{
+    width: 65%;
+    float: left;
+    height: 56px;
+}
+
+.i_check{
+    display: inline-block;
+    width: 24px;
+    height: 56px;
+    margin-left: 10px;
 }
 
 .form_data .sel_form{
@@ -131,13 +165,31 @@
     box-shadow: 0px 0px 5px #346157;
 }
 
+.d_button_container .reset_cancel{
+    font-weight: bolder;
+    color: #fff;
+    padding: 10px;
+    border: solid 1px #333;
+    background-color: #A93226;
+    margin: 10px;
+}
+
+.form_data .reset_cancel:active{
+    transition: 0.3s all linear;
+    background-color: #333 !important;
+}
+
+.form_data .reset_cancel:hover{
+    background-color: rgba(165, 42, 42, 0.87);
+}
+
 /*Error Messages*/
 .form_data .s_error_validation{
+    display: none;
     clear: both;
     display: inline-block;
     padding: 0;
     margin: 0;
-    display: none;
     text-align: right;
     width: 100%;
     margin-left: -5%;
@@ -156,8 +208,42 @@
     text-align: left;
 }
 
-.form_data .s_show{
+.e_hidden{
+    display: none !important;
+}
+
+.e_show{
     display: inline-block;
+}
+
+.s_show{
+    display: inline-block;
+}
+
+.div_notice{
+    display: inline-block;
+    width: 90%;
+}
+.e_notice{
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.e_notice_sucess{
+    background-color: #62A693;
+    color: #fff;
+}
+
+.e_notice_warning{
+    background-color: yellow;
+    color: #000;
+}
+
+.e_notice_error{
+    background-color: tomato;
+    color: #fff;
 }
 
 /* JavaScript*/
@@ -174,69 +260,4 @@
 .e_input_trans_backg{
     background-color: rgba(165, 42, 42, 0.158);
     border-radius: 5px;
-}
-
-/*Opcional*/
-.btn_add_tel{
-    width: auto;
-    font-weight: bolder;
-    color: #fff;
-    padding: 5px 12px;
-    border: solid 1px #777;
-    background-color: #64ADF0;
-    color: #fff;
-    margin: 15px 10px;
-    border-radius: 50% !important;
-    box-shadow: 0px 0px 3px #333;
-}
-
-.btn_add_tel:active {
-    background-color: rgb(24, 130, 230);
-    transition: 0.3s all;
-}
-.i_phone {
-    width: 25% !important;
-    margin-left: 15px !important;
-}
-
-.table_container {
-    clear: both;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-}
-
-.table_numbers{
-    width: 70%;
-    padding: 5px 20px;
-    margin: 20px;
-    border-collapse: collapse;
-}
-
-.table_numbers, .table_numbers th, .table_numbers td{
-    border: 1px solid #333;
-
-} 
-
-.table_numbers td{
-    padding: 5px;
-}
-
-.btn{
-    text-decoration:  none;
-    padding: 5px;
-    margin: 5px;
-    border-radius: 5px;
-    box-shadow: #333 0px 0px 3px;
-    display: inline-block;
-}
-
-.btn_danger {
-    background-color: brown;
-    color: #fff;
-}
-
-.btn_danger:hover{
-    background-color: rgba(165, 42, 42, 0.815);
 }

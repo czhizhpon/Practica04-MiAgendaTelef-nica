@@ -14,19 +14,21 @@
     <link href="../../../css/main_format.css" rel="stylesheet"/>
 	<link href="../../../css/2_col_layout.css" rel="stylesheet"/>
 	<link href="../../../css/table_layout.css" rel="stylesheet"/>
+	
 	<script src="../../../js/phone_validation.js"></script>
-	<script src="../../../js/animations.js"></script>
-	<title>Mis Teléfonos</title>
+	<title>Administración de mis Teléfonos</title>
 </head>
 <body>
-	<?php
-		$usu_id = $_GET["codigo"];
+    <?php
+        $tel_codigo = $_GET["tel_codigo"];
+		$usu_codigo = $_GET["usu_codigo"];
+
 	?>
     <header id="main_header">
             
         <div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $usu_id?>" id="img_logo">
+            <a href="index.php?codigo=<?php echo $usu_codigo?>" id="img_logo">
                 <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
             </a>
 
@@ -50,8 +52,8 @@
         </div>
 
         <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $usu_id?>">Inicio</a>
-            <a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
+            <a class="nav_a" href="index.php?codigo=<?php echo $usu_codigo?>">Inicio</a>
+            <a class="nav_a" href="phones.php?codigo=<?php echo $usu_codigo; ?>">Mis Teléfonos</a>
             <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Administrar Mis Teléfonos</a>
             <a class="nav_a" href="#">Pendiente 3</a>
             <a class="nav_a" href="#">Pendiente 4</a>
@@ -61,14 +63,14 @@
         </nav>
         
     </header>
-	<!-- Fin Barra Nav   -->
-	<h1 class="main_title">Mis Teléfonos</h1>
+    <!-- Fin Barra Nav   -->
+	<h1 class="main_title">Administración de mis Teléfonos</h1>
 	<main class="main_container">
 		<section class="col col-30">
 			<div id="notice" class="div_notice e_hidden"></div>
 			<?php
 					
-					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
+					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_codigo";
 
 					include '../../../config/conexionBD.php';
 					$result = $conn->query($sql);
@@ -77,6 +79,8 @@
 						while($row = $result->fetch_assoc()) {
 			?>
 			<form id="f_personal_data" class="form_data">
+				<input type="hidden" name="i_user_id" id="i_user_id" value="<?php echo $usu_codigo; ?>"/>
+
 				<label for="i_name" class="l_i_text">Usuario:</label>
 				<input type="text" name="i_name" id="i_name" class="text_input" disabled value="<?php echo $row["usu_nombre"] . " " . $row["usu_apellido"]; ?>"/>
 				<br>
@@ -85,65 +89,32 @@
 				<input type="text" name="i_email" id="i_email" class="text_input" disabled value="<?php echo $row["usu_correo"]; ?>"/>
 			</form>
 
-			<form id="f_phone" name="f_phone" class="form_data" onsubmit="return submitForm(event)" method="POST">
-				<!-- action="../../controller/user/create_phones.php" -->
-				
+			<script>
+					var phoneId  = <?php echo $tel_codigo?>;
+					if(phoneId != '-1'){
+						readPhone("f_phone", phoneId);
+					}
 
-				<input type="hidden" name="i_user_codigo" id="i_user_id" value="<?php echo $usu_id; ?>"/>
+			</script>
+			<form id="f_phone" name="f_phone" class="form_data e_hidden" method="POST">
 				
-				<label for="i_phone_number" class="l_i_text" >Número:</label>
-				<input type="text" name="i_phone_number" id="i_phone_number" class="text_input" 
-					placeholder="Número"
-					onkeypress="return nNumberValidate(event, 10)" 
-					onkeyup="return phoneValidate(this, 10)" 
-					onblur="phoneError(this, 10)"/>
 				
-				<br/>
-				
-				<label class="l_i_text l_r_text">Tipo:</label>
-				<div id="type_phone_container" class="i_r_container">
-					<input type="radio" id="r_co" name="tel_type" value="CO" class="i_radio"
-						onclick="typePhoneError()">
-					<label for="r_co" class="l_radio" name="tel_type_label">Convencional</label><br>
-					<input type="radio" id="r_ce" name="tel_type" value="CE" class="i_radio"
-						onclick="typePhoneError()">
-					<label for="r_ce" class="l_radio" name="tel_type_label">Celular</label><br>
-				</div>
-
-				<label for="s_company" class="l_i_text">Operadora:</label>
-				<select name="s_company" id="s_company" class="text_input sel_form" onclick="companyPhoneError()">
-					<option value="NaN">Seleccione...</option>
-					<option value="MOVISTAR">Movistar</option>
-					<option value="TUENTI">Tuenti</option>
-					<option value="CLARO">Claro</option>
-					<option value="ETAPA">Etapa</option>
-					<option value="CNT">CNT</option>
-					<option value="OTROS">Otros</option>
-				</select>
-				<br>
-				<span id="s_phone_notice" class="s_error_validation e_hidden"></span>
-				<br>
-				<div class="d_button_container">
-					<input type="submit" id="i_send_phone" class="submit_input" value="Agregar"/>
-				</div>
 			</form>
-			
 		</section>
-		<?php 
+		<div id="phone_list" class="col col-70 table_container">
+			<form id="f_search_phone" name="f_search_phone" class="form_data col-70 form_transparent" method="POST">
+				<input type="search" name="i_search_phone" id="i_search_phone" class="text_input" 
+					placeholder="Buscar para gestionar"
+					onkeyup="filterPhone(this.value, 1)"/>
+			</form>
+			<?php 
 							}	
 					}else{
 						echo "<p> No se encuentra al usuario.</p>";
 						echo "<p>" . mysqli_error($conn) . "</p>";
-					} ?>				
-			
-		<div id="phone_list" class="col col-70 table_container">
-			<form id="f_search_phone" name="f_search_phone" class="form_data col-70 form_transparent" method="POST">
-				<input type="search" name="i_search_phone" id="i_search_phone" class="text_input search_input" 
-					placeholder="Buscar en mis Números"
-					onkeyup="filterPhone(this.value, 0)"/>
-			</form>
+					} ?>
 			<script>
-				listPhones(<?php echo $usu_id?>, 0);
+				listPhones(<?php echo $usu_codigo?>, '1');
 			</script>
 			<table id="user_numbers" class="table_content">
 				

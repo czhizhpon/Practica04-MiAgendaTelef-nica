@@ -1,9 +1,14 @@
 <?php
     include '../../../config/conexionBD.php';
 
+    $keyword = $_GET['keyword'];
     $user_id = $_GET['user_id'];
     $action = $_GET['action'];
-    $sqlPhones = "SELECT * FROM telefonos where usu_codigo=$user_id and tel_eliminado = 'N'";
+    $sqlPhones = "SELECT * FROM telefonos where usu_codigo=$user_id and tel_eliminado = 'N' and (
+        tel_numero like '%$keyword%' or
+        tel_operadora like '%$keyword%' or
+        tel_tipo like '%$keyword'
+        )";
 
     $resultPh = $conn->query($sqlPhones);
 
@@ -16,6 +21,7 @@
         echo "<th></th>";
     }
     echo "</tr>";
+
 
     if($resultPh){
         if ($resultPh -> num_rows > 0) {
@@ -35,10 +41,10 @@
 
                 }
                 echo "<td>" . $rowPh['tel_operadora'] . "</td>";
-                
+
                 switch ($action) {
                     case '0':
-                        echo "<td> <a class='btn btn_passive' href='manage_phones.php?tel_codigo=" . $rowPh["tel_codigo"] . "&usu_codigo=" . $rowPh["usu_codigo"] . "'>Administrar</a></td>";
+                        echo "<td> <a class='btn btn_passive' href='manage_phones.php?tel_codigo=" . $rowPh['tel_codigo'] . "&usu_codigo=" . $rowPh['usu_codigo'] . "'>Administrar</a></td>";
                         break;
                     case '1':
                         echo "<td> <a class='btn btn_passive' onclick='readPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Actualizar</a></td>";
@@ -48,11 +54,18 @@
                         # code...
                         break;
                 }
+
+                
                 echo "</tr>";
             }
         } else {
             echo "<tr>";
-            echo " <td colspan='4'> No existen teléfonos para este usuario.</td>";
+            if($action == '1'){
+                echo "<td colspan='5'>";
+            }else{
+                echo "<td colspan='4'>";
+            }
+            echo "No se encontró.</td></tr>";
         }
     }else{
         echo " <tr><td colspan='4'>Error: " . mysqli_error($conn) . "</td></tr>";
