@@ -16,8 +16,7 @@
                  usu_direccion LIKE '%$key%' OR
                  usu_correo LIKE '%$key%' OR
                  usu_fecha_nacimiento LIKE '%$key%' OR
-                 usu_rol LIKE '[$key]')";
-                 # Nota> Ojo con la consulta del rol.
+                 usu_rol LIKE '%$key%')";
 
     $sqlActiveUsers = "SELECT * FROM usuarios WHERE usu_codigo NOT LIKE '$admin_id' AND 
                 usu_eliminado LIKE 'N' AND
@@ -27,7 +26,7 @@
                 usu_direccion LIKE '%$key%' OR
                 usu_correo LIKE '%$key%' OR
                 usu_fecha_nacimiento LIKE '%$key%' OR
-                usu_rol LIKE '[$key]')";
+                usu_rol LIKE '%$key%')";
 
     $sqlEmpty = "SELECT * FROM usuarios WHERE usu_codigo LIKE '$key'";
 
@@ -116,8 +115,8 @@
                         } else {
                             echo "<td> <a class='btn btn_passive' onclick='restoreUser(". $rowUs['usu_codigo'] .")'>Restaurar</a></td>";
                         }
-                        echo "<td> <a class='btn btn_passive' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
-                        echo "<td> <a class='btn btn_passive' onclick='readUser(\"f_password\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
+                        echo "<td> <a href='#' class='btn btn_passive' onclick='readUser(\"f_personal_data\", ". $rowUs['usu_codigo'] .", 1)'>Actualizar Usuario</a></td>";
+                        echo "<td> <a href='#' class='btn btn_passive' onclick='readUser(\"f_password\", ". $rowUs['usu_codigo'] .", 2)'>Restablecer Contraseña</a></td>";
                         break;                 
                     default:
                         # code...

@@ -19,14 +19,13 @@
             usu_fecha_nacimiento = '$fechaNacimiento', 
             usu_rol = '$tipoUsuario', 
             usu_fecha_modificacion = current_timestamp()
-            WHERE
-            usu_codigo = '$id'";
+            WHERE usu_codigo = '$id'";
 
     if ($conn->query($sql) === TRUE) {
         echo "<p class='e_notice e_notice_sucess'>Se han actualizado los datos del usuario correctamente.</p>";
     } else {
         if($conn->errno == 1062){
-            echo "<p class='e_notice e_notice_error'>La cédula \"$cedula\", o el correo \"$correo\" ya están registrados en el sistema</p>";
+            echo "<p class='e_notice e_notice_error'>La cédula \"$cedula\", y/o el correo \"$correo\" ya están registrados en el sistema</p>";
         }else{
             echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
         }

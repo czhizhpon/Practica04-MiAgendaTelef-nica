@@ -34,8 +34,7 @@
                             # code...
                             break;
                     }
-    
-                    #echo "<input type=\"hidden\" name=\"admin_code\" id=\"admin_code\" value='". $admin_id ."'></input>";
+                    
                     echo "<input type=\"hidden\" name=\"user_code\" id=\"user_code\" value='". $user_id ."'></input>";
     
                     echo "<label for=\"i_dni\" class=\"l_i_text\">Cédula:</label>";
@@ -114,7 +113,7 @@
             }
 
         } else {
-            echo " <p>Error: Surgio algo inesperado </p>";
+            echo " <p>Error: Surgio algo inesperado. </p>";
         }
 
     } else {

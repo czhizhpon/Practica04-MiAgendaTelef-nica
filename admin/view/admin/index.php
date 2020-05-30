@@ -1,5 +1,7 @@
 <?php
     session_start();
+    $admin_id = $_SESSION['usu_codigo'];
+
     if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === FALSE){
         session_destroy();
         header("Location: ../../../public/view/login.html");
@@ -8,48 +10,39 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-
         <!--
-        Practica04-Mi Agenda Telefónica
-        Index para usuarios públicos o anónimos
-        Authors: Bryan Sarmiento, Eduardo Zhizhpon
-        Date: 22/05/2020
+            Practica04-Mi Agenda Telefónica
+            Index para administradores
+            Authors: Bryan Sarmiento, Eduardo Zhizhpon
+            Date: 22/05/2020
 
-        Filename: index.php
+            Filename: index.php
         -->
 
-        <meta charset="utf-8" />
-        <meta name="keywords" content="game, pc, specs, gameplays"/>
+        <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="keywords" content="phonebook, users, calls, emails"/>
 
-        <link rel="shortcut icon" href="../../images/icons/logo.png">
+        <link rel="shortcut icon" href="../../../images/icons/logo.png"/>
         
-		<link href="../../../css/main_format.css" rel="stylesheet">
-        <link href="../../../css/index_layout.css" rel="stylesheet">
+		<link href="../../../css/main_format.css" rel="stylesheet"/>
+        <link href="../../../css/index_layout.css" rel="stylesheet"/>
 
         <title>Agenda Telefónica</title>
-
     </head>
 
     <body>
-        <?php
-            $usu_id = $_GET["codigo"];
-            include '../../../config/conexionBD.php';
-        ?>
-
         <header id="main_header">
-            
             <div id="logo_container">
-
-                <a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+                <a href="index.php" id="img_logo">
                     <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
                 </a>
 
-                <form id="f_search">  
-                    <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+                <form id="f_search" action="search_user.php" method="POST">  
+                    <input type="search" id="index_search" name="index_search" placeholder="Buscar por cédula o correo"/>
                 </form>
 
-                <a href="#" class="nav_icon">
+                <a href="my_account.php" class="nav_icon">
                     <img src="../../../images/icons/user.png" alt="account logo"/>
                     <span>Cuenta</span>
                 </a>
@@ -63,48 +56,47 @@
                     <img src="../../../images/icons/team.png" alt="about logo"/>
                     <span>Cerrar Sesión</span>
                 </a>
-
             </div>
 
             <nav id="header_nav">
-                <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
-                <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
-                <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar Usuarios</a>
-                <a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
-                <a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
+                <a class="nav_a" href="index.php">Inicio</a>
+                <a class="nav_a" href="users.php">Registrar Usuarios</a>
+                <a class="nav_a" href="show_users.php">Listar Usuarios</a>
+                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1">Administrar Usuarios</a>
+                <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
             </nav>
-            
         </header>
-        <!-- Fin Barra Nav-->
-
-
+        
         <main id="main">
-
             <section id="section_welcome">
-
                 <div id="welcome_text">
+                    <?php 
+                        include '../../../config/conexionBD.php';
+                        
+                        $sqlUser = "SELECT * FROM usuarios WHERE usu_codigo LIKE '$admin_id'";
+                        $resultUser = $conn->query($sqlUser);
+                        $row = $resultUser->fetch_assoc();
+                        $names = $row['usu_nombre'];
+                        $lastnames = $row['usu_apellido'];
+
+                        $conn->close();
+                    ?>
                     <header>
-                        <h2>Bienvenidos a Agendas Nuvarmi S.A.</h2>
+                        <h2>Bienvenido: <?php echo $lastnames .", ". $names ?> a Agendas Nuvarmi S.A.</h2>
                     </header>
                     
                     <p>
-                        Inicia Pendiente.
+                        Puede comenzar registrando datos en el sistema.
                     </p>
                    
-                    <button type="button" class="index_button" onclick="location.href='create_user.html'"> Iniciar Sesión </button>
-                    <button type="button" class="index_button" onclick="location.href='create_user.html'">Registrarse</button>
-                    
-                    
+                    <button type="button" class="index_button btn_passive" onclick="location.href='users.php'">Registrar Usuario</button>
+                    <button type="button" class="index_button btn_passive" onclick="location.href='create_phone.php'">Registrar Teléfono</button>
                 </div>
                 
                 <img src="../../../images/icons/info.png" alt="index main image"/>
-
             </section>
 
-            <!--
-                Geleria de Noticas
-            -->
             <section id="contacts">
                 <header>
                     <h2>Contactos Recientes</h2>
@@ -135,8 +127,6 @@
                 <button type="button" class="index_button"> Ver más </button>
                 
             </section>
-
-            <!-- Fin Galeria de Noticias-->
 
             <section id="reviews">
                 <header>
@@ -222,7 +212,6 @@
 
 				</div>
             </section>
-            
         </main>
         
         <footer id="pie">
@@ -250,9 +239,9 @@
                 <fieldset>
                     <legend>Gestión de Usuarios</legend>
                     <nav>
-                    <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
-                    <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
+                    <a class="nav_a" href="users.php">Registrar Usuarios</a>
+                    <a class="nav_a" href="show_users.php">Listar Usuarios</a>
+                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1">Administrar usuarios</a>
                     </nav>
                 </fieldset>
             </div>
@@ -261,12 +250,11 @@
                 <fieldset>
                     <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
-                        <a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
+                        <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>
         </footer>
-    
     </body>
 </html>

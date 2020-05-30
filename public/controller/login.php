@@ -10,19 +10,20 @@
 
     $result = $conn -> query($sql);
 
-    if($result -> num_rows > 0){
+    if($result->num_rows > 0){
         $_SESSION["isLogged"] = TRUE;
+
         $row = $result -> fetch_assoc();
+        $_SESSION['usu_codigo'] = $row['usu_codigo'];
 
         if($row["usu_rol"] === "A"){
             $_SESSION['isAdmin'] = TRUE;
-            header("Location: ../../admin/view/admin/index.php?codigo=" . $row['usu_codigo']);
+            header("Location: ../../admin/view/admin/index.php");
             
         }else{
             $_SESSION['isAdmin'] = FALSE;
-            header("Location: ../../admin/view/user/index.php?codigo=" . $row['usu_codigo']);
+            header("Location: ../../admin/view/user/index.php");
         }
-
         
     }else{
         header("Location: ../view/login.html");

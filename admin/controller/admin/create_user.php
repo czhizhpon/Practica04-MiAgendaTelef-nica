@@ -19,12 +19,12 @@
     current_timestamp(), NULL);";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Se ha creado los datos personales correctamemte!!!</p>";
+        echo "<p class='e_notice e_notice_sucess'>Se ha creado el usuario correctamente.</p>";
     } else {
         if($conn->errno == 1062){
-            echo "<p class='error'>La persona con la cédula $cedula o el correo $correo ya estan registrados en el sistema</p>";
+            echo "<p class='e_notice e_notice_error'>La cédula \"$cedula\", y/o el correo \"$correo\" ya están registrados en el sistema</p>";
         }else{
-            echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
+            echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
         }
     }
     
