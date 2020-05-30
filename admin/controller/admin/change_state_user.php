@@ -11,9 +11,9 @@
     $sql = "UPDATE usuarios SET usu_eliminado = '$state', usu_fecha_modificacion = '$date' WHERE usu_codigo = '$user_id'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "<p>Se ha cambiado el estado correctamentee!!!</p>";
+        echo "<p class='e_notice e_notice_sucess'>Se ha actualizado el estado del usuario correctamente.</p>";
     } else {
-        echo "<p class='error'>Error: " . mysqli_error($conn) . "</p>";
+        echo "<p class='e_notice e_notice_error'>Error: " . mysqli_error($conn) . "</p>";
     }
     
     $conn->close();
