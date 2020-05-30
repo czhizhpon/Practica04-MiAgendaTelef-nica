@@ -70,7 +70,7 @@ form > input{
     display: inline-block;
     width: 70%;
     border: none;
-    border-bottom: dodgerblue 1px solid;
+    border-bottom: #346157 1px solid;
     background-color:transparent;
     color: #000;
     padding: 10px 5px;
@@ -79,9 +79,8 @@ form > input{
 }
 
 form > input:focus{
-    border-radius:10px;
+    border-radius: 10px;
     background-color: rgb(248, 248, 248);
-    border-bottom: dodgerblue 1px solid;
     transition: 0.5s all linear;
 }
 
@@ -104,7 +103,7 @@ form > input:focus{
 
 .d_button_container > input:hover{
     color: #fff;
-    background-color:darkslateblue;
+    background-color:#2d534b;
     
     transition: 0.3s all linear;
 }
@@ -123,7 +122,7 @@ h4{
 
 a{
     text-decoration: none;
-    color: slateblue;
+    color: #2d534b;
 }
 
 a:hover{

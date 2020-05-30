@@ -15,7 +15,7 @@
 	<link href="../../../css/2_col_layout.css" rel="stylesheet"/>
 	<link href="../../../css/table_layout.css" rel="stylesheet"/>
 	<script src="../../../js/phone_validation.js"></script>
-	<script src="../../../js/animations.js"></script>
+	<script src="../../../js/resources.js"></script>
 	<title>Mis Teléfonos</title>
 </head>
 <body>
@@ -24,30 +24,32 @@
 	?>
     <header id="main_header">
             
-        <div id="logo_container">
+		<div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $usu_id?>" id="img_logo">
-                <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
-            </a>
+			<a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+				<img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
+			</a>
 
-            <form id="f_search">  
-                <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
-            </form>
+			<form id="f_search">  
+				<input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+			</form>
 
-            <a href="#" class="nav_icon">
-                <img src="../../../images/icons/user.png" alt="account logo"/>
-                <span>Cuenta</span>
-            </a>
-            <a href="#" class="nav_icon">
-                <img src="../../../images/icons/mail.png" alt="feedback logo"/>
-                <span>Feedback</span>
-            </a>
-            <a href="../../../config/close_session.php" class="nav_icon">
-                <img src="../../../images/icons/team.png" alt="about logo"/>
-                <span>About</span>
-            </a>
+			<a href="#" class="nav_icon">
+				<img src="../../../images/icons/user.png" alt="account logo"/>
+				<span>Cuenta</span>
+			</a>
 
-        </div>
+			<a href="#" class="nav_icon">
+				<img src="../../../images/icons/mail.png" alt="feedback logo"/>
+				<span>Feedback</span>
+			</a>
+
+			<a href="../../../config/close_session.php" class="nav_icon">
+				<img src="../../../images/icons/team.png" alt="about logo"/>
+				<span>Cerrar Sesión</span>
+			</a>
+
+		</div>
 
 		<nav id="header_nav">
 			<a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
@@ -61,7 +63,10 @@
 	<h1 class="main_title">Mis Teléfonos</h1>
 	<main class="main_container">
 		<section class="col col-30">
-			<div id="notice" class="div_notice e_hidden"></div>
+			<div id="main_notice" class="e_hidden">	
+				<div id="notice" class="div_notice"></div>
+				<img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
+			</div>
 			<?php
 					
 					$sql = "SELECT * FROM usuarios where usu_codigo=$usu_id";
@@ -131,19 +136,21 @@
 						echo "<p> No se encuentra al usuario.</p>";
 						echo "<p>" . mysqli_error($conn) . "</p>";
 					} ?>				
-			
-		<div id="phone_list" class="col col-70 table_container">
+		
+		<div class="col col-70">
 			<form id="f_search_phone" name="f_search_phone" class="form_data col-70 form_transparent" method="POST">
 				<input type="search" name="i_search_phone" id="i_search_phone" class="text_input search_input" 
 					placeholder="Buscar en mis Números"
 					onkeyup="filterPhone(this.value, 0)"/>
 			</form>
-			<script>
-				listPhones(<?php echo $usu_id?>, 0);
-			</script>
-			<table id="user_numbers" class="table_content">
+			<div id="phone_list" class="table_container">
+				<script>
+					listPhones(<?php echo $usu_id?>, 0);
+				</script>
+				<table id="user_numbers" class="table_content">
 				
-			</table>
+				</table>
+			</div>
 		</div>
 	</main>
 	<footer id="pie">

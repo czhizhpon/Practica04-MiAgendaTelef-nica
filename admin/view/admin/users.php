@@ -66,7 +66,6 @@
         <!-- Fin Barra Nav   -->
 
         <h1 class="main_title">Crear Usuario</h1>
-
         <main class="main_container center_container">
             <section class="col col-50">
 

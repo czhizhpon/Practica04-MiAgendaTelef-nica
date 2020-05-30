@@ -150,7 +150,7 @@ function createPhone(){
             if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
-                e.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 listPhones(user_id, 0);
                 resetFields();
                 console.log("Se ejecuta");
@@ -178,7 +178,7 @@ function readPhone(form_id, tel_id){
             if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
                 var e = document.getElementById(form_id);
                 e.innerHTML = this.responseText;
-                e.classList.remove("e_hidden");
+                document.getElementById("f_phone").classList.remove("e_hidden");
                 e.classList.add("e_show");
             } 
         };
@@ -205,7 +205,7 @@ function updatePhone(){
             if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
-                e.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 listPhones(user_id, 1);
                 cancelAndClearUpdate("f_phone");
                 
@@ -233,7 +233,7 @@ function deletePhone(tel_id){
             if (this.readyState == 4 && this.status == 200) { //alert("llegue");
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
-                e.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 listPhones(user_id, 1);
             } 
         };

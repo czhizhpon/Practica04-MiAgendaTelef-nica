@@ -3,8 +3,9 @@
 <head>
 	<meta charset="utf-8"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="../../css/create_user_layout.css" rel="stylesheet"/>
+    <link href="../../css/form_layout.css" rel="stylesheet"/>
     <link href="../../css/main_format.css" rel="stylesheet"/>
+	<link href="../../css/2_col_layout.css" rel="stylesheet"/>
 	<script src="../../js/create_user_validation.js"></script>
 	<title>Crear Usuario</title>
 </head>
@@ -48,84 +49,87 @@
         </nav>
         
     </header>
-    <!-- Fin Barra Nav   -->
-
-	<section class="form_section">
-		<header>
-			<h2>Crear Usuario</h2>
-		</header>
-		<form id="f_personal_data" onsubmit="return submitForm(event)" 
-		action="../controller/create_user.php"
-		method="POST">
-            
-            <label for="i_dni">Cédula:</label>
-			<input type="text" name="i_dni" id="i_dni" class="text_input" 
-				onkeypress="return nNumberValidate(event, 10)" 
-				onkeyup="dniFormatValidation(this)" 
-				onblur="dniError(this)"/>
-			<br>
-			<span id="s_dni_notice" class="s_error_validation"></span>
-            
-            <br>
-			
-			<label for="i_name">Nombres:</label>
-			<input type="text" name="i_name" id="i_name" class="text_input" 
-			onkeypress="return onlyTextInput(event)" 
-			onkeyup="nStringValidate(this, 2, 's_name_notice')" 
-			onblur="nameError(this, 2)"/>
-			<br>
-			<span id="s_name_notice" class="s_error_validation"></span>
-            
-            <br>
-			
-			<label for="i_lastname">Apellidos:</label>
-			<input type="text" name="i_lastname" id="i_lastname" class="text_input" 
-			onkeypress="return onlyTextInput(event)" 
-			onkeyup="nStringValidate(this, 2, 's_lastname_notice')" 
-			onblur="lastnameError(this, 2)"/>
-            <br>
-			<span div id="s_lastname_notice" class="s_error_validation"></span>
-            
-            <br>
-			
-			<label for="i_address">Dirección:</label>
-			<input type="text" name="i_address" id="i_address" class="text_input" 
-			onkeyup="addressEmptyValidation(this)" onblur="addressError(this)"/>
-            <br>
-			<span id="s_address_notice" class="s_error_validation"></span>
-            
-            <br>
-			
-			<label for="i_born">F. Nacimiento:</label>
-			<input type="date" name="i_born" id="i_born" class="text_input"
-			onkeyup="dateFormatValidation(this)" onblur="dateError(this)"/>
-			<br>
-			<span id="s_born_notice" class="s_error_validation"></span>
-            
-            <br>
-			
-			<label for="i_email">Email:</label>
-			<input type="text" name="i_email" id="i_email" class="text_input" 
-			onkeyup="emailFormatValidation(this)" onblur="emailError(this)"/>
-			<br>
-            <span id="s_email_notice" class="s_error_validation"></span>
-                
-			<br>
-			
-			<label for="i_password">Contraseña:</label>
-			<input type="password" name="i_password" id="i_password" class="text_input" 
-			onkeyup="return passwordFormatValidation(this)" 
-			onblur="passwordError(this)"/>
-			<br>
-			<span id="s_password_notice" class="s_error_validation"></span>
-			
-			<br>
-			
-			<div class="d_button_container">
-				<input type="submit" id="i_send_data" class="submit_input" value="Enviar"/>
+	<!-- Fin Barra Nav   -->
+	<h2 class="main_title">Bienvenido</h2>
+	<main class="main_container center_container">
+		<section class="col col-40">
+			<div id="main_notice" class="e_hidden">
+				<div id="notice" class="div_notice"></div>
+				<img src="../../images/icons/close.png" class="close_x" onclick="hideNotice()">
 			</div>
-		</form>
-	</section>
+			<form id="f_personal_data" class="form_data" onsubmit="return submitForm(event)" 
+			action="../controller/create_user.php"
+			method="POST">
+				
+				<label for="i_dni" class="l_i_text">Cédula:</label>
+				<input type="text" name="i_dni" id="i_dni" class="text_input" 
+					onkeypress="return nNumberValidate(event, 10)" 
+					onkeyup="dniFormatValidation(this)" 
+					onblur="dniError(this)"/>
+				<br>
+				<span id="s_dni_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<label for="i_name" class="l_i_text">Nombres:</label>
+				<input type="text" name="i_name" id="i_name" class="text_input" 
+				onkeypress="return onlyTextInput(event)" 
+				onkeyup="nStringValidate(this, 2, 's_name_notice')" 
+				onblur="nameError(this, 2)"/>
+				<br>
+				<span id="s_name_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<label for="i_lastname" class="l_i_text">Apellidos:</label>
+				<input type="text" name="i_lastname" id="i_lastname" class="text_input" 
+				onkeypress="return onlyTextInput(event)" 
+				onkeyup="nStringValidate(this, 2, 's_lastname_notice')" 
+				onblur="lastnameError(this, 2)"/>
+				<br>
+				<span div id="s_lastname_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<label for="i_address" class="l_i_text">Dirección:</label>
+				<input type="text" name="i_address" id="i_address" class="text_input" 
+				onkeyup="addressEmptyValidation(this)" onblur="addressError(this)"/>
+				<br>
+				<span id="s_address_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<label for="i_born" class="l_i_text">F. Nacimiento:</label>
+				<input type="date" name="i_born" id="i_born" class="text_input"
+				onkeyup="dateFormatValidation(this)" onblur="dateError(this)"/>
+				<br>
+				<span id="s_born_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<label for="i_email" class="l_i_text">Email:</label>
+				<input type="text" name="i_email" id="i_email" class="text_input" 
+				onkeyup="emailFormatValidation(this)" onblur="emailError(this)"/>
+				<br>
+				<span id="s_email_notice" class="s_error_validation"></span>
+					
+				<br>
+				
+				<label for="i_password" class="l_i_text">Contraseña:</label>
+				<input type="password" name="i_password" id="i_password" class="text_input" 
+				onkeyup="return passwordFormatValidation(this)" 
+				onblur="passwordError(this)"/>
+				<br>
+				<span id="s_password_notice" class="s_error_validation"></span>
+				
+				<br>
+				
+				<div class="d_button_container">
+					<input type="submit" id="i_send_data" class="submit_input" value="Enviar"/>
+				</div>
+			</form>
+		</section>
+	</main>
 </body>
 
 

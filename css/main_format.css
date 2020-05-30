@@ -15,12 +15,13 @@
 
 body{
     font-family: 'f_jost';
-    font-size: 18px;
+    font-size: 15px;
 }
 
 #main_header{
     width: 100%;
-    background-color: #333;
+    background-color: #346157;
+    /* 4184C6 */
     box-shadow: 0px 0px 6px #000;
 }
 
@@ -28,7 +29,6 @@ body{
 #logo_container{
     display: flex;
     justify-content: center;
-    box-shadow: 0px 0px 4px #bbb;
 }
 
 #img_logo img{
@@ -63,11 +63,15 @@ body{
     font-family:inherit;
     font-size: inherit;
     outline: none;
-    background-color: #eee;
+    /* border: #555 2px solid; */
+    border: none;
+    background-color: #fff;
+    border-radius: 7px;
 }
 
 #index_search:focus{
-    background-color: #ffffff;
+    background-color: #eee;
+    transition: 0.3s all linear;
 }
 /*FIN div: #logo_container*/
 
@@ -75,7 +79,9 @@ body{
 #header_nav {
     clear: both;
     overflow: hidden;
-    margin: 6px 5px;
+    margin: 6px 0px;
+    background-color: #2d534b;
+    /* box-shadow: 0px 0px 3px #ddd; */
 }
 
 #header_nav .nav_a{
@@ -84,13 +90,13 @@ body{
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size: 17px;
-    border-radius: 7px;
+    /* border-radius: 7px; */
+    margin:0px;
 }
 
 #header_nav .nav_a:hover{
     transition: all 0.3s linear;
-    background-color: #ffffff20;
+    background-color: #ffffff15;
     color: #fff;
     text-decoration: none;
 }
@@ -181,6 +187,7 @@ body{
     box-shadow: #555 0px 0px 2px;
     display: inline-block;
     cursor: pointer;
+    text-align: center;
 }
 
 .btn_danger {
@@ -212,4 +219,20 @@ body{
 
 .a_link:hover{
     color: rgba(40, 105, 190, 0.74);
+}
+
+.close_x{
+    position: relative;
+    top: -11px;
+    right: -10px;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    padding: 3px;
+
+    border-radius: 50%;
+}
+
+.close_x:hover{
+    background-color: rgba(255, 0, 0, 0.5);
 }
