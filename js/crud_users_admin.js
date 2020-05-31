@@ -284,7 +284,6 @@ function updatePassword(mode){
     var form = document.forms.namedItem("f_password");
     var formData = new FormData(form);
     
-
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
         document.getElementById("main_notice").classList.remove("e_hidden");

@@ -73,7 +73,7 @@ function listAdminPhones(keyword){
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+        if (this.readyState == 4 && this.status == 200) {
             document.getElementById("user_numbers").innerHTML = this.responseText; 
         } 
     };
@@ -92,11 +92,10 @@ function createAdminPhone(){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+        if (this.readyState == 4 && this.status == 200) { 
             var e = document.getElementById("notice");
             e.innerHTML = this.responseText;
             e.classList.remove("e_hidden");
-            // cancelAndClearUpdate("f_phone");
         } 
     };
     xmlhttp.open("POST","../../../admin/controller/admin/create_phone.php", true); 
@@ -115,7 +114,7 @@ function readAdminPhone(formId, tel_id){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+            if (this.readyState == 4 && this.status == 200) {
                 var e = document.getElementById(formId);
                 e.innerHTML = this.responseText;
                 e.classList.remove("e_hidden");
@@ -138,7 +137,7 @@ function updateAdminPhone(){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+        if (this.readyState == 4 && this.status == 200) { 
             var e = document.getElementById("notice");
             e.innerHTML = this.responseText;
             e.classList.remove("e_hidden");

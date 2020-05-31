@@ -60,7 +60,7 @@ function filterPhone(keyword, action){
         xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
     xmlhttp.onreadystatechange = function() { 
-        if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+        if (this.readyState == 4 && this.status == 200) { 
             document.getElementById("user_numbers").innerHTML = this.responseText; 
         } 
     };
@@ -123,7 +123,7 @@ function createPhone(){
         }
         
         xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+            if (this.readyState == 4 && this.status == 200) { 
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
@@ -150,7 +150,7 @@ function readPhone(form_id, tel_id){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+            if (this.readyState == 4 && this.status == 200) {
                 var e = document.getElementById(form_id);
                 e.innerHTML = this.responseText;
                 document.getElementById("f_phone").classList.remove("e_hidden");
@@ -177,7 +177,7 @@ function updatePhone(){
         }
         document.getElementById("s_phone_notice").classList.add("s_show");
         xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+            if (this.readyState == 4 && this.status == 200) {  
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
@@ -210,7 +210,7 @@ function deletePhone(tel_id){
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue");
+            if (this.readyState == 4 && this.status == 200) { 
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
