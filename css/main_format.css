@@ -199,10 +199,6 @@ body{
     background-color: rgba(165, 42, 42, 0.815);
 }
 
-.btn_sucess{
-
-}
-
 .btn_passive{
     background-color: rgba(40, 105, 190, 0.877);
     color: white;
@@ -236,7 +232,6 @@ body{
 .close_x:hover{
     background-color: rgba(255, 0, 0, 0.5);
 }
-
 
 /*Error Messages*/
 .s_error_validation{
@@ -304,4 +299,34 @@ body{
 #main_notice{
     display: flex;
     justify-content: center;
+}
+
+/*POP-UP*/
+
+.pop-up{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+    background-color: #fff;
+    color: #000;
+    z-index: 9;
+    width: 30%;
+    top: 35%;
+    font-size: 15px;
+    font-family: inherit;
+    right: 35%;
+    box-shadow: 0px 0px 25px #333;
+    padding: 10px;
+}
+
+.pop-up-show{
+    display: inline-table;
+}
+
+.pop-up p{
+    font-size: inherit;
+    font-family: inherit;
+    text-align: center;
 }

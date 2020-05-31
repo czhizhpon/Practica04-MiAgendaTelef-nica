@@ -38,15 +38,15 @@
             
         <div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $user_id; ?>" id="img_logo">
+            <a href="index.php?codigo" id="img_logo">
                 <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
             </a>
 
-            <form id="f_search">  
-                <input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+            <form id="f_search" action="search_user.php" method="POST">  
+                <input type="search" id="index_search" name="index_search" placeholder="Buscar por cédula o correo"/>
             </form>
 
-            <a href="#" class="nav_icon">
+            <a href="my_account.php" class="nav_icon">
                 <img src="../../../images/icons/user.png" alt="account logo"/>
                 <span>Cuenta</span>
             </a>
@@ -64,10 +64,9 @@
         </div>
 
         <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $user_id; ?>">Inicio</a>
-            <a class="nav_a" href="#">Buscar</a>
-            <a class="nav_a" href="phones.php?codigo=<?php echo $user_id; ?>">Mis Teléfonos</a>
-            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $user_id; ?>">Gestionar mis Teléfonos</a>
+            <a class="nav_a" href="index.php">Inicio</a>
+            <a class="nav_a" href="phones.php">Mis Teléfonos</a>
+            <a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
         </nav>
             
         </header>
@@ -79,21 +78,31 @@
             <section id="section_welcome">
 
                 <div id="welcome_text">
+                    <?php 
+                        include '../../../config/conexionBD.php';
+                        
+                        $sqlUser = "SELECT * FROM usuarios WHERE usu_codigo LIKE '$user_id'";
+                        $resultUser = $conn->query($sqlUser);
+                        $row = $resultUser->fetch_assoc();
+                        $names = $row['usu_nombre'];
+                        $lastnames = $row['usu_apellido'];
+
+                        $conn->close();
+                    ?>
                     <header>
-                        <h2>Bienvenidos a Agendas Nuvarmi S.A.</h2>
+                        <h2>Bienvenido: <?php echo $lastnames .", ". $names ?> a Agendas Nuvarmi S.A.</h2>
                     </header>
-                    
                     <p>
-                        Inicia Pendiente.
+                        Gestiona tu cuenta.
                     </p>
                    
-                    <button type="button" class="index_button" onclick="location.href='create_user.html'"> Iniciar Sesión </button>
-                    <button type="button" class="index_button" onclick="location.href='phones.php?codigo=<?php echo $user_id; ?>'">Mis Teléfonos</button>
+                    <button type="button" class="index_button" onclick="location.href='my_account.php'"> Mi Cuenta </button>
+                    <button type="button" class="index_button" onclick="location.href='phones.php'">Mis Teléfonos</button>
                     
                     
                 </div>
                 
-                <img src="../../../images/icons/info.png" alt="index main image"/>
+                <img src="../../../images/index_1.jpg" alt="index main image"/>
 
             </section>
 
@@ -102,27 +111,27 @@
             -->
             <section id="contacts">
                 <header>
-                    <h2>Contactos Recientes</h2>
+                    <h2></h2>
                 </header>
                 <div id="contacts_content">
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Solución de seguimiento ocular</h3>
+                            <img src="../../../images/index/g_1.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Headset VR hecho en casa con un Raspberry Pi</h3>
+                            <img src="../../../images/index/g_2.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Lo mejor de la realidad virtual en CES 2020</h3>
+                            <img src="../../../images/index/g_3.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
@@ -130,7 +139,6 @@
                 <button type="button" class="index_button"> Ver más </button>
                 
             </section>
-
             <!-- Fin Galeria de Noticias-->
 
             <section id="reviews">
@@ -141,7 +149,7 @@
                 <div id="reviews_content">
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -160,7 +168,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -177,7 +185,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -202,16 +210,16 @@
 				</header>
 				<div id="team_content">
 					<aside>
-						<img src="../../../images/icons/logo.png" alt="User team picture"/>
+						<img src="../../../images/bryan2.jpg" alt="User team picture"/>
 
-						<h3>Bryan Sarmiento</h3>
+						<h3>Sarmiento B. Bryan</h3>
 
 					</aside>
 
 					<aside>
-						<img src="../../../images/icons/logo.png" alt="User team picture"/>
+						<img src="../../../images/eduardo.jpg" alt="User team picture"/>
 
-						<h3>Eduardo Zhizhpon</h3>
+						<h3>Zhizhpon T. Eduardo</h3>
 
 					</aside>
 
@@ -242,11 +250,10 @@
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Gestión de Usuarios</legend>
+                    <legend>Gestionar mi Cuenta</legend>
                     <nav>
-                    <a class="nav_a" href="users.php?codigo=<?php echo $user_id; ?>">Registrar Usuarios</a>
-                    <a class="nav_a" href="show_users.php?codigo=<?php echo $user_id; ?>">Listar Usuarios</a>
-                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $user_id; ?>">Administrar usuarios</a>
+                    <a class="nav_a" href="my_account.php">Mi Cuenta</a>
+                    <a class="nav_a" href="../../../config/close_session.php"> Cerrar Sesión</a>
                     </nav>
                 </fieldset>
             </div>
@@ -255,8 +262,8 @@
                 <fieldset>
                     <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a class="nav_a" href="create_phone.php?codigo=<?php echo $user_id; ?>">Registrar Teléfonos</a>
-                        <a class="nav_a" href="manage_phones.php?codigo=<?php echo $user_id; ?>">Administrar Teléfonos</a>
+                        <a class="nav_a" href="phones.php">Mis Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>

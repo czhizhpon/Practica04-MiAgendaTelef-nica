@@ -90,36 +90,40 @@
                         Puede comenzar registrando datos en el sistema.
                     </p>
                    
-                    <button type="button" class="index_button btn_passive" onclick="location.href='users.php'">Registrar Usuario</button>
-                    <button type="button" class="index_button btn_passive" onclick="location.href='create_phone.php'">Registrar Teléfono</button>
+                    <button type="button" class="index_button" onclick="location.href='users.php'">Registrar Usuario</button>
+                    <button type="button" class="index_button" onclick="location.href='create_phone.php'">Registrar Teléfono</button>
                 </div>
                 
-                <img src="../../../images/icons/info.png" alt="index main image"/>
+                <img src="../../../images/index_1.jpg" alt="index main image"/>
+
             </section>
 
+            <!--
+                Geleria de Noticas
+            -->
             <section id="contacts">
                 <header>
-                    <h2>Contactos Recientes</h2>
+                    <h2></h2>
                 </header>
                 <div id="contacts_content">
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Solución de seguimiento ocular</h3>
+                            <img src="../../../images/index/g_1.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Headset VR hecho en casa con un Raspberry Pi</h3>
+                            <img src="../../../images/index/g_2.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
                     <article>
                         <a href="site/general/news.html">
-                            <img src="../../../images/icons/logo.png" alt="new 1 picture">
-                            <h3>Lo mejor de la realidad virtual en CES 2020</h3>
+                            <img src="../../../images/index/g_3.jpg" alt="new 1 picture">
+                            
                         </a>
                     </article>
 
@@ -127,6 +131,7 @@
                 <button type="button" class="index_button"> Ver más </button>
                 
             </section>
+            <!-- Fin Galeria de Noticias-->
 
             <section id="reviews">
                 <header>
@@ -136,7 +141,7 @@
                 <div id="reviews_content">
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -155,7 +160,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -172,7 +177,7 @@
 
                     <blockquote>
                         <div class="stars">
-                            <img src="../../../images/icons/logo.png" alt="user picture"/>
+                            <img src="../../../images/icons/logo_user.png" alt="user picture"/>
                             <br/>
                             <span class="s_o">★</span>
                             <span class="s_o">★</span>
@@ -197,21 +202,22 @@
 				</header>
 				<div id="team_content">
 					<aside>
-						<img src="../../../images/icons/logo.png" alt="User team picture"/>
+						<img src="../../../images/bryan2.jpg" alt="User team picture"/>
 
-						<h3>Bryan Sarmiento</h3>
+						<h3>Sarmiento B. Bryan</h3>
 
 					</aside>
 
 					<aside>
-						<img src="../../../images/icons/logo.png" alt="User team picture"/>
+						<img src="../../../images/eduardo.jpg" alt="User team picture"/>
 
-						<h3>Eduardo Zhizhpon</h3>
+						<h3>Zhizhpon T. Eduardo</h3>
 
 					</aside>
 
 				</div>
             </section>
+            
         </main>
         
         <footer id="pie">

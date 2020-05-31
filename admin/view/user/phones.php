@@ -1,5 +1,8 @@
 <?php
-    session_start();
+	session_start();
+	
+	$usu_id = $_SESSION["usu_codigo"];
+
     if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
         header("Location: ../../../public/view/login.html");
     }
@@ -9,6 +12,8 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8"/>
+	<link rel="shortcut icon" href="../../images/icons/logo.png">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="../../../css/form_layout.css" rel="stylesheet"/>
     <link href="../../../css/main_format.css" rel="stylesheet"/>
@@ -19,22 +24,19 @@
 	<title>Mis Teléfonos</title>
 </head>
 <body>
-	<?php
-		$usu_id = $_GET["codigo"];
-	?>
     <header id="main_header">
             
 		<div id="logo_container">
 
-			<a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+			<a href="index.php" id="img_logo">
 				<img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
 			</a>
 
-			<form id="f_search">  
-				<input type="search" id="index_search" name="index_search" placeholder="Buscar"/>
+			<form id="f_search" action="search_user.php" method="POST">  
+				<input type="search" id="index_search" name="index_search" placeholder="Buscar por cédula o correo"/>
 			</form>
-
-			<a href="#" class="nav_icon">
+			
+			<a href="my_account.php" class="nav_icon">
 				<img src="../../../images/icons/user.png" alt="account logo"/>
 				<span>Cuenta</span>
 			</a>
@@ -52,11 +54,10 @@
 		</div>
 
 		<nav id="header_nav">
-			<a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
-			<a class="nav_a" href="#">Buscar</a>
-			<a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
-			<a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Gestionar mis Teléfonos</a>
-		</nav>
+            <a class="nav_a" href="index.php">Inicio</a>
+            <a class="nav_a" href="phones.php">Mis Teléfonos</a>
+            <a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
+        </nav>
         
     </header>
 	<!-- Fin Barra Nav   -->
@@ -145,7 +146,7 @@
 			</form>
 			<div id="phone_list" class="table_container">
 				<script>
-					listPhones(<?php echo $usu_id?>, 0);
+					filterPhone("", 0);
 				</script>
 				<table id="user_numbers" class="table_content">
 				
@@ -176,24 +177,20 @@
 
 		<div class="cont_pie">
 			<fieldset>
-				<legend>Acerca de Cuenca</legend>
+				<legend>Gestionar mi Cuenta</legend>
 				<nav>
-					<a href="docs/historia.html" > Historia </a>
-					<a href="docs/geografia.html" > Geografía </a>
-					<a href="docs/cultura.html" > Cultura </a>
-					<a href="docs/turismo.html" > Turismo </a>
+				<a class="nav_a" href="my_account.php">Mi Cuenta</a>
+				<a class="nav_a" href="../../../config/close_session.php"> Cerrar Sesión</a>
 				</nav>
 			</fieldset>
 		</div>
 
 		<div class="cont_pie">
 			<fieldset>
-				<legend>Universidades Principales</legend>
+				<legend>Gestión de Teléfonos</legend>
 				<nav>
-					<a href="docs/educacion.html#ups" > Universidad Politécnica Salesiana </a>
-					<a href="docs/educacion.html#ucuenca" > Universidad Estatal de Cuenca </a>
-					<a href="docs/educacion.html#uda" > Universidad del Azuay </a>
-					<a href="docs/educacion.html#ucacue" > Universidad Católica de Cuenca </a>
+					<a class="nav_a" href="phones.php">Mis Teléfonos</a>
+					<a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
 				</nav>
 			</fieldset>
 		</div>

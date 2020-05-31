@@ -1,4 +1,13 @@
 <?php
+    
+    session_start();
+    $admin_id = $_SESSION['usu_codigo'];
+
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === FALSE){
+        session_destroy();
+        header("Location: ../../../public/view/login.html");
+    }
+
     include '../../../config/conexionBD.php';
 
     $admin_id = $_GET['admin_id'];
@@ -78,7 +87,7 @@
                 echo "<td>". $rowUs['usu_apellido'] ."</td>";
                 echo "<td>". $rowUs['usu_direccion'] ."</td>";
                 echo "<td>". date("d/m/Y", strtotime($rowUs['usu_fecha_nacimiento'])) ."</td>";
-                echo " <td><a href='mailto:". $rowUs['usu_correo'] . "'>" . $rowUs['usu_correo'] . "</a></td>";
+                echo " <td><a class='a_link' href='mailto:". $rowUs['usu_correo'] . "'>" . $rowUs['usu_correo'] . "</a></td>";
 
                 switch ($rowUs['usu_rol']) {
                     case 'U':

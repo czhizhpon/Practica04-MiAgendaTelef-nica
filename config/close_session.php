@@ -4,5 +4,5 @@
     $_SESSION['isLogged'] = FALSE;
     session_destroy();
     
-    header("Location: ../public/view/login.html"); 
+    header("Location: ../public/view/index.html"); 
  ?>

@@ -144,14 +144,14 @@
     outline: none;
 }
 
-.form_data .d_button_container{
+.d_button_container{
     width: 100%;
     clear: both;
     display: flex;
     justify-content: flex-end;
 }
 
-.form_data .d_button_container .submit_input{
+.submit_input{
     font-weight: bolder;
     color: #fff;
     padding: 10px;
@@ -159,18 +159,19 @@
     background-color: #346157;
     border-radius: 25%;
     margin: 10px;
+    outline: none;
 }
 
-.form_data .submit_input:active{
+.submit_input:active{
     transition: 0.3s all linear;
     background-color: #333;
 }
 
-.form_data .submit_input:hover{
+.submit_input:hover{
     box-shadow: 0px 0px 5px #346157;
 }
 
-.d_button_container .reset_cancel{
+.reset_cancel{
     font-weight: bolder;
     color: #fff;
     padding: 10px;
@@ -178,19 +179,15 @@
     background-color: #A93226;
     margin: 10px;
     border-radius: 25%;
+    outline: none;
 }
 
-.form_data .reset_cancel:active{
+.reset_cancel:active{
     transition: 0.3s all linear;
     background-color: #333 !important;
 }
 
-.form_data .reset_cancel:hover{
-    box-shadow: 0px 0px 5px #A93226;
-}
-
-
-.form_data .reset_cancel:hover{
+.reset_cancel:hover{
     background-color: rgba(165, 42, 42, 0.87);
 }
 

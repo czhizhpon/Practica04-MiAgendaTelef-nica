@@ -7,7 +7,7 @@
     $sqlPhones = "SELECT * FROM telefonos where usu_codigo=$user_id and tel_eliminado = 'N' and (
         tel_numero like '%$keyword%' or
         tel_operadora like '%$keyword%' or
-        tel_tipo like '%$keyword'
+        tel_tipo like '%$keyword%'
         )";
 
     $resultPh = $conn->query($sqlPhones);
@@ -44,11 +44,11 @@
 
                 switch ($action) {
                     case '0':
-                        echo "<td> <a class='btn btn_passive' href='manage_phones.php?tel_codigo=" . $rowPh['tel_codigo'] . "&usu_codigo=" . $rowPh['usu_codigo'] . "'>Administrar</a></td>";
+                        echo "<td> <a class='btn btn_passive' href='manage_phones.php?tel_codigo=" . $rowPh['tel_codigo'] . "'>Administrar</a></td>";
                         break;
                     case '1':
                         echo "<td> <a class='btn btn_passive' onclick='readPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Actualizar</a></td>";
-                        echo "<td> <a class='btn btn_danger' onclick='deletePhone(". $rowPh['tel_codigo'] .")'>Eliminar</a></td>";
+                        echo "<td> <a class='btn btn_danger' onclick='popUpPhoneDelete(\"". $rowPh['tel_numero'] ."\",". $rowPh['tel_codigo'] .")'>Eliminar</a></td>";
                     break;
                     default:
                         # code...

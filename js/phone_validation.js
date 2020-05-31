@@ -51,45 +51,21 @@ function phoneError(e, n){
     return true;
 }
 
-
-function listPhones(user_id, action){
-    if(user_id == ""){
-        document.getElementById("phone_list").innerHTML == "Algo salió mal.";
-    }else{
-        if(window.XMLHttpRequest){
-            xmlhttp = new XMLHttpRequest();
-        }else{
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
-                document.getElementById("user_numbers").innerHTML = this.responseText; 
-            } 
-        };
-        xmlhttp.open("GET","../../../admin/controller/user/list_phones.php?user_id=" + user_id + "&action=" + action, true); 
-        xmlhttp.send();
-    }
-    return false;
-}
-
 function filterPhone(keyword, action){
     var user_id = document.getElementById("i_user_id").value;
-    if(!keyword){
-        listPhones(user_id, action);
+    
+    if(window.XMLHttpRequest){
+        xmlhttp = new XMLHttpRequest();
     }else{
-        if(window.XMLHttpRequest){
-            xmlhttp = new XMLHttpRequest();
-        }else{
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() { 
-            if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
-                document.getElementById("user_numbers").innerHTML = this.responseText; 
-            } 
-        };
-        xmlhttp.open("GET","../../../admin/controller/user/filter_phone.php?keyword=" + keyword + "&user_id=" + user_id + "&action=" + action, true); 
-        xmlhttp.send();
+        xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
     }
+    xmlhttp.onreadystatechange = function() { 
+        if (this.readyState == 4 && this.status == 200) { //alert("llegue"); 
+            document.getElementById("user_numbers").innerHTML = this.responseText; 
+        } 
+    };
+    xmlhttp.open("GET","../../../admin/controller/user/filter_phone.php?keyword=" + keyword + "&user_id=" + user_id + "&action=" + action, true); 
+    xmlhttp.send();
     return false;
 }
 
@@ -151,9 +127,8 @@ function createPhone(){
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
-                listPhones(user_id, 0);
+                filterPhone("", 0);
                 resetFields();
-                console.log("Se ejecuta");
             } 
         };
         xmlhttp.open("POST","../../../admin/controller/user/create_phone.php", true); 
@@ -167,7 +142,7 @@ function readPhone(form_id, tel_id){
     var user_id = document.getElementById("i_user_id").value;
     
     if(!tel_id){
-        listPhones(user_id);
+        filterPhone("");
     }else{
         if(window.XMLHttpRequest){
             xmlhttp = new XMLHttpRequest();
@@ -206,7 +181,7 @@ function updatePhone(){
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
-                listPhones(user_id, 1);
+                filterPhone("", 1);
                 cancelAndClearUpdate("f_phone");
                 
             } 
@@ -218,11 +193,16 @@ function updatePhone(){
     return false;
 }
 
+function popUpPhoneDelete(phone, phone_id){
+    var mesagge = `Se eliminará el teléfono: <strong>${phone}</strong>`;
+    popUpBuild(mesagge, `deletePhone(${phone_id})`);
+}
+            
 function deletePhone(tel_id){
     var user_id = document.getElementById("i_user_id").value;
-    
+    hidePopUp();
     if(!tel_id){
-        listPhones(user_id);
+        filterPhone("");
     }else{
         if(window.XMLHttpRequest){
             xmlhttp = new XMLHttpRequest();
@@ -234,7 +214,7 @@ function deletePhone(tel_id){
                 var e = document.getElementById("notice");
                 e.innerHTML = this.responseText;
                 document.getElementById("main_notice").classList.remove("e_hidden");
-                listPhones(user_id, 1);
+                filterPhone("", 1);
             } 
         };
         xmlhttp.open("GET","../../../admin/controller/user/delete_phone.php?tel_codigo=" + tel_id + "&usu_codigo=" + user_id, true); 

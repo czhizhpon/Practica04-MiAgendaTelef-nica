@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $admin_id = $_SESSION['usu_codigo'];
+    $user_id = $_SESSION['usu_codigo'];
 
-    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === FALSE){
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
         session_destroy();
         header("Location: ../../../public/view/login.html");
     }
@@ -61,12 +61,9 @@
 
             <nav id="header_nav">
                 <a class="nav_a" href="index.php">Inicio</a>
-                <a class="nav_a" href="users.php">Registrar Usuarios</a>
-                <a class="nav_a" href="show_users.php">Listar Usuarios</a>
-                <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1">Administrar Usuarios</a>
-                <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
-                <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
-            </nav>  
+                <a class="nav_a" href="phones.php">Mis Teléfonos</a>
+                <a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
+            </nav>
         </header>
 
 
@@ -178,11 +175,10 @@
 
             <div class="cont_pie">
                 <fieldset>
-                    <legend>Gestión de Usuarios</legend>
+                    <legend>Gestionar mi Cuenta</legend>
                     <nav>
-                    <a class="nav_a" href="users.php">Registrar Usuarios</a>
-                    <a class="nav_a" href="show_users.php">Listar Usuarios</a>
-                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1">Administrar usuarios</a>
+                    <a class="nav_a" href="my_account.php">Mi Cuenta</a>
+                    <a class="nav_a" href="../../../config/close_session.php"> Cerrar Sesión</a>
                     </nav>
                 </fieldset>
             </div>
@@ -191,8 +187,8 @@
                 <fieldset>
                     <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a class="nav_a" href="create_phone.php">Registrar Teléfonos</a>
-                        <a class="nav_a" href="manage_phones.php">Administrar Teléfonos</a>
+                        <a class="nav_a" href="phones.php">Mis Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php?tel_codigo=-1">Gestionar mis Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>
