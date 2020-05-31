@@ -30,6 +30,7 @@
 
         <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
+        <script src="../../../js/resources.js"></script>
 
         <title>Mi cuenta personal - Admin</title>
     </head>
@@ -92,7 +93,10 @@
             $conn->close();
         ?>
 
-        <div id="notice" class="col col-90 div_notice e_hidden"></div>
+        <div id="main_notice" class="e_hidden col-100 center_container">
+            <div id="notice" class="div_notice col-40"></div>
+            <img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
+        </div>
 
         <main class="main_container">
             <section class="col col-50">

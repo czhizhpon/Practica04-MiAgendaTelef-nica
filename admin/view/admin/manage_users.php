@@ -31,7 +31,8 @@
 
         <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
-
+        <script src="../../../js/resources.js"></script>
+        
         <title>Administrar Usuarios - Admin</title>
     </head>
 
@@ -79,7 +80,7 @@
 
         <h1 class="main_title">Administración de Usuarios</h1>
 
-        <main class="main_container">
+        <main class="main_container center_container">
             <section class="col col-100">
                 <form id="f_filter_data" name="f_filter_data" class="col col-100 form_data form_transparent" method="POST">
                     <input type="hidden" name="admin_code" id="admin_code" value="<?php echo $admin_id; ?>"></input>
@@ -98,21 +99,21 @@
                     }
                 </script>
 
-                <div id="notice" class="div_notice e_hidden">
-
+                <div id="main_notice" class="e_hidden col-100 center_container">
+                    <div id="notice" class="div_notice col-40"></div>
+                    <img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
                 </div>
 
-                <form id="f_personal_data" name="f_personal_data" class="col col-50 e_hidden form_data" onsubmit="return submitFormAdmin(event, 2)"
+                <form id="f_personal_data" name="f_personal_data" class="form_data e_hidden col-50" onsubmit="return submitFormAdmin(event, 2)"
                 method="POST">
                     
                 </form>
 
-                <form id="f_password" name="f_password" class="col col-50 e_hidden form_data" onsubmit="return submitFormPass(event, 1)"
+                <form id="f_password" name="f_password" class="form_data e_hidden col-50" onsubmit="return submitFormPass(event, 1)"
                 method="POST">
-                    
                 </form>
 
-                <div id="users_list" class="col col-100 table_container">
+                <div id="users_list" class="col-100 table_container">
                     <table id="user_data" class="table_content">
                         <tr>
                             <th>Cedula</th>

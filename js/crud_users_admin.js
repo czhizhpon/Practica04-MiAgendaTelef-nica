@@ -62,7 +62,7 @@ function submitFormAdmin(evt, mode){
 
 function submitFormPass(evt, mode){
     evt.preventDefault();
-    var formElements = document.getElementById("f_personal_data").elements;
+    var formElements = document.getElementById("f_password").elements;
     var nForm = formElements.length;
     var flag = true;
     var aux;
@@ -89,7 +89,6 @@ function submitFormPass(evt, mode){
     if (flag) {
         updatePassword(mode);
     }
-    
     return flag; 
 }
 
@@ -128,7 +127,7 @@ function createUser(){
 
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -139,7 +138,7 @@ function createUser(){
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 message.innerHTML = this.responseText;
-                message.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 clearRegisterForm();
             }
         };
@@ -157,7 +156,7 @@ function readUser(formId, userId, readAction) {
 
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -193,7 +192,7 @@ function updateUser(mode){
 
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -204,7 +203,7 @@ function updateUser(mode){
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 message.innerHTML = this.responseText;
-                message.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 if (mode == 2) {
                     cancel(form.getAttribute('id'));
                     filterUsers(list.value, 1);
@@ -226,7 +225,7 @@ function deleteUser(user_id){
 
     if (user_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -255,7 +254,7 @@ function restoreUser(user_id){
 
     if (user_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -280,6 +279,7 @@ function restoreUser(user_id){
 function updatePassword(mode){
     var admin_id = document.getElementById("admin_code");
     var message = document.getElementById("notice");
+    var list = document.getElementById("i_filter");
 
     var form = document.forms.namedItem("f_password");
     var formData = new FormData(form);
@@ -287,7 +287,7 @@ function updatePassword(mode){
 
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -298,7 +298,7 @@ function updatePassword(mode){
         xmlhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 message.innerHTML = this.responseText;
-                message.classList.remove("e_hidden");
+                document.getElementById("main_notice").classList.remove("e_hidden");
                 if (mode == 1) {
                     cancel(form.getAttribute('id'));
                     filterUsers(list.value, 1);
@@ -321,7 +321,7 @@ function listUser(action){
     
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();
@@ -348,7 +348,7 @@ function filterUsers(key, action){
 
     if (admin_id == "") {
         message.innerHTML = "<span>Ha ocurrido algo inesperado. <span>";
-        message.classList.remove("e_hidden");
+        document.getElementById("main_notice").classList.remove("e_hidden");
     } else {
         if (window.XMLHttpRequest) {
             xmlhttp = new XMLHttpRequest();

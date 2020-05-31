@@ -30,7 +30,8 @@
 
         <script src="../../../js/crud_users_admin.js"></script>
         <script src="../../../js/create_user_validation.js"></script>
-
+        <script src="../../../js/resources.js"></script>
+        
         <title>Registrar Usuarios - Admin</title>
     </head>
 
@@ -76,7 +77,10 @@
         <main class="main_container center_container">
             <section class="col col-50">
 
-                <div id="notice" class="div_notice e_hidden"></div>
+                <div id="main_notice" class="e_hidden">
+				    <div id="notice" class="div_notice"></div>
+				    <img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
+			    </div>
 
                 <form id="f_personal_data" name="f_personal_data" class="form_data" 
                     onsubmit="return submitFormAdmin(event, 1)" method="POST">

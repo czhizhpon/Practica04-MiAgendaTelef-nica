@@ -271,6 +271,78 @@ function passwordError(e){
     return true;
 }
 
+function createAnonymousUser(evt){
+    var user_validation = submitForm(evt);
+    var message = document.getElementById("notice");
+
+    var form = document.forms.namedItem("f_personal_data");
+    var formData = new FormData(form);
+    
+    if (!user_validation) {
+        message.innerHTML = "<p class='e_notice e_notice_error'>Revise sus datos personales. </p>";
+        document.getElementById("main_notice").classList.remove("e_hidden");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText == "sucess"){
+                    document.location.href = "../../admin/view/user/index.php";
+                }else{
+                    message.innerHTML = this.responseText;
+                    document.getElementById("main_notice").classList.remove("e_hidden");
+                }
+            }
+        };
+
+        xmlhttp.open("POST", "../controller/create_user.php", true);
+        xmlhttp.send(formData);
+    }
+
+    return false;
+}
+
+function loginValidation(evt){
+    evt.preventDefault();
+    var usu_pass = document.getElementById("i_password").value;
+    var usu_email = document.getElementById("i_email").value;
+    var message = document.getElementById("notice");
+
+    var form = document.forms.namedItem("f_login");
+    var formData = new FormData(form);
+
+    if (!usu_pass || !usu_email) {
+        message.innerHTML = "<p class='e_notice e_notice_error'>Ingrese un Email o contraseña.</p>";
+        document.getElementById("main_notice").classList.remove("e_hidden");
+    } else {
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var key = this.responseText.substring(0, 7);
+                if(key == "sucess:"){
+                    document.location.href = this.responseText.substring(7, this.responseText.length);
+                }else{
+                    message.innerHTML = this.responseText;
+                    document.getElementById("main_notice").classList.remove("e_hidden");
+                }
+            }
+        };
+
+        xmlhttp.open("POST", "../controller/login.php", true);
+        xmlhttp.send(formData);
+    }
+
+    return false;
+}
 
 function submitForm(evt){
     evt.preventDefault();

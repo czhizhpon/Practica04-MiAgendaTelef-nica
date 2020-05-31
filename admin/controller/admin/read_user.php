@@ -86,7 +86,7 @@
                     echo "<span id=\"s_type_notice\" class=\"s_error_validation\"></span><br>";
     
                     echo "<div class=\"d_button_container\">
-                        <input type=\"button\" id=\"i_cancel\" class=\"submit_input\" value=\"Cancelar\" onclick='cancel(\"f_personal_data\")' />
+                        <input type=\"button\" id=\"i_cancel\" class=\"reset_cancel\" value=\"Cancelar\" onclick='cancel(\"f_personal_data\")' />
                         <input type=\"submit\" id=\"i_update_user\" class=\"submit_input\" value=\"Actualizar\"/>
                     </div>";
 
@@ -104,7 +104,7 @@
                     echo "<span id=\"s_temp_notice\" class=\"s_error_validation\"></span><br>";
     
                     echo "<div class=\"d_button_container\">
-                        <input type=\"button\" id=\"i_cancel\" class=\"submit_input\" value=\"Cancelar\" onclick='cancel(\"f_password\")' />
+                        <input type=\"reset\" id=\"i_cancel\" class=\"reset_cancel\" value=\"Cancelar\" onclick='cancel(\"f_password\")' />
                         <input type=\"submit\" id=\"i_update_user\" class=\"submit_input\" value=\"Actualizar\"/>
                     </div>";
 

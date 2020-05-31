@@ -108,7 +108,7 @@
                 
             }
         } else {
-            echo "<p>Algo salió mal.</p>";
+            echo "<p>Error: Surgio algo inesperado.</p>";
         }
     }else{
         echo " <p>Error: " . mysqli_error($conn) . "</p>";

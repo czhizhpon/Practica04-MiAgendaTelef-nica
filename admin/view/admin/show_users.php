@@ -86,7 +86,7 @@
                     <span id="s_filter_notice" class="s_error_validation"></span>
                 </form>
 
-                <div id="users_list" class="col col-100 table_container">
+                <div id="users_list" class="col-100 table_container">
                     <script>
                         filterUsers("", 0);
                     </script>

@@ -1,5 +1,8 @@
 <?php
     session_start();
+
+    $user_id = $_SESSION['usu_codigo'];
+
     if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
         header("Location: ../../../public/view/login.html");
     }
@@ -31,24 +34,11 @@
 
     </head>
     <body>
-
-        <?php
-            $usu_id = $_GET["codigo"];
-            // $sql = "SELECT * FROM usuario where usu_codigo=$codigo";
-            include '../../../config/conexionBD.php';
-            // $result = $conn->query($sql);
-
-            // if ($result->num_rows > 0) {
-
-                // while($row = $result->fetch_assoc()) {
-
-        ?>
-
         <header id="main_header">
             
         <div id="logo_container">
 
-            <a href="index.php?codigo=<?php echo $usu_id; ?>" id="img_logo">
+            <a href="index.php?codigo=<?php echo $user_id; ?>" id="img_logo">
                 <img src="../../../images/icons/logo.png" alt="Logo Game Specs"/>
             </a>
 
@@ -74,10 +64,10 @@
         </div>
 
         <nav id="header_nav">
-            <a class="nav_a" href="index.php?codigo=<?php echo $usu_id; ?>">Inicio</a>
+            <a class="nav_a" href="index.php?codigo=<?php echo $user_id; ?>">Inicio</a>
             <a class="nav_a" href="#">Buscar</a>
-            <a class="nav_a" href="phones.php?codigo=<?php echo $usu_id; ?>">Mis Teléfonos</a>
-            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $usu_id; ?>">Gestionar mis Teléfonos</a>
+            <a class="nav_a" href="phones.php?codigo=<?php echo $user_id; ?>">Mis Teléfonos</a>
+            <a class="nav_a" href="manage_phones.php?tel_codigo=-1&usu_codigo=<?php echo $user_id; ?>">Gestionar mis Teléfonos</a>
         </nav>
             
         </header>
@@ -98,7 +88,7 @@
                     </p>
                    
                     <button type="button" class="index_button" onclick="location.href='create_user.html'"> Iniciar Sesión </button>
-                    <button type="button" class="index_button" onclick="location.href='phones.php?codigo=<?php echo $usu_id; ?>'">Mis Teléfonos</button>
+                    <button type="button" class="index_button" onclick="location.href='phones.php?codigo=<?php echo $user_id; ?>'">Mis Teléfonos</button>
                     
                     
                 </div>
@@ -254,9 +244,9 @@
                 <fieldset>
                     <legend>Gestión de Usuarios</legend>
                     <nav>
-                    <a class="nav_a" href="users.php?codigo=<?php echo $usu_id; ?>">Registrar Usuarios</a>
-                    <a class="nav_a" href="show_users.php?codigo=<?php echo $usu_id; ?>">Listar Usuarios</a>
-                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $usu_id; ?>">Administrar usuarios</a>
+                    <a class="nav_a" href="users.php?codigo=<?php echo $user_id; ?>">Registrar Usuarios</a>
+                    <a class="nav_a" href="show_users.php?codigo=<?php echo $user_id; ?>">Listar Usuarios</a>
+                    <a class="nav_a" href="manage_users.php?readAction=-1&usu_id=-1&codigo=<?php echo $user_id; ?>">Administrar usuarios</a>
                     </nav>
                 </fieldset>
             </div>
@@ -265,8 +255,8 @@
                 <fieldset>
                     <legend>Gestión de Teléfonos</legend>
                     <nav>
-                        <a class="nav_a" href="create_phone.php?codigo=<?php echo $usu_id; ?>">Registrar Teléfonos</a>
-                        <a class="nav_a" href="manage_phones.php?codigo=<?php echo $usu_id; ?>">Administrar Teléfonos</a>
+                        <a class="nav_a" href="create_phone.php?codigo=<?php echo $user_id; ?>">Registrar Teléfonos</a>
+                        <a class="nav_a" href="manage_phones.php?codigo=<?php echo $user_id; ?>">Administrar Teléfonos</a>
                     </nav>
                 </fieldset>
             </div>

@@ -1,25 +1,9 @@
-@font-face{
-    font-family: f_jost;
-    src: url(font/Jost/Jost-VariableFont_ital\,wght.ttf);
-}
-
-*{
-    margin: 0;
-    padding: 0;
-}
-
-body{
-    font-family: 'f_jost';
-    font-size: 18px;
-}
-
 .login_container{
     display: flex;
     justify-content: center;
 }
 
 #login_img{
-    /* padding: 10px; */
     border-radius: 10px;
 }
 #login_img img{
@@ -31,33 +15,17 @@ body{
     justify-content: center;
 }
 
-form *{
-    box-sizing: border-box;
-}
-
 form{
     padding: 10px;
     width: 90%;
-    /* border-radius: 10px; */
     margin:0;
     text-align: center;
-    overflow: auto;
+    overflow: none;
     max-width: 500px;
     height: 425px;
-
-    /* background-color: #eee; */
     border: #ccc 1px solid;
-}
-
-/* form label{
-    clear: both !important;
     display: inline-block;
-    text-align: right;
-    padding: 10px 5px;
-    margin:auto;
-    width: 25%;
-    margin: 5px;
-} */
+}
 
 input{
     outline: none;

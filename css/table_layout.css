@@ -2,10 +2,8 @@
 .table_container {
     clear: both;
     overflow: auto;
-    min-width: 200px;
-    /* width: 100%; */
+    min-width: 300px;
     height: 600px;
-    
 }
 
 .table_content{
@@ -14,7 +12,8 @@
     margin: 0 auto;
     text-align: left;
     position: relative;
-    border-collapse: collapse; 
+    border-collapse: collapse;
+    margin: 10px auto; 
 }
 
 .table_content th{
@@ -29,10 +28,6 @@
     border-radius: 10px;
 }
 
-.table_content, .table_content th, .table_content td{
-    /* border: 1px solid #333; */
-
-} 
 .table_content tr:nth-child(even) {
     background-color: #f2f2f2;
 }

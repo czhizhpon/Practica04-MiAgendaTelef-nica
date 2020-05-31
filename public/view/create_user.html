@@ -6,7 +6,10 @@
     <link href="../../css/form_layout.css" rel="stylesheet"/>
     <link href="../../css/main_format.css" rel="stylesheet"/>
 	<link href="../../css/2_col_layout.css" rel="stylesheet"/>
+
 	<script src="../../js/create_user_validation.js"></script>
+	<script src="../../js/resources.js"></script>
+
 	<title>Crear Usuario</title>
 </head>
 <body>
@@ -50,15 +53,16 @@
         
     </header>
 	<!-- Fin Barra Nav   -->
-	<h2 class="main_title">Bienvenido</h2>
+	<h2 class="main_title">Registro</h2>
 	<main class="main_container center_container">
 		<section class="col col-40">
+
 			<div id="main_notice" class="e_hidden">
 				<div id="notice" class="div_notice"></div>
 				<img src="../../images/icons/close.png" class="close_x" onclick="hideNotice()">
 			</div>
-			<form id="f_personal_data" class="form_data" onsubmit="return submitForm(event)" 
-			action="../controller/create_user.php"
+
+			<form id="f_personal_data" class="form_data" onsubmit="return createAnonymousUser(event)"
 			method="POST">
 				
 				<label for="i_dni" class="l_i_text">Cédula:</label>

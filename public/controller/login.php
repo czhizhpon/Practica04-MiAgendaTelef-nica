@@ -18,15 +18,15 @@
 
         if($row["usu_rol"] === "A"){
             $_SESSION['isAdmin'] = TRUE;
-            header("Location: ../../admin/view/admin/index.php");
+            echo "sucess:../../admin/view/admin/index.php";
             
         }else{
             $_SESSION['isAdmin'] = FALSE;
-            header("Location: ../../admin/view/user/index.php");
+            echo "sucess:../../admin/view/user/index.php";
         }
         
     }else{
-        header("Location: ../view/login.html");
+        echo "<p class='e_notice e_notice_error'>No se encontraron sus credenciales en el sistema.</p>";
     }
 
     $conn -> close();
