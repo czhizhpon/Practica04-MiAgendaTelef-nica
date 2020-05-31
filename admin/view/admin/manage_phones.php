@@ -31,7 +31,8 @@
         
         <script src="../../../js/phone_validation.js"></script>
         <script src="../../../js/crud_phones_admin.js"></script>
-
+        <script src="../../../js/resources.js"></script>
+        
         <title>Administrar Teléfonos - Admin</title>
     </head>
 
@@ -82,7 +83,10 @@
                         onkeyup="listAdminPhones(this.value)"/>
                 </form>
 
-                <div id="notice" class="div_notice e_hidden"></div>
+                <div id="main_notice" class="e_hidden">	
+					<div id="notice" class="div_notice"></div>
+					<img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
+				</div>
 
                 <form id="f_phone" name="f_phone" class="form_data e_hidden" method="POST">
                 </form>

@@ -57,17 +57,13 @@
                 $resultado_correo = $conn->query($sqlUsuarios_correo);
             ?>
         
-            <main id="main_search" class="main_container center_container" >
-                <section class="col col-100 form_section">
+            <main id="main_search" class="main_container" >
+                <section class="col col-40 form_section">
                     <div class="table_container">
                         <table id="user_table" class="col-80 table_content">
                             <tr>
-                                <th>Cédula</th>
-                                <th>Nombres</th>
-                                <th>Apellidos</th>
-                                <th>Dirección</th>
-                                <th>Correo</th>
-                                <th>Fecha Nacimiento</th>
+                                <th></th>
+                                <th colspan="2">Descripción</th>
                             </tr>
 
                             <?php 
@@ -83,50 +79,74 @@
                                     while ($row = $resultado->fetch_assoc()) {
                                         echo "<tr>";
                                         $codigoUsuario = $row["usu_codigo"]; 
-                                        echo " <td>" . $row["usu_cedula"] . "</td>";
-                                        echo " <td>" . $row['usu_nombre'] ."</td>";
-                                        echo " <td>" . $row['usu_apellido'] . "</td>";
-                                        echo " <td>" . $row['usu_direccion'] . "</td>";
-                                        echo " <td><a class='a_link' href='mailto:". $row['usu_correo'] . "'>" . $row['usu_correo'] . "</a></td>";
-                                        echo " <td>" . date("d/m/Y", strtotime($row['usu_fecha_nacimiento'])) . "</td>";
+
+                                        echo "<th class='th_v'>Cédula:</th>";
+                                        echo " <td >" . $row["usu_cedula"] . "</td>";
+                                        echo "</tr>";
+
+                                        echo "<tr>";
+                                        echo "<th class='th_v'>Nombres:</th>";
+                                        echo " <td >" . $row['usu_nombre'] ."</td>";
+                                        echo "</tr>";
+
+                                        echo "<tr>";
+                                        echo "<th class='th_v'>Apellidos:</th>";
+                                        echo " <td >" . $row['usu_apellido'] . "</td>";
+                                        echo "</tr>";
+
+                                        echo "<tr>";
+                                        echo "<th class='th_v'>Dirección:</th>";
+                                        echo " <td >" . $row['usu_direccion'] . "</td>";
+                                        echo "</tr>";
+
+                                        echo "<tr>";
+                                        echo "<th class='th_v'>Correo:</th>";
+                                        echo " <td ><a class='a_link' href='mailto:". $row['usu_correo'] . "'>" . $row['usu_correo'] . "</a></td>";
+                                        echo "</tr>";
+
+                                        echo "<tr>";
+                                        echo "<th class='th_v'>Fecha Nacimiento:</th>";
+                                        echo " <td >" . date("d/m/Y", strtotime($row['usu_fecha_nacimiento'])) . "</td>";
                                         echo "</tr>";
                                     }
                             ?>
                         </table>
-                    
-                        <table id="phones_table" class="col-20 table_content">
-                            <tr>
-                                <th>Teléfonos</th>
-                                <th>Operadora</th>
-                            </tr>
-                            <?php 
-                                
-                                    # Seccion de PHP donde se inserta los telefonos del usuario.
-                                    $sqlTelefonos = "SELECT * FROM telefonos WHERE tel_eliminado = 'N' AND usu_codigo LIKE '$codigoUsuario'";
-                                    $telefonos = $conn->query($sqlTelefonos);
+                    </div>
+                </section>
+                <div class="table_container col col-60">            
+                    <table id="phones_table" class="col-80 table_content">
+                        <tr>
+                            <th>Teléfonos</th>
+                            <th>Operadora</th>
+                        </tr>
+                        <?php 
+                            
+                                # Seccion de PHP donde se inserta los telefonos del usuario.
+                                $sqlTelefonos = "SELECT * FROM telefonos WHERE tel_eliminado = 'N' AND usu_codigo LIKE '$codigoUsuario'";
+                                $telefonos = $conn->query($sqlTelefonos);
 
-                                    if ($telefonos->num_rows > 0) {
-                                        while ($row = $telefonos->fetch_assoc()) {
-                                            echo "<tr>";
-                                            echo " <td><a class='a_link' href='tel:". $row['tel_numero'] . "'>" . $row["tel_numero"] . "</a></td>";
-                                            echo " <td>" . $row["tel_operadora"] ."</td>";
-                                            echo "</tr>";
-                                        }
-                                    } else {
+                                if ($telefonos->num_rows > 0) {
+                                    while ($row = $telefonos->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo " <td colspan='2'> No existen teléfonos registrados en ese usuario </td>";
+                                        echo " <td><a class='a_link' href='tel:". $row['tel_numero'] . "'>" . $row["tel_numero"] . "</a></td>";
+                                        echo " <td>" . $row["tel_operadora"] ."</td>";
                                         echo "</tr>";
                                     }
-                                
                                 } else {
                                     echo "<tr>";
-                                    echo " <td colspan='7'> No existen usuarios registrados en el sistema con los parámetros establecidos </td>";
+                                    echo " <td colspan='2'> No existen teléfonos registrados en ese usuario </td>";
                                     echo "</tr>";
                                 }
-                            ?>
-                        </table>
-                    <div>
-                </section>
+                            
+                            } else {
+                                echo "<tr>";
+                                echo " <td colspan='7'> No existen usuarios registrados en el sistema con los parámetros establecidos </td>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </table>
+                <div>
+                
             </main>
 
             <?php

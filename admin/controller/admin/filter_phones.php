@@ -11,7 +11,7 @@
     include '../../../config/conexionBD.php';
 
     $keyword = $_GET['keyword'];
-    $sqlPhones = "SELECT * FROM telefonos LEFT JOIN usuarios ON telefonos.usu_codigo = usuarios.usu_codigo where (
+    $sqlPhones = "SELECT * FROM telefonos RIGHT JOIN usuarios ON telefonos.usu_codigo = usuarios.usu_codigo where (
         telefonos.tel_numero like '%$keyword%' or
         telefonos.tel_operadora like '%$keyword%' or
         telefonos.tel_tipo like '%$keyword' or 
@@ -35,7 +35,12 @@
 
             while($rowPh = $resultPh -> fetch_assoc()) {
                 echo "<tr>";
-                echo "<td><a class='a_link' href='tel:". $rowPh['tel_numero'] . "'>" . $rowPh['tel_numero'] . "</a></td>";
+                if(is_null($rowPh['tel_operadora']) == 1 ){
+                    echo "<td><a class='a_link' href='create_phone.php'> REGISTRAR </a></td>";
+                }else{
+                    echo "<td><a class='a_link' href='tel:".  $rowPh['tel_numero'] . "'>" . $rowPh['tel_numero'] . "</a></td>";
+                }
+
                 switch($rowPh['tel_tipo']){
                     case "CO":
                         echo "<td> CONVENCIONAL</td>";
@@ -43,12 +48,14 @@
                     case "CE":
                         echo "<td> CELULAR</td>";
                     break;
-
                     default:
-
+                        echo "<td> </td>";
                 }
-                echo "<td>" . $rowPh['tel_operadora'] . "</td>";
-                echo "<td>" . $rowPh['tel_eliminado'] . "</td>";
+                $company = ((is_null($rowPh['tel_operadora']) == 1 )? "" : $rowPh['tel_operadora']);
+                echo "<td>" . $company  . "</td>";
+
+                $tel_eliminado = ((is_null($rowPh['tel_eliminado']) == 1 )? "" : $rowPh['tel_eliminado']);
+                echo "<td>" . $tel_eliminado . "</td>";
                 echo "<td>" . $rowPh['tel_fecha_modificacion'] . "</td>";
                 echo "<td>" . $rowPh['usu_cedula'] . "</td>";
                 echo "<td> <a class='btn btn_passive' onclick='readAdminPhone(\"f_phone\", ". $rowPh['tel_codigo'] .")'>Administrar</a></td>";

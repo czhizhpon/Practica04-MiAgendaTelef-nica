@@ -43,7 +43,7 @@
                 echo "<p class='e_notice e_notice_sucess'>Se han actualizado los datos del teléfono correctamemte.</p>";
             } else {
                 if($conn->errno == 1062){
-                    echo "<p class='e_notice e_notice_error'>El número \"$tel_numero\" ya está registrados en el sistema</p>";
+                    echo "<p class='e_notice e_notice_error'>El número \"$tel_numero\" ya está registrado en el sistema.</p>";
                 }
             }
         }else{

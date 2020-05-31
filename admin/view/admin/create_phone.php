@@ -30,6 +30,7 @@
 		
 		<script src="../../../js/phone_validation.js"></script>
 		<script src="../../../js/crud_phones_admin.js"></script>
+		<script src="../../../js/resources.js"></script>
 
 		<title>Registrar Teléfonos - Admin</title>
 	</head>
@@ -75,7 +76,10 @@
 
 		<main class="main_container center_container">
 			<section class="col col-50">
-				<div id="notice" class="div_notice e_hidden"></div>
+				<div id="main_notice" class="e_hidden">	
+					<div id="notice" class="div_notice"></div>
+					<img src="../../../images/icons/close.png" class="close_x" onclick="hideNotice()">
+				</div>
 
 				<form id="f_phone" name="f_phone" class="form_data" method="POST">
 					

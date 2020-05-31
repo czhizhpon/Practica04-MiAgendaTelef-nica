@@ -12,7 +12,6 @@
 
     $tel_codigo = $_GET['tel_codigo'];
     $sqlPhones = "SELECT * FROM telefonos LEFT JOIN usuarios ON telefonos.usu_codigo = usuarios.usu_codigo where tel_codigo like '$tel_codigo'";
-
     $resultPh = $conn->query($sqlPhones);
     if($resultPh){
         if ($resultPh -> num_rows > 0) {

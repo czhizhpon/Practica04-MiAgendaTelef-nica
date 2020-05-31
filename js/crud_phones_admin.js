@@ -95,7 +95,7 @@ function createAdminPhone(){
         if (this.readyState == 4 && this.status == 200) { 
             var e = document.getElementById("notice");
             e.innerHTML = this.responseText;
-            e.classList.remove("e_hidden");
+            document.getElementById("main_notice").classList.remove("e_hidden");
         } 
     };
     xmlhttp.open("POST","../../../admin/controller/admin/create_phone.php", true); 
@@ -106,7 +106,7 @@ function createAdminPhone(){
 
 function readAdminPhone(formId, tel_id){
     if(!tel_id){
-        listPhones(user_id);
+        listAdminPhones("");
     }else{
         if(window.XMLHttpRequest){
             xmlhttp = new XMLHttpRequest();
@@ -140,7 +140,7 @@ function updateAdminPhone(){
         if (this.readyState == 4 && this.status == 200) { 
             var e = document.getElementById("notice");
             e.innerHTML = this.responseText;
-            e.classList.remove("e_hidden");
+            document.getElementById("main_notice").classList.remove("e_hidden");
             cancelAndClearUpdate("f_phone");
             listAdminPhones("");
         } 

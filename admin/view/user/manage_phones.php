@@ -3,6 +3,7 @@
 	$usu_id = $_SESSION["usu_codigo"];
 
     if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+		session_destroy();
         header("Location: ../../../public/view/login.html");
     }
 ?>

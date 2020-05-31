@@ -28,6 +28,10 @@
     border-radius: 10px;
 }
 
+.table_content tr{
+    background-color: rgb(250, 250, 250);
+}
+
 .table_content tr:nth-child(even) {
     background-color: #f2f2f2;
 }
@@ -38,4 +42,11 @@
 
 .table_content td{
     padding: 5px;
+}
+
+tr .th_v{
+    text-align: right;
+    background-color: #ddd;
+    width: 20%;
+    color: #000;
 }
