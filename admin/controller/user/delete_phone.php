@@ -1,9 +1,10 @@
 <?php
 
     session_start();
+
     $user_id = $_SESSION['usu_codigo'];
 
-    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE){
+    if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === TRUE){
         session_destroy();
         header("Location: ../../../public/view/login.html");
     }
@@ -11,7 +12,6 @@
     include '../../../config/conexionBD.php';
 
     $tel_codigo = $_GET["tel_codigo"];
-    // echo "<h1>" . $tel_codigo. "</h1>";
     $tel_fecha_modificacion = date('Y-m-d H:i:s', time());
 
     $sql = "UPDATE telefonos SET " .
