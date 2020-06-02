@@ -1,7 +1,7 @@
 <?php
     session_start();
 
-    $user_id = $_SESSION['usu_codigo'];
+    $usu_id = $_SESSION['usu_codigo'];
 
     if(!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE || $_SESSION['isAdmin'] === TRUE){
         session_destroy();
